@@ -43,6 +43,12 @@ export function Header() {
           <Link href="/blog" className="text-sm font-medium hover:text-muted-foreground transition-colors">
             Blog
           </Link>
+          <Link href="/custom-bag" className="text-sm font-medium hover:text-muted-foreground transition-colors">
+            Custom Bag
+          </Link>
+          <Link href="/repair" className="text-sm font-medium hover:text-muted-foreground transition-colors">
+            Repair
+          </Link>
           <Link href="/about" className="text-sm font-medium hover:text-muted-foreground transition-colors">
             About
           </Link>
@@ -106,20 +112,34 @@ export function Header() {
                     >
                       Collections
                     </Link>
-                    <Link
-                      href="/blog"
-                      onClick={() => setOpen(false)}
-                      className="text-lg font-medium py-5 px-4 border-b border-border hover:bg-accent transition-colors"
-                    >
-                      Blog
-                    </Link>
-                    <Link
-                      href="/about"
-                      onClick={() => setOpen(false)}
-                      className="text-lg font-medium py-5 px-4 border-b border-border hover:bg-accent transition-colors"
-                    >
-                      About
-                    </Link>
+                  <Link
+                    href="/blog"
+                    onClick={() => setOpen(false)}
+                    className="text-lg font-medium py-5 px-4 border-b border-border hover:bg-accent transition-colors"
+                  >
+                    Blog
+                  </Link>
+                  <Link
+                    href="/custom-bag"
+                    onClick={() => setOpen(false)}
+                    className="text-lg font-medium py-5 px-4 border-b border-border hover:bg-accent transition-colors"
+                  >
+                    Custom Bag
+                  </Link>
+                  <Link
+                    href="/repair"
+                    onClick={() => setOpen(false)}
+                    className="text-lg font-medium py-5 px-4 border-b border-border hover:bg-accent transition-colors"
+                  >
+                    Repair
+                  </Link>
+                  <Link
+                    href="/about"
+                    onClick={() => setOpen(false)}
+                    className="text-lg font-medium py-5 px-4 border-b border-border hover:bg-accent transition-colors"
+                  >
+                    About
+                  </Link>
                     <Link
                       href="/profile"
                       onClick={() => setOpen(false)}
