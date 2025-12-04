@@ -7,33 +7,33 @@ import { ArrowLeft } from "lucide-react"
 export default function CollectionsPage() {
   const collections = [
     {
-      id: "executive",
-      name: "Executive Collection",
+      id: "travel",
+      name: "Travel Collection",
       description:
-        "Bold, sophisticated pieces for the modern power dresser. Featuring rich textures and commanding colors.",
-      image: "/thudarum-burgundy-evening-suit.jpg",
-      items: "12 items",
+        "Durable and spacious bags designed for your adventures. Perfect for weekend getaways and extended journeys.",
+      image: "/travelbag.png",
+      items: "3 items",
     },
     {
-      id: "heritage",
-      name: "Heritage Collection",
-      description: "Classic tailoring with timeless appeal. Traditional patterns reimagined for contemporary elegance.",
-      image: "/thudarum-green-check-blazer.jpg",
-      items: "8 items",
+      id: "office",
+      name: "Office Collection",
+      description: "Professional and elegant bags for the modern professional. Combining style with functionality for your workday.",
+      image: "/office bage.png",
+      items: "2 items",
     },
     {
-      id: "contemporary",
-      name: "Contemporary Collection",
-      description: "Modern cuts and innovative styling for the forward-thinking gentleman.",
-      image: "/thudarum-sky-blue-blazer.jpg",
-      items: "10 items",
+      id: "everyday",
+      name: "Everyday Collection",
+      description: "Versatile bags for daily use. From casual outings to running errands, these bags are your perfect companion.",
+      image: "/product1.png",
+      items: "4 items",
     },
     {
-      id: "evening",
-      name: "Evening Collection",
-      description: "Luxurious velvet and satin pieces designed to make a statement at formal occasions.",
-      image: "/thudarum-navy-velvet-blazer.jpg",
-      items: "6 items",
+      id: "school",
+      name: "School Collection",
+      description: "Functional and stylish bags designed for students. Spacious compartments and comfortable carrying for your academic journey.",
+      image: "/schoolbag.png",
+      items: "2 items",
     },
   ]
 
@@ -55,7 +55,7 @@ export default function CollectionsPage() {
             Collections
           </h1>
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground text-balance">
-            Explore our curated collections, each telling a unique story of style, craftsmanship, and modern elegance.
+            Explore our curated collections of premium bags, each designed for a specific purpose while maintaining our commitment to quality and style.
           </p>
         </div>
 
@@ -97,8 +97,8 @@ export default function CollectionsPage() {
             <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-semibold mb-6">Crafted for Excellence</h2>
             <p className="text-muted-foreground mb-8 text-base sm:text-lg leading-relaxed">
               Each collection is carefully curated to offer a distinct aesthetic while maintaining the exceptional
-              quality and attention to detail that defines Thudarum. From boardroom to ballroom, we have the perfect
-              piece for every occasion.
+              quality and attention to detail that defines SONCIS. From travel to work, we have the perfect
+              bag for every occasion.
             </p>
             <Button asChild size="lg" variant="outline" className="h-12 px-8 bg-transparent">
               <Link href="/shop">Browse All Products</Link>
