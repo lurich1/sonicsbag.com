@@ -2,14 +2,33 @@
 
 import type React from "react"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { Button } from "./ui/button"
 import { Input } from "./ui/input"
 import { Label } from "./ui/label"
 import { useCart } from "./cart-provider"
 import { useToast } from "@/hooks/use-toast"
-import { CreditCard, Lock } from "lucide-react"
+import { Lock } from "lucide-react"
+
+declare global {
+  interface Window {
+    PaystackPop: {
+      setup: (args: {
+        key: string
+        email: string
+        amount: number
+        currency: string
+        ref: string
+        metadata?: Record<string, any>
+        callback: (response: { reference: string }) => void
+        onClose: () => void
+      }) => {
+        openIframe: () => void
+      }
+    }
+  }
+}
 
 interface CheckoutFormProps {
   total: number
@@ -34,12 +53,33 @@ export function CheckoutForm({ total }: CheckoutFormProps) {
     state: "",
     zipCode: "",
     phone: "",
-    // Payment
-    cardNumber: "",
-    cardName: "",
-    expiryDate: "",
-    cvv: "",
   })
+
+  // Load Paystack script
+  useEffect(() => {
+    // Check if script is already loaded
+    if (window.PaystackPop) {
+      return
+    }
+
+    const script = document.createElement("script")
+    script.src = "https://js.paystack.co/v1/inline.js"
+    script.async = true
+    
+    script.onerror = () => {
+      // Script loading failed - will be handled when user tries to pay
+    }
+
+    document.body.appendChild(script)
+
+    return () => {
+      // Only remove if it exists
+      const existingScript = document.querySelector('script[src="https://js.paystack.co/v1/inline.js"]')
+      if (existingScript) {
+        document.body.removeChild(existingScript)
+      }
+    }
+  }, [])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -47,18 +87,108 @@ export function CheckoutForm({ total }: CheckoutFormProps) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    
+    if (!formData.email) {
+      toast({
+        title: "Email required",
+        description: "Please enter your email address",
+        variant: "destructive",
+      })
+      return
+    }
+
     setIsProcessing(true)
 
-    // Simulate payment processing
-    await new Promise((resolve) => setTimeout(resolve, 2000))
+    try {
+      // Initialize Paystack payment
+      const response = await fetch("/api/paystack/initialize", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          amount: total,
+          metadata: {
+            custom_fields: [
+              {
+                display_name: "First Name",
+                variable_name: "first_name",
+                value: formData.firstName,
+              },
+              {
+                display_name: "Last Name",
+                variable_name: "last_name",
+                value: formData.lastName,
+              },
+              {
+                display_name: "Phone",
+                variable_name: "phone",
+                value: formData.phone,
+              },
+            ],
+            shipping_address: {
+              address: formData.address,
+              apartment: formData.apartment,
+              city: formData.city,
+              state: formData.state,
+              country: formData.country,
+              zipCode: formData.zipCode,
+            },
+          },
+        }),
+      })
 
-    // Save order to localStorage (in production, this would be an API call)
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to initialize payment")
+      }
+
+      // Open Paystack payment popup
+      if (!window.PaystackPop) {
+        throw new Error("Paystack script not loaded. Please refresh the page and try again.")
+      }
+
+      if (!data.data || !data.data.reference) {
+        throw new Error("Invalid payment initialization response")
+      }
+
+      // Validate and get the amount - Paystack returns amount in pesewas (smallest currency unit)
+      // For GHS, 1 GHS = 100 pesewas
+      // Use the amount from API response, or calculate it as fallback
+      let paymentAmount = data.data?.amount
+      
+      // If amount is not in response, calculate it (total in GHS * 100 to get pesewas)
+      if (!paymentAmount || paymentAmount <= 0) {
+        paymentAmount = Math.round(total * 100)
+      }
+      
+      // Ensure it's a valid number
+      paymentAmount = Number(paymentAmount)
+      
+      if (!paymentAmount || paymentAmount <= 0 || isNaN(paymentAmount)) {
+        throw new Error(`Invalid payment amount: ${paymentAmount}. Total: ${total}`)
+      }
+
+      const publicKey = process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY || "pk_test_9b2120a8562ce8ca19f89f696b6ca70baca6c03f"
+      
+      // Define async payment handler
+      const processPayment = async (reference: string) => {
+        try {
+          // Verify payment
+          const verifyResponse = await fetch(`/api/paystack/verify?reference=${reference}`)
+          const verifyData = await verifyResponse.json()
+
+          if (verifyData.status && verifyData.data.status === "success") {
+            // Save order to localStorage
     const order = {
-      id: Math.random().toString(36).substr(2, 9),
+              id: verifyData.data.reference,
       date: new Date().toISOString(),
       total,
       status: "processing",
       shipping: formData,
+              paymentReference: reference,
     }
 
     const existingOrders = JSON.parse(localStorage.getItem("orders") || "[]")
@@ -66,11 +196,84 @@ export function CheckoutForm({ total }: CheckoutFormProps) {
 
     clearCart()
     toast({
-      title: "Order placed successfully!",
-      description: `Order #${order.id}`,
+              title: "Payment successful!",
+              description: `Order #${order.id} has been placed`,
     })
 
     router.push("/profile?tab=orders")
+          } else {
+            toast({
+              title: "Payment verification failed",
+              description: "Please contact support if payment was deducted",
+              variant: "destructive",
+            })
+          }
+        } catch (error) {
+          toast({
+            title: "Payment verification error",
+            description: "An error occurred while verifying payment",
+            variant: "destructive",
+          })
+        } finally {
+          setIsProcessing(false)
+        }
+      }
+
+      // Wrap in synchronous function for Paystack callback
+      const handlePaymentCallback = function (response: { reference: string }) {
+        // Call async function without awaiting (Paystack expects sync callback)
+        processPayment(response.reference).catch(() => {
+          // Error already handled in processPayment
+        })
+      }
+
+      const handlePaymentClose = function () {
+        setIsProcessing(false)
+        toast({
+          title: "Payment cancelled",
+          description: "You closed the payment window",
+        })
+      }
+      
+      // Ensure all values are properly set before calling Paystack
+      const handler = window.PaystackPop.setup({
+          key: publicKey,
+          email: formData.email,
+          amount: paymentAmount, // Amount in pesewas
+          currency: "GHS",
+          ref: data.data.reference,
+          metadata: {
+            custom_fields: [
+              {
+                display_name: "First Name",
+                variable_name: "first_name",
+                value: formData.firstName,
+              },
+              {
+                display_name: "Last Name",
+                variable_name: "last_name",
+                value: formData.lastName,
+              },
+              {
+                display_name: "Phone",
+                variable_name: "phone",
+                value: formData.phone,
+              },
+            ],
+          },
+          callback: handlePaymentCallback,
+          onClose: handlePaymentClose,
+        })
+
+      handler.openIframe()
+    } catch (error: any) {
+      setIsProcessing(false)
+      toast({
+        title: "Payment failed",
+        description: error.message || "An error occurred. Please try again.",
+        variant: "destructive",
+      })
+    }
   }
 
   return (
@@ -230,69 +433,10 @@ export function CheckoutForm({ total }: CheckoutFormProps) {
       <div>
         <h2 className="font-serif text-xl sm:text-2xl font-semibold mb-3 sm:mb-4">Payment Information</h2>
         <div className="space-y-3 sm:space-y-4">
-          <div>
-            <Label htmlFor="cardNumber" className="text-sm">
-              Card Number
-            </Label>
-            <div className="relative mt-1.5">
-              <Input
-                id="cardNumber"
-                name="cardNumber"
-                required
-                value={formData.cardNumber}
-                onChange={handleChange}
-                placeholder="1234 5678 9012 3456"
-                maxLength={19}
-              />
-              <CreditCard className="absolute right-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-            </div>
-          </div>
-
-          <div>
-            <Label htmlFor="cardName" className="text-sm">
-              Name on Card
-            </Label>
-            <Input
-              id="cardName"
-              name="cardName"
-              required
-              value={formData.cardName}
-              onChange={handleChange}
-              className="mt-1.5"
-            />
-          </div>
-
-          <div className="grid grid-cols-2 gap-3 sm:gap-4">
-            <div>
-              <Label htmlFor="expiryDate" className="text-sm">
-                Expiry Date
-              </Label>
-              <Input
-                id="expiryDate"
-                name="expiryDate"
-                required
-                value={formData.expiryDate}
-                onChange={handleChange}
-                placeholder="MM/YY"
-                maxLength={5}
-                className="mt-1.5"
-              />
-            </div>
-            <div>
-              <Label htmlFor="cvv" className="text-sm">
-                CVV
-              </Label>
-              <Input
-                id="cvv"
-                name="cvv"
-                required
-                value={formData.cvv}
-                onChange={handleChange}
-                placeholder="123"
-                maxLength={4}
-                className="mt-1.5"
-              />
-            </div>
+          <div className="p-4 bg-secondary rounded border border-border">
+            <p className="text-sm text-muted-foreground">
+              You will be redirected to Paystack to complete your payment securely. We accept all major cards and mobile money.
+            </p>
           </div>
         </div>
       </div>
