@@ -6,11 +6,16 @@ import { ShoppingBag, User, Menu } from "lucide-react"
 import { useCart } from "./cart-provider"
 import { Button } from "./ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 export function Header() {
   const { itemCount } = useCart()
   const [open, setOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -34,6 +39,9 @@ export function Header() {
           </Link>
           <Link href="/collections" className="text-sm font-medium hover:text-muted-foreground transition-colors">
             Collections
+          </Link>
+          <Link href="/blog" className="text-sm font-medium hover:text-muted-foreground transition-colors">
+            Blog
           </Link>
           <Link href="/about" className="text-sm font-medium hover:text-muted-foreground transition-colors">
             About
@@ -60,73 +68,87 @@ export function Header() {
             </Button>
           </Link>
 
-          <Sheet open={open} onOpenChange={setOpen}>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="md:hidden">
-                <Menu className="h-5 w-5" />
-                <span className="sr-only">Menu</span>
-              </Button>
-            </SheetTrigger>
-            <SheetContent
-              side="right"
-              className="w-[85vw] sm:w-[350px] px-6 [&>button]:border-0 [&>button]:shadow-none [&>button]:ring-0 [&>button]:top-8"
-            >
-              <div className="flex flex-col gap-8 pt-8">
-                <Link href="/" onClick={() => setOpen(false)}>
-                  <Image
-                    src="/photo_2025-11-02_05-35-41-removebg-preview.png"
-                    alt="SONCIS Logo"
-                    width={120}
-                    height={40}
-                    className="h-8 w-auto object-contain"
-                  />
-                </Link>
+          {mounted ? (
+            <Sheet open={open} onOpenChange={setOpen}>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon" className="md:hidden">
+                  <Menu className="h-5 w-5" />
+                  <span className="sr-only">Menu</span>
+                </Button>
+              </SheetTrigger>
+              <SheetContent
+                side="right"
+                className="w-[85vw] sm:w-[350px] px-6 [&>button]:border-0 [&>button]:shadow-none [&>button]:ring-0 [&>button]:top-8"
+              >
+                <div className="flex flex-col gap-8 pt-8">
+                  <Link href="/" onClick={() => setOpen(false)}>
+                    <Image
+                      src="/photo_2025-11-02_05-35-41-removebg-preview.png"
+                      alt="SONCIS Logo"
+                      width={120}
+                      height={40}
+                      className="h-8 w-auto object-contain"
+                    />
+                  </Link>
 
-                <nav className="flex flex-col gap-0">
-                  <Link
-                    href="/shop"
-                    onClick={() => setOpen(false)}
-                    className="text-lg font-medium py-5 px-4 border-b border-border hover:bg-accent transition-colors"
-                  >
-                    Shop
-                  </Link>
-                  <Link
-                    href="/collections"
-                    onClick={() => setOpen(false)}
-                    className="text-lg font-medium py-5 px-4 border-b border-border hover:bg-accent transition-colors"
-                  >
-                    Collections
-                  </Link>
-                  <Link
-                    href="/about"
-                    onClick={() => setOpen(false)}
-                    className="text-lg font-medium py-5 px-4 border-b border-border hover:bg-accent transition-colors"
-                  >
-                    About
-                  </Link>
-                  <Link
-                    href="/profile"
-                    onClick={() => setOpen(false)}
-                    className="text-lg font-medium py-5 px-4 border-b border-border hover:bg-accent transition-colors"
-                  >
-                    Profile
-                  </Link>
-                  <Link
-                    href="/cart"
-                    onClick={() => setOpen(false)}
-                    className="text-lg font-medium py-5 px-4 border-b border-border hover:bg-accent transition-colors flex items-center justify-between"
-                  >
-                    <span>Cart</span>
-                    {itemCount > 0 && (
-                      <span className="h-6 w-6 rounded-full bg-accent text-accent-foreground text-xs flex items-center justify-center font-medium">
-                        {itemCount}
-                      </span>
-                    )}
-                  </Link>
-                </nav>
-              </div>
-            </SheetContent>
-          </Sheet>
+                  <nav className="flex flex-col gap-0">
+                    <Link
+                      href="/shop"
+                      onClick={() => setOpen(false)}
+                      className="text-lg font-medium py-5 px-4 border-b border-border hover:bg-accent transition-colors"
+                    >
+                      Shop
+                    </Link>
+                    <Link
+                      href="/collections"
+                      onClick={() => setOpen(false)}
+                      className="text-lg font-medium py-5 px-4 border-b border-border hover:bg-accent transition-colors"
+                    >
+                      Collections
+                    </Link>
+                    <Link
+                      href="/blog"
+                      onClick={() => setOpen(false)}
+                      className="text-lg font-medium py-5 px-4 border-b border-border hover:bg-accent transition-colors"
+                    >
+                      Blog
+                    </Link>
+                    <Link
+                      href="/about"
+                      onClick={() => setOpen(false)}
+                      className="text-lg font-medium py-5 px-4 border-b border-border hover:bg-accent transition-colors"
+                    >
+                      About
+                    </Link>
+                    <Link
+                      href="/profile"
+                      onClick={() => setOpen(false)}
+                      className="text-lg font-medium py-5 px-4 border-b border-border hover:bg-accent transition-colors"
+                    >
+                      Profile
+                    </Link>
+                    <Link
+                      href="/cart"
+                      onClick={() => setOpen(false)}
+                      className="text-lg font-medium py-5 px-4 border-b border-border hover:bg-accent transition-colors flex items-center justify-between"
+                    >
+                      <span>Cart</span>
+                      {itemCount > 0 && (
+                        <span className="h-6 w-6 rounded-full bg-accent text-accent-foreground text-xs flex items-center justify-center font-medium">
+                          {itemCount}
+                        </span>
+                      )}
+                    </Link>
+                  </nav>
+                </div>
+              </SheetContent>
+            </Sheet>
+          ) : (
+            <Button variant="ghost" size="icon" className="md:hidden">
+              <Menu className="h-5 w-5" />
+              <span className="sr-only">Menu</span>
+            </Button>
+          )}
         </div>
       </div>
     </header>
