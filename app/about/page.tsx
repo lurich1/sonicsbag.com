@@ -20,7 +20,6 @@ export default function AboutPage() {
 
       {/* Hero Section */}
       <section className="relative h-[50vh] sm:h-[60vh] flex items-center justify-center bg-secondary">
-        <div className="absolute inset-0 bg-[url('/placeholder.jpg')] bg-cover bg-center opacity-80" />
         <div className="relative z-10 text-center px-4">
           <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold mb-4 tracking-tight">
             About SONCIS
@@ -53,8 +52,8 @@ export default function AboutPage() {
               </p>
             </div>
           </div>
-          <div className="relative aspect-[4/5] bg-secondary overflow-hidden">
-            <Image src="/placeholder.jpg" alt="SONCIS craftsmanship" fill className="object-cover" />
+          <div className="relative aspect-[4/5] bg-secondary overflow-hidden rounded-lg">
+            <Image src="/abot.jpg" alt="SONCIS craftsmanship and workshop" fill className="object-cover" />
           </div>
         </div>
       </section>

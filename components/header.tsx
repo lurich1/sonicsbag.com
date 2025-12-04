@@ -49,6 +49,9 @@ export function Header() {
           <Link href="/repair" className="text-sm font-medium hover:text-muted-foreground transition-colors">
             Repair
           </Link>
+          <Link href="/contact" className="text-sm font-medium hover:text-muted-foreground transition-colors">
+            Contact
+          </Link>
           <Link href="/about" className="text-sm font-medium hover:text-muted-foreground transition-colors">
             About
           </Link>
@@ -132,6 +135,13 @@ export function Header() {
                     className="text-lg font-medium py-5 px-4 border-b border-border hover:bg-accent transition-colors"
                   >
                     Repair
+                  </Link>
+                  <Link
+                    href="/contact"
+                    onClick={() => setOpen(false)}
+                    className="text-lg font-medium py-5 px-4 border-b border-border hover:bg-accent transition-colors"
+                  >
+                    Contact
                   </Link>
                   <Link
                     href="/about"
