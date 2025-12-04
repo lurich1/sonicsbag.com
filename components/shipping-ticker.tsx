@@ -6,7 +6,7 @@ export function ShippingTicker() {
   const messages = ["FREE SHIPPING ON ORDERS OVER ₵3,000", "30-DAY RETURNS", "PREMIUM QUALITY BAGS"]
 
   return (
-    <div className="sticky top-0 z-50 bg-foreground text-background py-1.5 overflow-hidden">
+    <div className="sticky top-0 z-50 bg-primary text-primary-foreground py-1.5 overflow-hidden">
       <div className="flex gap-8">
         {/* First set for infinite scroll */}
         <div className="flex items-center gap-8 whitespace-nowrap animate-marquee-infinite">

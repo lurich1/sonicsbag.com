@@ -8,9 +8,9 @@ export default function Home() {
     <div className="min-h-screen">
       <Header />
 
-      <section className="relative h-[60vh] sm:h-[70vh] flex items-center justify-center bg-black overflow-hidden">
-        {/* YouTube video background */}
-        <div className="absolute inset-0 w-full h-full">
+      <section className="relative h-[60vh] sm:h-[70vh] flex items-center justify-center overflow-hidden" style={{ background: 'linear-gradient(135deg, #6A0DAD 0%, #8DB600 100%)' }}>
+        {/* Optional: YouTube video background (commented out to show brand colors) */}
+        {/* <div className="absolute inset-0 w-full h-full">
           <iframe
             className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2"
             src="https://www.youtube.com/embed/u9FEg5qur14?autoplay=1&mute=1&loop=1&playlist=u9FEg5qur14&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1"
@@ -18,9 +18,9 @@ export default function Home() {
             allow="autoplay; encrypted-media"
             style={{ pointerEvents: "none" }}
           />
-          {/* Dark overlay for better text readability */}
-          <div className="absolute inset-0 bg-black/40" />
-        </div>
+        </div> */}
+        {/* Subtle overlay for better text readability */}
+        <div className="absolute inset-0 bg-black/20" />
 
         <div className="relative z-10 text-center px-4 text-white">
           <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold mb-4 sm:mb-6 tracking-tight text-balance drop-shadow-lg">

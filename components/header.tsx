@@ -52,7 +52,7 @@ export function Header() {
             <Button variant="ghost" size="icon" className="relative">
               <ShoppingBag className="h-5 w-5" />
               {itemCount > 0 && (
-                <span className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-foreground text-background text-xs flex items-center justify-center font-medium animate-in zoom-in-50 duration-200">
+                <span className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-accent text-accent-foreground text-xs flex items-center justify-center font-medium animate-in zoom-in-50 duration-200">
                   {itemCount}
                 </span>
               )}
@@ -118,7 +118,7 @@ export function Header() {
                   >
                     <span>Cart</span>
                     {itemCount > 0 && (
-                      <span className="h-6 w-6 rounded-full bg-foreground text-background text-xs flex items-center justify-center font-medium">
+                      <span className="h-6 w-6 rounded-full bg-accent text-accent-foreground text-xs flex items-center justify-center font-medium">
                         {itemCount}
                       </span>
                     )}

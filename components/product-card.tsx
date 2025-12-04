@@ -60,11 +60,11 @@ export function ProductCard({ product }: { product: Product }) {
             fill
             className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
-          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
+          <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors duration-300" />
 
           {showCartAnimation && (
             <div className="absolute top-4 right-4 animate-in zoom-in-50 fade-in duration-300">
-              <div className="bg-foreground text-background rounded-full p-2 animate-bounce">
+              <div className="bg-accent text-accent-foreground rounded-full p-2 animate-bounce">
                 <ShoppingBag className="h-4 w-4" />
               </div>
             </div>
