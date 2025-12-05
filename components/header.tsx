@@ -87,10 +87,10 @@ export function Header() {
               </SheetTrigger>
               <SheetContent
                 side="right"
-                className="w-[85vw] sm:w-[350px] px-6 [&>button]:border-0 [&>button]:shadow-none [&>button]:ring-0 [&>button]:top-8"
+                className="w-[85vw] sm:w-[350px] px-6 overflow-y-auto [&>button]:border-0 [&>button]:shadow-none [&>button]:ring-0 [&>button]:top-8"
               >
                 <div className="flex flex-col gap-8 pt-8">
-                  <Link href="/" onClick={() => setOpen(false)}>
+                  <Link href="/" onClick={() => setOpen(false)} className="flex-shrink-0">
                     <Image
                       src="/photo_2025-11-02_05-35-41-removebg-preview.png"
                       alt="SONCIS Logo"
@@ -100,7 +100,7 @@ export function Header() {
                     />
                   </Link>
 
-                  <nav className="flex flex-col gap-0">
+                  <nav className="flex flex-col gap-0 flex-1 overflow-y-auto">
                     <Link
                       href="/shop"
                       onClick={() => setOpen(false)}

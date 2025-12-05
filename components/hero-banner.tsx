@@ -6,9 +6,9 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 
 const bannerImages = [
+  "/banner-large-image2.jpg",
   "/banner-large-image.jpg",
   "/banner-large-image1.jpg",
-  "/banner-large-image2.jpg",
   "/banner-large-image3.jpg",
 ]
 
@@ -31,8 +31,9 @@ export function HeroBanner() {
           <div
             key={image}
             className={`absolute inset-0 transition-opacity duration-1000 ${
-              index === currentIndex ? "opacity-100" : "opacity-0"
+              index === currentIndex ? "opacity-100" : "opacity-0 pointer-events-none"
             }`}
+            style={{ zIndex: index === currentIndex ? 1 : 0 }}
           >
             <Image
               src={image}
@@ -40,6 +41,8 @@ export function HeroBanner() {
               fill
               className="object-cover"
               priority={index === 0}
+              sizes="100vw"
+              unoptimized
             />
           </div>
         ))}
