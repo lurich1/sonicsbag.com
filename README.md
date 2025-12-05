@@ -51,10 +51,12 @@ cp .env.example .env.local
 
 4. Add your Paystack keys to `.env.local`:
 ```env
-PAYSTACK_SECRET_KEY=sk_test_your_secret_key
-PAYSTACK_PUBLIC_KEY=pk_test_your_public_key
-NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY=pk_test_your_public_key
+PAYSTACK_SECRET_KEY=sk_live_your_secret_key
+PAYSTACK_PUBLIC_KEY=pk_live_your_public_key
+NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY=pk_live_your_public_key
 ```
+
+**Note:** For production, use live keys (starting with `sk_live_` and `pk_live_`). For testing, use test keys (starting with `sk_test_` and `pk_test_`).
 
 5. Run the development server:
 ```bash

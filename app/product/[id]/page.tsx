@@ -9,7 +9,7 @@ const products = [
   {
     id: "1",
     name: "SONCIS Premium Duffel Bag",
-    price: 1335,
+    price: 1,
     images: ["/product1.png", "/product1.png", "/product1.png"],
     category: "Duffels",
     description:
@@ -20,7 +20,7 @@ const products = [
   {
     id: "2",
     name: "SONCIS Classic Backpack",
-    price: 1125,
+    price: 1,
     images: ["/product2.png", "/product2.png", "/product2.png"],
     category: "Backpacks",
     description:
@@ -31,7 +31,7 @@ const products = [
   {
     id: "3",
     name: "SONCIS Travel Duffel",
-    price: 1425,
+    price: 1,
     images: ["/product3.png", "/product3.png", "/product3.png"],
     category: "Duffels",
     description:
@@ -42,7 +42,7 @@ const products = [
   {
     id: "4",
     name: "SONCIS Modern Duffel",
-    price: 1650,
+    price: 1,
     images: ["/product4.png", "/product4.png", "/product4.png"],
     category: "Duffels",
     description:
@@ -53,7 +53,7 @@ const products = [
   {
     id: "5",
     name: "The YOBO Tote Bag",
-    price: 975,
+    price: 1,
     images: ["/yobo.png", "/yobo.png", "/yobo.png"],
     category: "Totes",
     description:
@@ -64,7 +64,7 @@ const products = [
   {
     id: "6",
     name: "SONCIS Office Bag",
-    price: 1200,
+    price: 1,
     images: ["/office bage.png", "/office bage.png", "/office bage.png"],
     category: "Office Bags",
     description:
@@ -75,7 +75,7 @@ const products = [
   {
     id: "7",
     name: "SONCIS Travel Bag",
-    price: 1500,
+    price: 1,
     images: ["/travelbag.png", "/travelbag.png", "/travelbag.png"],
     category: "Travel Bags",
     description:
@@ -86,7 +86,7 @@ const products = [
   {
     id: "8",
     name: "SONCIS School Bag",
-    price: 1050,
+    price: 1,
     images: ["/schoolbag.png", "/schoolbag.png", "/schoolbag.png"],
     category: "Backpacks",
     description:

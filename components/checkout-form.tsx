@@ -171,7 +171,7 @@ export function CheckoutForm({ total }: CheckoutFormProps) {
         throw new Error(`Invalid payment amount: ${paymentAmount}. Total: ${total}`)
       }
 
-      const publicKey = process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY || "pk_test_9b2120a8562ce8ca19f89f696b6ca70baca6c03f"
+      const publicKey = process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY || "pk_live_780b6d956efdaf96f8766f043b5bbd0ec8696ebb"
       
       // Define async payment handler
       const processPayment = async (reference: string) => {
