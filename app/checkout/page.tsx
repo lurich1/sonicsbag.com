@@ -34,8 +34,8 @@ export default function CheckoutPage() {
     )
   }
 
-  const shipping = total >= 3000 ? 0 : 225
-  const tax = total * 0.08
+  const shipping = 0
+  const tax = 0
   const orderTotal = total + shipping + tax
 
   return (

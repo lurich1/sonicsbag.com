@@ -203,11 +203,11 @@ export default function CartPage() {
                 )}
                 <div className="flex justify-between text-sm">
                   <span className="text-muted-foreground">Shipping</span>
-                  <span className="font-medium">{subtotalAfterDiscount >= 3000 ? "Free" : "₵225.00"}</span>
+                  <span className="font-medium">Free</span>
                 </div>
                 <div className="flex justify-between text-sm">
                   <span className="text-muted-foreground">Tax</span>
-                  <span className="font-medium">₵{(subtotalAfterDiscount * 0.08).toLocaleString()}</span>
+                  <span className="font-medium">₵0</span>
                 </div>
               </div>
 
@@ -215,21 +215,11 @@ export default function CartPage() {
                 <div className="flex justify-between font-serif text-base sm:text-lg font-semibold">
                   <span>Total</span>
                   <span>
-                    ₵
-                    {(
-                      subtotalAfterDiscount +
-                      (subtotalAfterDiscount >= 3000 ? 0 : 225) +
-                      subtotalAfterDiscount * 0.08
-                    ).toLocaleString()}
+                    ₵{subtotalAfterDiscount.toLocaleString()}
                   </span>
                 </div>
               </div>
 
-              {subtotalAfterDiscount < 3000 && (
-                <p className="text-xs text-muted-foreground mb-4 sm:mb-6">
-                  Add ₵{(3000 - subtotalAfterDiscount).toLocaleString()} more for free shipping
-                </p>
-              )}
 
               <Button asChild size="lg" className="w-full h-11 sm:h-12 text-sm sm:text-base mb-3">
                 <Link href="/checkout">Proceed to Checkout</Link>
