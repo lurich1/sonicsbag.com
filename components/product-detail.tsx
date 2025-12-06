@@ -15,17 +15,36 @@ interface Product {
   category: string
   description: string
   details: string[]
-  sizes: string[]
+  sizes: string[] | Array<{ name: string; dimensions: string }>
+  colors?: string[]
+  hasCustomOptions?: boolean
 }
 
 export function ProductDetail({ product }: { product: Product }) {
   const [selectedImage, setSelectedImage] = useState(0)
   const [selectedSize, setSelectedSize] = useState<string>("")
+  const [selectedColor, setSelectedColor] = useState<string>("")
   const [isAdding, setIsAdding] = useState(false)
   const [showSuccess, setShowSuccess] = useState(false)
   const [showSizeError, setShowSizeError] = useState(false)
+  const [showColorError, setShowColorError] = useState(false)
   const { addItem } = useCart()
   const { toast } = useToast()
+
+  const isSizeObject = (size: string | { name: string; dimensions: string }): size is { name: string; dimensions: string } => {
+    return typeof size === "object" && size !== null
+  }
+
+  const getSizeName = (size: string | { name: string; dimensions: string }): string => {
+    return isSizeObject(size) ? size.name : size
+  }
+
+  const getSizeDisplay = (size: string | { name: string; dimensions: string }): string => {
+    if (isSizeObject(size)) {
+      return `${size.name} (${size.dimensions})`
+    }
+    return size
+  }
 
   const handleAddToCart = () => {
     if (!selectedSize) {
@@ -40,23 +59,41 @@ export function ProductDetail({ product }: { product: Product }) {
       return
     }
 
+    if (product.hasCustomOptions && product.colors && !selectedColor) {
+      setShowColorError(true)
+      toast({
+        title: "Color Required",
+        description: "Please select a color before adding to cart",
+        variant: "destructive",
+        duration: 3000,
+      })
+      setTimeout(() => setShowColorError(false), 1000)
+      return
+    }
+
     setIsAdding(true)
     setShowSuccess(true)
     setShowSizeError(false)
+    setShowColorError(false)
+
+    const itemName = product.hasCustomOptions && selectedColor
+      ? `${product.name} - ${selectedSize} - ${selectedColor}`
+      : `${product.name} - ${selectedSize}`
 
     const item = {
       id: product.id,
-      name: product.name,
+      name: itemName,
       price: product.price,
       image: product.images[0],
       size: selectedSize,
+      color: selectedColor || undefined,
     }
 
     addItem(item)
 
     toast({
       title: "Added to cart!",
-      description: `${product.name} - Size ${selectedSize}`,
+      description: itemName,
       duration: 2000,
     })
 
@@ -137,24 +174,66 @@ export function ProductDetail({ product }: { product: Product }) {
                 showSizeError ? "border-destructive bg-destructive/5" : "border-transparent"
               }`}
             >
-              {product.sizes.map((size) => (
-                <button
-                  key={size}
-                  onClick={() => {
-                    setSelectedSize(size)
-                    setShowSizeError(false)
-                  }}
-                  className={`px-4 sm:px-6 py-2 sm:py-3 border transition-all duration-200 text-sm sm:text-base ${
-                    selectedSize === size
-                      ? "bg-foreground text-background border-foreground scale-105"
-                      : "bg-background text-foreground border-border hover:border-foreground hover:scale-105"
-                  }`}
-                >
-                  {size}
-                </button>
-              ))}
+              {product.sizes.map((size) => {
+                const sizeName = getSizeName(size)
+                const sizeDisplay = getSizeDisplay(size)
+                return (
+                  <button
+                    key={sizeName}
+                    onClick={() => {
+                      setSelectedSize(sizeName)
+                      setShowSizeError(false)
+                    }}
+                    className={`px-4 sm:px-6 py-2 sm:py-3 border transition-all duration-200 text-sm sm:text-base ${
+                      selectedSize === sizeName
+                        ? "bg-foreground text-background border-foreground scale-105"
+                        : "bg-background text-foreground border-border hover:border-foreground hover:scale-105"
+                    }`}
+                    title={isSizeObject(size) ? size.dimensions : undefined}
+                  >
+                    {sizeDisplay}
+                  </button>
+                )
+              })}
             </div>
           </div>
+
+          {/* Color Selection */}
+          {product.hasCustomOptions && product.colors && (
+            <div className={`mb-6 sm:mb-8 transition-all duration-300 ${showColorError ? "animate-shake" : ""}`}>
+              <div className="flex items-center justify-between mb-3 sm:mb-4">
+                <h3 className="font-medium text-sm sm:text-base">Select Color</h3>
+                {showColorError && (
+                  <div className="flex items-center gap-1 text-destructive text-xs sm:text-sm animate-in fade-in slide-in-from-right-2">
+                    <AlertCircle className="h-4 w-4" />
+                    <span>Please select a color</span>
+                  </div>
+                )}
+              </div>
+              <div
+                className={`flex flex-wrap gap-2 p-3 border-2 rounded transition-colors ${
+                  showColorError ? "border-destructive bg-destructive/5" : "border-transparent"
+                }`}
+              >
+                {product.colors.map((color) => (
+                  <button
+                    key={color}
+                    onClick={() => {
+                      setSelectedColor(color)
+                      setShowColorError(false)
+                    }}
+                    className={`px-4 sm:px-6 py-2 sm:py-3 border transition-all duration-200 text-sm sm:text-base ${
+                      selectedColor === color
+                        ? "bg-foreground text-background border-foreground scale-105"
+                        : "bg-background text-foreground border-border hover:border-foreground hover:scale-105"
+                    }`}
+                  >
+                    {color}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
 
           <Button
             type="button"

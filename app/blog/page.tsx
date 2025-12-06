@@ -7,6 +7,16 @@ import { ArrowLeft, Calendar, User } from "lucide-react"
 export default function BlogPage() {
   const blogPosts = [
     {
+      id: 5,
+      title: "SONCIS Launches the Bag Reward Program at Nkukuasa M/A Basic School",
+      excerpt:
+        "We are excited to share that we have officially launched the SONCIS Bag Reward Program, celebrating students who show hard work, good behavior, leadership, and steady improvement.",
+      image: "/blog1.png",
+      author: "SONCIS Team",
+      date: "February 1, 2025",
+      category: "Community",
+    },
+    {
       id: 1,
       title: "The Art of Choosing the Perfect Travel Bag",
       excerpt:

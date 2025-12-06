@@ -16,6 +16,8 @@ const products = [
       "A modern duffel bag featuring a striking three-color horizontal block pattern with black, dark grey, and deep burgundy sections. The SONCIS brand name is prominently displayed in bold white letters. Features two top handles, an adjustable shoulder strap with padded section, and premium construction perfect for travel and sports.",
     details: ["Premium faux leather construction", "Three-color block design", "Adjustable padded shoulder strap", "Top carrying handles", "Silver zipper hardware"],
     sizes: ["One Size"],
+    colors: undefined,
+    hasCustomOptions: false,
   },
   {
     id: "2",
@@ -27,6 +29,8 @@ const products = [
       "A stylish and functional backpack designed for everyday adventures. Features modern design elements, comfortable straps, and spacious compartments. Perfect for school, work, travel, or casual outings.",
     details: ["Durable construction", "Comfortable padded straps", "Multiple compartments", "Modern design", "Versatile use"],
     sizes: ["One Size"],
+    colors: undefined,
+    hasCustomOptions: false,
   },
   {
     id: "3",
@@ -38,6 +42,8 @@ const products = [
       "A spacious travel duffel bag perfect for weekend getaways and short trips. Features durable construction, comfortable straps, and plenty of room for your belongings. Ideal for gym, travel, or sports activities.",
     details: ["Spacious interior", "Durable construction", "Comfortable straps", "Multiple pockets", "Travel-ready design"],
     sizes: ["One Size"],
+    colors: undefined,
+    hasCustomOptions: false,
   },
   {
     id: "4",
@@ -49,6 +55,8 @@ const products = [
       "A sophisticated modern duffel bag with premium materials and elegant design. Features a sleek aesthetic, comfortable carrying options, and premium construction. Perfect for the discerning traveler who values both style and functionality.",
     details: ["Premium materials", "Elegant design", "Comfortable carrying options", "Premium construction", "Stylish aesthetic"],
     sizes: ["One Size"],
+    colors: undefined,
+    hasCustomOptions: false,
   },
   {
     id: "5",
@@ -57,9 +65,15 @@ const products = [
     images: ["/yobo.png", "/yobo.png", "/yobo.png"],
     category: "Totes",
     description:
-      "A vibrant green tote bag with black accents and white text displaying 'THE YOBO BAG'. Features durable construction, black fabric handles, and a zippered side pocket. Perfect for everyday use, shopping, and casual outings.",
-    details: ["Durable canvas/polyester construction", "Black fabric handles", "Zippered side pocket", "Black piping trim", "Spacious interior"],
-    sizes: ["One Size"],
+      "A vibrant tote bag with black accents and white text displaying 'THE YOBO BAG'. Features durable construction, black fabric handles, and a zippered side pocket. Perfect for everyday use, shopping, and casual outings. Available in multiple sizes and colors to match your style.",
+    details: ["Durable canvas/polyester construction", "Black fabric handles", "Zippered side pocket", "Black piping trim", "Spacious interior", "Customizable colors"],
+    sizes: [
+      { name: "Large", dimensions: "18 x 18 x 11 inches" },
+      { name: "Medium", dimensions: "14.5 x 18 x 11 inches" },
+      { name: "Small", dimensions: "12 x 15 x 10 inches" },
+    ],
+    colors: ["Green", "Black", "Navy Blue", "Red", "Purple", "Brown", "Gray", "Pink", "Yellow", "Orange"],
+    hasCustomOptions: true,
   },
   {
     id: "6",
@@ -71,6 +85,8 @@ const products = [
       "A professional office bag designed for the modern professional. Features a sleek design, multiple compartments for organization, and comfortable carrying options. Perfect for work, business meetings, and professional settings.",
     details: ["Professional design", "Multiple compartments", "Comfortable carrying options", "Organized interior", "Business-ready"],
     sizes: ["One Size"],
+    colors: undefined,
+    hasCustomOptions: false,
   },
   {
     id: "7",
@@ -82,6 +98,8 @@ const products = [
       "A spacious and durable travel bag perfect for weekend getaways, short trips, and extended journeys. Features robust construction, comfortable carrying options, and plenty of room for all your travel essentials. Ideal for travelers who need reliability and style.",
     details: ["Spacious interior", "Durable construction", "Comfortable straps", "Multiple pockets", "Travel-ready design"],
     sizes: ["One Size"],
+    colors: undefined,
+    hasCustomOptions: false,
   },
   {
     id: "8",
@@ -93,6 +111,30 @@ const products = [
       "A functional and stylish school bag designed for students of all ages. Features multiple compartments for books, laptops, and school supplies. Comfortable padded straps and durable construction make it perfect for daily school use.",
     details: ["Multiple compartments", "Padded shoulder straps", "Laptop/tablet sleeve", "Durable construction", "Student-friendly design"],
     sizes: ["One Size"],
+    colors: undefined,
+    hasCustomOptions: false,
+  },
+  {
+    id: "9",
+    name: "SONCIS Zipper Repair Kit – Quick Fix for Every Bag",
+    price: 1,
+    images: ["/zip1.png", "/zip2.png", "/zip3.png"],
+    category: "Repair Kits",
+    description:
+      "Never let a broken zipper slow you down again. The SONCIS Zipper Repair Kit is a simple, reliable, and easy-to-use solution for fixing zippers on bags, pouches, travel gear, clothing, and everyday items. Whether you're at home, at school, or on the go, this compact kit gives you everything you need for fast, stress-free repairs.",
+    details: [
+      "Multiple zipper sliders/heads in different sizes",
+      "Seam ripper for clean zipper removal",
+      "Metal bobbin & repair accessories",
+      "Perfect for school bags, handbags, travel bags, pouches, and more",
+      "Saves money on replacements and repairs",
+      "Easy-to-use tools for quick fixes",
+      "Compact and travel-friendly",
+      "Backed by the trusted SONCIS quality—Durable. Practical. Eco-friendly.",
+    ],
+    sizes: ["One Size"],
+    colors: undefined,
+    hasCustomOptions: false,
   },
 ]
 

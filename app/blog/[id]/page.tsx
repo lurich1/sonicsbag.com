@@ -8,6 +8,40 @@ import { notFound } from "next/navigation"
 // Blog posts data - in a real app, this would come from a CMS or database
 const blogPosts = [
   {
+    id: 5,
+    title: "SONCIS Launches the Bag Reward Program at Nkukuasa M/A Basic School",
+    excerpt:
+      "We are excited to share that we have officially launched the SONCIS Bag Reward Program, celebrating students who show hard work, good behavior, leadership, and steady improvement.",
+    image: "/blog1.png",
+    author: "SONCIS Team",
+    date: "February 1, 2025",
+    category: "Community",
+    content: `
+      <p>At SONCIS, giving back to children and supporting education has always been at the heart of what we do. We are excited to share that we have officially launched the SONCIS Bag Reward Program, starting with Nkukuasa M/A Basic School.</p>
+      
+      <p>This new initiative celebrates students who show hard work, good behavior, leadership, and steady improvement in school. As part of the program, selected students received high-quality SONCIS bags as a reward for their outstanding performance.</p>
+      
+      <h2>The Categories Rewarded Include:</h2>
+      <ul>
+        <li><strong>Academics</strong> (1st position, 2nd position, and Most Improved Student)</li>
+        <li><strong>Leadership</strong></li>
+        <li><strong>Discipline</strong> (punctuality, neatness, conduct)</li>
+      </ul>
+      
+      <p>These bags were delivered through a teacher at the school, and the children were thrilled to receive them.</p>
+      
+      <h2>Why We Started This Program</h2>
+      <p>Education is a big part of the SONCIS story. Our goal is to inspire children, encourage them to keep learning, and support schools with durable, functional bags that make everyday school life easier and more enjoyable.</p>
+      
+      <p>The Bag Reward Program is one of the ways we are staying connected to communities and making a difference—one child at a time.</p>
+      
+      <h2>What's Next?</h2>
+      <p>We plan to extend this program to many more schools across Ghana. Each bag purchased from SONCIS helps us continue this mission and reach more children.</p>
+      
+      <p>Thank you for supporting SONCIS. Together, we are helping shape confident, motivated, and hopeful young learners.</p>
+    `,
+  },
+  {
     id: 1,
     title: "The Art of Choosing the Perfect Travel Bag",
     excerpt:
@@ -189,6 +223,28 @@ export default async function BlogPostPage({ params }: { params: Promise<{ id: s
               priority
             />
           </div>
+
+          {/* Additional Images for Blog Post 5 */}
+          {post.id === 5 && (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+              <div className="relative aspect-[4/3] overflow-hidden bg-secondary rounded-lg">
+                <Image
+                  src="/blog2.png"
+                  alt="SONCIS Bag Reward Program"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="relative aspect-[4/3] overflow-hidden bg-secondary rounded-lg">
+                <Image
+                  src="/blog1.png"
+                  alt="SONCIS Bag Reward Program"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
+          )}
 
           {/* Content */}
           <div

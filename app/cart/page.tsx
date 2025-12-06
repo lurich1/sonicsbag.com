@@ -105,10 +105,13 @@ export default function CartPage() {
                   <div className="flex justify-between gap-2 sm:gap-4 mb-2">
                     <div className="flex-1 min-w-0">
                       <h3 className="font-medium text-sm sm:text-base mb-1 truncate">{item.name}</h3>
-                      <p className="text-xs sm:text-sm text-muted-foreground">Size: {item.size}</p>
+                      <p className="text-xs sm:text-sm text-muted-foreground">
+                        Size: {item.size}
+                        {item.color && <span> • Color: {item.color}</span>}
+                      </p>
                     </div>
                     <button
-                      onClick={() => removeItem(item.id, item.size)}
+                      onClick={() => removeItem(item.id, item.size, item.color)}
                       className="text-muted-foreground hover:text-foreground transition-colors flex-shrink-0"
                     >
                       <X className="h-4 w-4 sm:h-5 sm:w-5" />
@@ -120,7 +123,7 @@ export default function CartPage() {
                     {/* Quantity Controls */}
                     <div className="flex items-center gap-2 sm:gap-3 border border-border">
                       <button
-                        onClick={() => updateQuantity(item.id, item.size, item.quantity - 1)}
+                        onClick={() => updateQuantity(item.id, item.size, item.quantity - 1, item.color)}
                         className="px-2 py-1.5 sm:px-3 sm:py-2 hover:bg-secondary transition-colors"
                       >
                         <Minus className="h-3 w-3 sm:h-4 sm:w-4" />
@@ -128,7 +131,7 @@ export default function CartPage() {
                       </button>
                       <span className="w-6 sm:w-8 text-center text-sm sm:text-base font-medium">{item.quantity}</span>
                       <button
-                        onClick={() => updateQuantity(item.id, item.size, item.quantity + 1)}
+                        onClick={() => updateQuantity(item.id, item.size, item.quantity + 1, item.color)}
                         className="px-2 py-1.5 sm:px-3 sm:py-2 hover:bg-secondary transition-colors"
                       >
                         <Plus className="h-3 w-3 sm:h-4 sm:w-4" />

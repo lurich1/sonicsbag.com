@@ -57,6 +57,13 @@ const products = [
     image: "/schoolbag.png",
     category: "Backpacks",
   },
+  {
+    id: "9",
+    name: "SONCIS Zipper Repair Kit",
+    price: 1,
+    image: "/zip1.png",
+    category: "Repair Kits",
+  },
 ]
 
 export function ProductGrid() {

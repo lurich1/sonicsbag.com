@@ -65,13 +65,16 @@ export default function CheckoutPage() {
               {/* Cart Items */}
               <div className="space-y-3 sm:space-y-4 mb-4 sm:mb-6 max-h-48 sm:max-h-64 overflow-y-auto">
                 {items.map((item) => (
-                  <div key={`${item.id}-${item.size}`} className="flex gap-3">
+                  <div key={`${item.id}-${item.size}-${item.color || ""}`} className="flex gap-3">
                     <div className="relative w-14 sm:w-16 h-16 sm:h-20 bg-secondary flex-shrink-0 overflow-hidden">
                       <Image src={item.image || "/placeholder.svg"} alt={item.name} fill className="object-cover" />
                     </div>
                     <div className="flex-1 min-w-0">
                       <h3 className="text-sm font-medium mb-1 truncate">{item.name}</h3>
-                      <p className="text-xs text-muted-foreground">Size: {item.size}</p>
+                      <p className="text-xs text-muted-foreground">
+                        Size: {item.size}
+                        {item.color && <span> • Color: {item.color}</span>}
+                      </p>
                       <p className="text-xs text-muted-foreground">Qty: {item.quantity}</p>
                       <p className="text-sm font-medium mt-1">₵{(item.price * item.quantity).toLocaleString()}</p>
                     </div>
