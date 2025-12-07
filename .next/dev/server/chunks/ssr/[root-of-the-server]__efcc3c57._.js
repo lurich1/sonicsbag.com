@@ -183,7 +183,7 @@ const products = [
     {
         id: "1",
         name: "SONCIS Premium Duffel Bag",
-        price: 1335,
+        price: 1,
         images: [
             "/product1.png",
             "/product1.png",
@@ -200,12 +200,14 @@ const products = [
         ],
         sizes: [
             "One Size"
-        ]
+        ],
+        colors: undefined,
+        hasCustomOptions: false
     },
     {
         id: "2",
         name: "SONCIS Classic Backpack",
-        price: 1125,
+        price: 1,
         images: [
             "/product2.png",
             "/product2.png",
@@ -222,12 +224,14 @@ const products = [
         ],
         sizes: [
             "One Size"
-        ]
+        ],
+        colors: undefined,
+        hasCustomOptions: false
     },
     {
         id: "3",
         name: "SONCIS Travel Duffel",
-        price: 1425,
+        price: 1,
         images: [
             "/product3.png",
             "/product3.png",
@@ -244,12 +248,14 @@ const products = [
         ],
         sizes: [
             "One Size"
-        ]
+        ],
+        colors: undefined,
+        hasCustomOptions: false
     },
     {
         id: "4",
         name: "SONCIS Modern Duffel",
-        price: 1650,
+        price: 1,
         images: [
             "/product4.png",
             "/product4.png",
@@ -266,34 +272,61 @@ const products = [
         ],
         sizes: [
             "One Size"
-        ]
+        ],
+        colors: undefined,
+        hasCustomOptions: false
     },
     {
         id: "5",
         name: "The YOBO Tote Bag",
-        price: 975,
+        price: 1,
         images: [
             "/yobo.png",
             "/yobo.png",
             "/yobo.png"
         ],
         category: "Totes",
-        description: "A vibrant green tote bag with black accents and white text displaying 'THE YOBO BAG'. Features durable construction, black fabric handles, and a zippered side pocket. Perfect for everyday use, shopping, and casual outings.",
+        description: "A vibrant tote bag with black accents and white text displaying 'THE YOBO BAG'. Features durable construction, black fabric handles, and a zippered side pocket. Perfect for everyday use, shopping, and casual outings. Available in multiple sizes and colors to match your style.",
         details: [
             "Durable canvas/polyester construction",
             "Black fabric handles",
             "Zippered side pocket",
             "Black piping trim",
-            "Spacious interior"
+            "Spacious interior",
+            "Customizable colors"
         ],
         sizes: [
-            "One Size"
-        ]
+            {
+                name: "Large",
+                dimensions: "18 x 18 x 11 inches"
+            },
+            {
+                name: "Medium",
+                dimensions: "14.5 x 18 x 11 inches"
+            },
+            {
+                name: "Small",
+                dimensions: "12 x 15 x 10 inches"
+            }
+        ],
+        colors: [
+            "Green",
+            "Black",
+            "Navy Blue",
+            "Red",
+            "Purple",
+            "Brown",
+            "Gray",
+            "Pink",
+            "Yellow",
+            "Orange"
+        ],
+        hasCustomOptions: true
     },
     {
         id: "6",
         name: "SONCIS Office Bag",
-        price: 1200,
+        price: 1,
         images: [
             "/office bage.png",
             "/office bage.png",
@@ -310,12 +343,14 @@ const products = [
         ],
         sizes: [
             "One Size"
-        ]
+        ],
+        colors: undefined,
+        hasCustomOptions: false
     },
     {
         id: "7",
         name: "SONCIS Travel Bag",
-        price: 1500,
+        price: 1,
         images: [
             "/travelbag.png",
             "/travelbag.png",
@@ -332,12 +367,14 @@ const products = [
         ],
         sizes: [
             "One Size"
-        ]
+        ],
+        colors: undefined,
+        hasCustomOptions: false
     },
     {
         id: "8",
         name: "SONCIS School Bag",
-        price: 1050,
+        price: 1,
         images: [
             "/schoolbag.png",
             "/schoolbag.png",
@@ -354,7 +391,36 @@ const products = [
         ],
         sizes: [
             "One Size"
-        ]
+        ],
+        colors: undefined,
+        hasCustomOptions: false
+    },
+    {
+        id: "9",
+        name: "SONCIS Zipper Repair Kit – Quick Fix for Every Bag",
+        price: 1,
+        images: [
+            "/zip1.png",
+            "/zip2.png",
+            "/zip3.png"
+        ],
+        category: "Repair Kits",
+        description: "Never let a broken zipper slow you down again. The SONCIS Zipper Repair Kit is a simple, reliable, and easy-to-use solution for fixing zippers on bags, pouches, travel gear, clothing, and everyday items. Whether you're at home, at school, or on the go, this compact kit gives you everything you need for fast, stress-free repairs.",
+        details: [
+            "Multiple zipper sliders/heads in different sizes",
+            "Seam ripper for clean zipper removal",
+            "Metal bobbin & repair accessories",
+            "Perfect for school bags, handbags, travel bags, pouches, and more",
+            "Saves money on replacements and repairs",
+            "Easy-to-use tools for quick fixes",
+            "Compact and travel-friendly",
+            "Backed by the trusted SONCIS quality—Durable. Practical. Eco-friendly."
+        ],
+        sizes: [
+            "One Size"
+        ],
+        colors: undefined,
+        hasCustomOptions: false
     }
 ];
 async function generateStaticParams() {
@@ -373,7 +439,7 @@ async function ProductPage({ params }) {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$components$2f$header$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Header"], {}, void 0, false, {
                 fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/app/product/[id]/page.tsx",
-                lineNumber: 115,
+                lineNumber: 157,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -388,37 +454,37 @@ async function ProductPage({ params }) {
                                 className: "h-4 w-4 mr-2"
                             }, void 0, false, {
                                 fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/app/product/[id]/page.tsx",
-                                lineNumber: 119,
+                                lineNumber: 161,
                                 columnNumber: 13
                             }, this),
                             "Back to Shop"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/app/product/[id]/page.tsx",
-                        lineNumber: 118,
+                        lineNumber: 160,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/app/product/[id]/page.tsx",
-                    lineNumber: 117,
+                    lineNumber: 159,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/app/product/[id]/page.tsx",
-                lineNumber: 116,
+                lineNumber: 158,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$components$2f$product$2d$detail$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["ProductDetail"], {
                 product: product
             }, void 0, false, {
                 fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/app/product/[id]/page.tsx",
-                lineNumber: 124,
+                lineNumber: 166,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/app/product/[id]/page.tsx",
-        lineNumber: 114,
+        lineNumber: 156,
         columnNumber: 5
     }, this);
 }

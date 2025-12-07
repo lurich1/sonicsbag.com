@@ -1,14 +1,10 @@
 {
   "app": {
-    "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/app/cart/page": [
+    "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/app/collections/page": [
       "static/media/caa3a2e1cccd8315-s.p.853070df.woff2",
       "static/media/2a65768255d6b625-s.p.d19752fb.woff2"
     ],
     "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/app/page": [
-      "static/media/caa3a2e1cccd8315-s.p.853070df.woff2",
-      "static/media/2a65768255d6b625-s.p.d19752fb.woff2"
-    ],
-    "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/app/product/[id]/page": [
       "static/media/caa3a2e1cccd8315-s.p.853070df.woff2",
       "static/media/2a65768255d6b625-s.p.d19752fb.woff2"
     ]

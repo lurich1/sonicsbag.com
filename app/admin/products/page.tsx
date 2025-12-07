@@ -63,8 +63,10 @@ export default function AdminProductsPage() {
     try {
       const response = await fetch("/api/admin/products")
       const data = await response.json()
-      setProducts(data)
+      setProducts(Array.isArray(data) ? data : [])
     } catch (error) {
+      console.error("Error fetching products:", error)
+      setProducts([])
       toast({
         title: "Error",
         description: "Failed to fetch products",

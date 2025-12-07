@@ -60,8 +60,10 @@ export default function AdminBlogPage() {
     try {
       const response = await fetch("/api/admin/blog")
       const data = await response.json()
-      setPosts(data)
+      setPosts(Array.isArray(data) ? data : [])
     } catch (error) {
+      console.error("Error fetching blog posts:", error)
+      setPosts([])
       toast({
         title: "Error",
         description: "Failed to fetch blog posts",

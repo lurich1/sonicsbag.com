@@ -265,8 +265,12 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$lux
 function Header() {
     const { itemCount } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$components$2f$cart$2d$provider$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useCart"])();
     const [open, setOpen] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [mounted, setMounted] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        setMounted(true);
+    }, []);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("header", {
-        className: "relative w-full border-b border-border bg-background",
+        className: "sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60",
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             className: "container mx-auto flex h-16 items-center justify-between px-4 md:px-6",
             children: [
@@ -282,12 +286,12 @@ function Header() {
                         priority: true
                     }, void 0, false, {
                         fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/header.tsx",
-                        lineNumber: 20,
+                        lineNumber: 25,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/header.tsx",
-                    lineNumber: 19,
+                    lineNumber: 24,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
@@ -299,7 +303,7 @@ function Header() {
                             children: "Shop"
                         }, void 0, false, {
                             fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/header.tsx",
-                            lineNumber: 32,
+                            lineNumber: 37,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -308,7 +312,43 @@ function Header() {
                             children: "Collections"
                         }, void 0, false, {
                             fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/header.tsx",
-                            lineNumber: 35,
+                            lineNumber: 40,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                            href: "/blog",
+                            className: "text-sm font-medium hover:text-muted-foreground transition-colors",
+                            children: "Blog"
+                        }, void 0, false, {
+                            fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/header.tsx",
+                            lineNumber: 43,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                            href: "/custom-bag",
+                            className: "text-sm font-medium hover:text-muted-foreground transition-colors",
+                            children: "Custom Bag"
+                        }, void 0, false, {
+                            fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/header.tsx",
+                            lineNumber: 46,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                            href: "/repair",
+                            className: "text-sm font-medium hover:text-muted-foreground transition-colors",
+                            children: "Repair"
+                        }, void 0, false, {
+                            fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/header.tsx",
+                            lineNumber: 49,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                            href: "/contact",
+                            className: "text-sm font-medium hover:text-muted-foreground transition-colors",
+                            children: "Contact"
+                        }, void 0, false, {
+                            fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/header.tsx",
+                            lineNumber: 52,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -317,13 +357,13 @@ function Header() {
                             children: "About"
                         }, void 0, false, {
                             fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/header.tsx",
-                            lineNumber: 38,
+                            lineNumber: 55,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/header.tsx",
-                    lineNumber: 31,
+                    lineNumber: 36,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -340,7 +380,7 @@ function Header() {
                                         className: "h-5 w-5"
                                     }, void 0, false, {
                                         fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/header.tsx",
-                                        lineNumber: 47,
+                                        lineNumber: 64,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -348,18 +388,18 @@ function Header() {
                                         children: "Profile"
                                     }, void 0, false, {
                                         fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/header.tsx",
-                                        lineNumber: 48,
+                                        lineNumber: 65,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/header.tsx",
-                                lineNumber: 46,
+                                lineNumber: 63,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/header.tsx",
-                            lineNumber: 45,
+                            lineNumber: 62,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -373,15 +413,15 @@ function Header() {
                                         className: "h-5 w-5"
                                     }, void 0, false, {
                                         fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/header.tsx",
-                                        lineNumber: 53,
+                                        lineNumber: 70,
                                         columnNumber: 15
                                     }, this),
                                     itemCount > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        className: "absolute -top-1 -right-1 h-5 w-5 rounded-full bg-foreground text-background text-xs flex items-center justify-center font-medium animate-in zoom-in-50 duration-200",
+                                        className: "absolute -top-1 -right-1 h-5 w-5 rounded-full bg-accent text-accent-foreground text-xs flex items-center justify-center font-medium animate-in zoom-in-50 duration-200",
                                         children: itemCount
                                     }, void 0, false, {
                                         fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/header.tsx",
-                                        lineNumber: 55,
+                                        lineNumber: 72,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -393,21 +433,21 @@ function Header() {
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/header.tsx",
-                                        lineNumber: 59,
+                                        lineNumber: 76,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/header.tsx",
-                                lineNumber: 52,
+                                lineNumber: 69,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/header.tsx",
-                            lineNumber: 51,
+                            lineNumber: 68,
                             columnNumber: 11
                         }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$components$2f$ui$2f$sheet$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Sheet"], {
+                        mounted ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$components$2f$ui$2f$sheet$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Sheet"], {
                             open: open,
                             onOpenChange: setOpen,
                             children: [
@@ -422,37 +462,38 @@ function Header() {
                                                 className: "h-5 w-5"
                                             }, void 0, false, {
                                                 fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/header.tsx",
-                                                lineNumber: 66,
-                                                columnNumber: 17
+                                                lineNumber: 84,
+                                                columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                 className: "sr-only",
                                                 children: "Menu"
                                             }, void 0, false, {
                                                 fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/header.tsx",
-                                                lineNumber: 67,
-                                                columnNumber: 17
+                                                lineNumber: 85,
+                                                columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/header.tsx",
-                                        lineNumber: 65,
-                                        columnNumber: 15
+                                        lineNumber: 83,
+                                        columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/header.tsx",
-                                    lineNumber: 64,
-                                    columnNumber: 13
+                                    lineNumber: 82,
+                                    columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$components$2f$ui$2f$sheet$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SheetContent"], {
                                     side: "right",
-                                    className: "w-[85vw] sm:w-[350px] px-6 [&>button]:border-0 [&>button]:shadow-none [&>button]:ring-0 [&>button]:top-8",
+                                    className: "w-[85vw] sm:w-[350px] px-6 overflow-y-auto [&>button]:border-0 [&>button]:shadow-none [&>button]:ring-0 [&>button]:top-8",
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "flex flex-col gap-8 pt-8",
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                                                 href: "/",
                                                 onClick: ()=>setOpen(false),
+                                                className: "flex-shrink-0",
                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                                                     src: "/photo_2025-11-02_05-35-41-removebg-preview.png",
                                                     alt: "SONCIS Logo",
@@ -461,16 +502,16 @@ function Header() {
                                                     className: "h-8 w-auto object-contain"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/header.tsx",
-                                                    lineNumber: 76,
-                                                    columnNumber: 19
+                                                    lineNumber: 94,
+                                                    columnNumber: 21
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/header.tsx",
-                                                lineNumber: 75,
-                                                columnNumber: 17
+                                                lineNumber: 93,
+                                                columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
-                                                className: "flex flex-col gap-0",
+                                                className: "flex flex-col gap-0 flex-1 overflow-y-auto",
                                                 children: [
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                                                         href: "/shop",
@@ -479,8 +520,8 @@ function Header() {
                                                         children: "Shop"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/header.tsx",
-                                                        lineNumber: 86,
-                                                        columnNumber: 19
+                                                        lineNumber: 104,
+                                                        columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                                                         href: "/collections",
@@ -489,7 +530,47 @@ function Header() {
                                                         children: "Collections"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/header.tsx",
-                                                        lineNumber: 93,
+                                                        lineNumber: 111,
+                                                        columnNumber: 21
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                                                        href: "/blog",
+                                                        onClick: ()=>setOpen(false),
+                                                        className: "text-lg font-medium py-5 px-4 border-b border-border hover:bg-accent transition-colors",
+                                                        children: "Blog"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/header.tsx",
+                                                        lineNumber: 118,
+                                                        columnNumber: 19
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                                                        href: "/custom-bag",
+                                                        onClick: ()=>setOpen(false),
+                                                        className: "text-lg font-medium py-5 px-4 border-b border-border hover:bg-accent transition-colors",
+                                                        children: "Custom Bag"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/header.tsx",
+                                                        lineNumber: 125,
+                                                        columnNumber: 19
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                                                        href: "/repair",
+                                                        onClick: ()=>setOpen(false),
+                                                        className: "text-lg font-medium py-5 px-4 border-b border-border hover:bg-accent transition-colors",
+                                                        children: "Repair"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/header.tsx",
+                                                        lineNumber: 132,
+                                                        columnNumber: 19
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                                                        href: "/contact",
+                                                        onClick: ()=>setOpen(false),
+                                                        className: "text-lg font-medium py-5 px-4 border-b border-border hover:bg-accent transition-colors",
+                                                        children: "Contact"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/header.tsx",
+                                                        lineNumber: 139,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -499,7 +580,7 @@ function Header() {
                                                         children: "About"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/header.tsx",
-                                                        lineNumber: 100,
+                                                        lineNumber: 146,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -509,8 +590,8 @@ function Header() {
                                                         children: "Profile"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/header.tsx",
-                                                        lineNumber: 107,
-                                                        columnNumber: 19
+                                                        lineNumber: 153,
+                                                        columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                                                         href: "/cart",
@@ -521,61 +602,86 @@ function Header() {
                                                                 children: "Cart"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/header.tsx",
-                                                                lineNumber: 119,
-                                                                columnNumber: 21
+                                                                lineNumber: 165,
+                                                                columnNumber: 23
                                                             }, this),
                                                             itemCount > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                className: "h-6 w-6 rounded-full bg-foreground text-background text-xs flex items-center justify-center font-medium",
+                                                                className: "h-6 w-6 rounded-full bg-accent text-accent-foreground text-xs flex items-center justify-center font-medium",
                                                                 children: itemCount
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/header.tsx",
-                                                                lineNumber: 121,
-                                                                columnNumber: 23
+                                                                lineNumber: 167,
+                                                                columnNumber: 25
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/header.tsx",
-                                                        lineNumber: 114,
-                                                        columnNumber: 19
+                                                        lineNumber: 160,
+                                                        columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/header.tsx",
-                                                lineNumber: 85,
-                                                columnNumber: 17
+                                                lineNumber: 103,
+                                                columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/header.tsx",
-                                        lineNumber: 74,
-                                        columnNumber: 15
+                                        lineNumber: 92,
+                                        columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/header.tsx",
-                                    lineNumber: 70,
-                                    columnNumber: 13
+                                    lineNumber: 88,
+                                    columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/header.tsx",
-                            lineNumber: 63,
-                            columnNumber: 11
+                            lineNumber: 81,
+                            columnNumber: 13
+                        }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
+                            variant: "ghost",
+                            size: "icon",
+                            className: "md:hidden",
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$menu$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Menu$3e$__["Menu"], {
+                                    className: "h-5 w-5"
+                                }, void 0, false, {
+                                    fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/header.tsx",
+                                    lineNumber: 178,
+                                    columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                    className: "sr-only",
+                                    children: "Menu"
+                                }, void 0, false, {
+                                    fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/header.tsx",
+                                    lineNumber: 179,
+                                    columnNumber: 15
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/header.tsx",
+                            lineNumber: 177,
+                            columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/header.tsx",
-                    lineNumber: 44,
+                    lineNumber: 61,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/header.tsx",
-            lineNumber: 17,
+            lineNumber: 22,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/header.tsx",
-        lineNumber: 16,
+        lineNumber: 21,
         columnNumber: 5
     }, this);
 }
@@ -607,11 +713,25 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$lux
 function ProductDetail({ product }) {
     const [selectedImage, setSelectedImage] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(0);
     const [selectedSize, setSelectedSize] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])("");
+    const [selectedColor, setSelectedColor] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])("");
     const [isAdding, setIsAdding] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     const [showSuccess, setShowSuccess] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     const [showSizeError, setShowSizeError] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [showColorError, setShowColorError] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     const { addItem } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$components$2f$cart$2d$provider$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useCart"])();
     const { toast } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$hooks$2f$use$2d$toast$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useToast"])();
+    const isSizeObject = (size)=>{
+        return typeof size === "object" && size !== null;
+    };
+    const getSizeName = (size)=>{
+        return isSizeObject(size) ? size.name : size;
+    };
+    const getSizeDisplay = (size)=>{
+        if (isSizeObject(size)) {
+            return `${size.name} (${size.dimensions})`;
+        }
+        return size;
+    };
     const handleAddToCart = ()=>{
         if (!selectedSize) {
             setShowSizeError(true);
@@ -624,20 +744,34 @@ function ProductDetail({ product }) {
             setTimeout(()=>setShowSizeError(false), 1000);
             return;
         }
+        if (product.hasCustomOptions && product.colors && !selectedColor) {
+            setShowColorError(true);
+            toast({
+                title: "Color Required",
+                description: "Please select a color before adding to cart",
+                variant: "destructive",
+                duration: 3000
+            });
+            setTimeout(()=>setShowColorError(false), 1000);
+            return;
+        }
         setIsAdding(true);
         setShowSuccess(true);
         setShowSizeError(false);
+        setShowColorError(false);
+        const itemName = product.hasCustomOptions && selectedColor ? `${product.name} - ${selectedSize} - ${selectedColor}` : `${product.name} - ${selectedSize}`;
         const item = {
             id: product.id,
-            name: product.name,
+            name: itemName,
             price: product.price,
             image: product.images[0],
-            size: selectedSize
+            size: selectedSize,
+            color: selectedColor || undefined
         };
         addItem(item);
         toast({
             title: "Added to cart!",
-            description: `${product.name} - Size ${selectedSize}`,
+            description: itemName,
             duration: 2000
         });
         setTimeout(()=>{
@@ -664,7 +798,7 @@ function ProductDetail({ product }) {
                                     priority: true
                                 }, void 0, false, {
                                     fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/product-detail.tsx",
-                                    lineNumber: 75,
+                                    lineNumber: 112,
                                     columnNumber: 13
                                 }, this),
                                 showSuccess && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -675,23 +809,23 @@ function ProductDetail({ product }) {
                                             className: "h-8 w-8 sm:h-12 sm:w-12"
                                         }, void 0, false, {
                                             fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/product-detail.tsx",
-                                            lineNumber: 85,
+                                            lineNumber: 122,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/product-detail.tsx",
-                                        lineNumber: 84,
+                                        lineNumber: 121,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/product-detail.tsx",
-                                    lineNumber: 83,
+                                    lineNumber: 120,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/product-detail.tsx",
-                            lineNumber: 74,
+                            lineNumber: 111,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -706,23 +840,23 @@ function ProductDetail({ product }) {
                                         className: "object-cover"
                                     }, void 0, false, {
                                         fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/product-detail.tsx",
-                                        lineNumber: 99,
+                                        lineNumber: 136,
                                         columnNumber: 17
                                     }, this)
                                 }, index, false, {
                                     fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/product-detail.tsx",
-                                    lineNumber: 92,
+                                    lineNumber: 129,
                                     columnNumber: 15
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/product-detail.tsx",
-                            lineNumber: 90,
+                            lineNumber: 127,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/product-detail.tsx",
-                    lineNumber: 73,
+                    lineNumber: 110,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -736,7 +870,7 @@ function ProductDetail({ product }) {
                                     children: product.category
                                 }, void 0, false, {
                                     fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/product-detail.tsx",
-                                    lineNumber: 113,
+                                    lineNumber: 150,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -744,7 +878,7 @@ function ProductDetail({ product }) {
                                     children: product.name
                                 }, void 0, false, {
                                     fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/product-detail.tsx",
-                                    lineNumber: 114,
+                                    lineNumber: 151,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -755,13 +889,13 @@ function ProductDetail({ product }) {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/product-detail.tsx",
-                                    lineNumber: 117,
+                                    lineNumber: 154,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/product-detail.tsx",
-                            lineNumber: 112,
+                            lineNumber: 149,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -769,7 +903,7 @@ function ProductDetail({ product }) {
                             children: product.description
                         }, void 0, false, {
                             fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/product-detail.tsx",
-                            lineNumber: 120,
+                            lineNumber: 157,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -783,7 +917,7 @@ function ProductDetail({ product }) {
                                             children: "Select Size"
                                         }, void 0, false, {
                                             fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/product-detail.tsx",
-                                            lineNumber: 127,
+                                            lineNumber: 164,
                                             columnNumber: 15
                                         }, this),
                                         showSizeError && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -793,52 +927,125 @@ function ProductDetail({ product }) {
                                                     className: "h-4 w-4"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/product-detail.tsx",
-                                                    lineNumber: 130,
+                                                    lineNumber: 167,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                     children: "Please select a size"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/product-detail.tsx",
-                                                    lineNumber: 131,
+                                                    lineNumber: 168,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/product-detail.tsx",
-                                            lineNumber: 129,
+                                            lineNumber: 166,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/product-detail.tsx",
-                                    lineNumber: 126,
+                                    lineNumber: 163,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: `flex flex-wrap gap-2 p-3 border-2 rounded transition-colors ${showSizeError ? "border-destructive bg-destructive/5" : "border-transparent"}`,
-                                    children: product.sizes.map((size)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                    children: product.sizes.map((size)=>{
+                                        const sizeName = getSizeName(size);
+                                        const sizeDisplay = getSizeDisplay(size);
+                                        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                             onClick: ()=>{
-                                                setSelectedSize(size);
+                                                setSelectedSize(sizeName);
                                                 setShowSizeError(false);
                                             },
-                                            className: `px-4 sm:px-6 py-2 sm:py-3 border transition-all duration-200 text-sm sm:text-base ${selectedSize === size ? "bg-foreground text-background border-foreground scale-105" : "bg-background text-foreground border-border hover:border-foreground hover:scale-105"}`,
-                                            children: size
-                                        }, size, false, {
+                                            className: `px-4 sm:px-6 py-2 sm:py-3 border transition-all duration-200 text-sm sm:text-base ${selectedSize === sizeName ? "bg-foreground text-background border-foreground scale-105" : "bg-background text-foreground border-border hover:border-foreground hover:scale-105"}`,
+                                            title: isSizeObject(size) ? size.dimensions : undefined,
+                                            children: sizeDisplay
+                                        }, sizeName, false, {
                                             fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/product-detail.tsx",
-                                            lineNumber: 141,
-                                            columnNumber: 17
-                                        }, this))
+                                            lineNumber: 181,
+                                            columnNumber: 19
+                                        }, this);
+                                    })
                                 }, void 0, false, {
                                     fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/product-detail.tsx",
-                                    lineNumber: 135,
+                                    lineNumber: 172,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/product-detail.tsx",
-                            lineNumber: 125,
+                            lineNumber: 162,
                             columnNumber: 11
+                        }, this),
+                        product.hasCustomOptions && product.colors && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: `mb-6 sm:mb-8 transition-all duration-300 ${showColorError ? "animate-shake" : ""}`,
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "flex items-center justify-between mb-3 sm:mb-4",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                            className: "font-medium text-sm sm:text-base",
+                                            children: "Select Color"
+                                        }, void 0, false, {
+                                            fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/product-detail.tsx",
+                                            lineNumber: 205,
+                                            columnNumber: 17
+                                        }, this),
+                                        showColorError && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "flex items-center gap-1 text-destructive text-xs sm:text-sm animate-in fade-in slide-in-from-right-2",
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$alert$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__AlertCircle$3e$__["AlertCircle"], {
+                                                    className: "h-4 w-4"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/product-detail.tsx",
+                                                    lineNumber: 208,
+                                                    columnNumber: 21
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                    children: "Please select a color"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/product-detail.tsx",
+                                                    lineNumber: 209,
+                                                    columnNumber: 21
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/product-detail.tsx",
+                                            lineNumber: 207,
+                                            columnNumber: 19
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/product-detail.tsx",
+                                    lineNumber: 204,
+                                    columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: `flex flex-wrap gap-2 p-3 border-2 rounded transition-colors ${showColorError ? "border-destructive bg-destructive/5" : "border-transparent"}`,
+                                    children: product.colors.map((color)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                            onClick: ()=>{
+                                                setSelectedColor(color);
+                                                setShowColorError(false);
+                                            },
+                                            className: `px-4 sm:px-6 py-2 sm:py-3 border transition-all duration-200 text-sm sm:text-base ${selectedColor === color ? "bg-foreground text-background border-foreground scale-105" : "bg-background text-foreground border-border hover:border-foreground hover:scale-105"}`,
+                                            children: color
+                                        }, color, false, {
+                                            fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/product-detail.tsx",
+                                            lineNumber: 219,
+                                            columnNumber: 19
+                                        }, this))
+                                }, void 0, false, {
+                                    fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/product-detail.tsx",
+                                    lineNumber: 213,
+                                    columnNumber: 15
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/product-detail.tsx",
+                            lineNumber: 203,
+                            columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
                             type: "button",
@@ -852,7 +1059,7 @@ function ProductDetail({ product }) {
                                         className: "h-5 w-5 mr-2 animate-in zoom-in-50 duration-300"
                                     }, void 0, false, {
                                         fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/product-detail.tsx",
-                                        lineNumber: 168,
+                                        lineNumber: 247,
                                         columnNumber: 17
                                     }, this),
                                     "Added to Cart!"
@@ -863,7 +1070,7 @@ function ProductDetail({ product }) {
                                         className: "h-5 w-5 mr-2"
                                     }, void 0, false, {
                                         fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/product-detail.tsx",
-                                        lineNumber: 173,
+                                        lineNumber: 252,
                                         columnNumber: 17
                                     }, this),
                                     "Add to Cart"
@@ -871,7 +1078,7 @@ function ProductDetail({ product }) {
                             }, void 0, true)
                         }, void 0, false, {
                             fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/product-detail.tsx",
-                            lineNumber: 159,
+                            lineNumber: 238,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -882,7 +1089,7 @@ function ProductDetail({ product }) {
                                     children: "Product Details"
                                 }, void 0, false, {
                                     fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/product-detail.tsx",
-                                    lineNumber: 181,
+                                    lineNumber: 260,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -894,31 +1101,31 @@ function ProductDetail({ product }) {
                                                     className: "h-4 w-4 mt-0.5 flex-shrink-0"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/product-detail.tsx",
-                                                    lineNumber: 185,
+                                                    lineNumber: 264,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                     children: detail
                                                 }, void 0, false, {
                                                     fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/product-detail.tsx",
-                                                    lineNumber: 186,
+                                                    lineNumber: 265,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, index, true, {
                                             fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/product-detail.tsx",
-                                            lineNumber: 184,
+                                            lineNumber: 263,
                                             columnNumber: 17
                                         }, this))
                                 }, void 0, false, {
                                     fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/product-detail.tsx",
-                                    lineNumber: 182,
+                                    lineNumber: 261,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/product-detail.tsx",
-                            lineNumber: 180,
+                            lineNumber: 259,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -931,7 +1138,7 @@ function ProductDetail({ product }) {
                                             children: "Free Shipping"
                                         }, void 0, false, {
                                             fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/product-detail.tsx",
-                                            lineNumber: 195,
+                                            lineNumber: 274,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -939,13 +1146,13 @@ function ProductDetail({ product }) {
                                             children: "Complimentary shipping on all orders over $200"
                                         }, void 0, false, {
                                             fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/product-detail.tsx",
-                                            lineNumber: 196,
+                                            lineNumber: 275,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/product-detail.tsx",
-                                    lineNumber: 194,
+                                    lineNumber: 273,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -955,7 +1162,7 @@ function ProductDetail({ product }) {
                                             children: "Returns & Exchanges"
                                         }, void 0, false, {
                                             fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/product-detail.tsx",
-                                            lineNumber: 199,
+                                            lineNumber: 278,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -963,36 +1170,36 @@ function ProductDetail({ product }) {
                                             children: "30-day return policy for unworn items"
                                         }, void 0, false, {
                                             fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/product-detail.tsx",
-                                            lineNumber: 200,
+                                            lineNumber: 279,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/product-detail.tsx",
-                                    lineNumber: 198,
+                                    lineNumber: 277,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/product-detail.tsx",
-                            lineNumber: 193,
+                            lineNumber: 272,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/product-detail.tsx",
-                    lineNumber: 111,
+                    lineNumber: 148,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/product-detail.tsx",
-            lineNumber: 71,
+            lineNumber: 108,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/product-detail.tsx",
-        lineNumber: 70,
+        lineNumber: 107,
         columnNumber: 5
     }, this);
 }

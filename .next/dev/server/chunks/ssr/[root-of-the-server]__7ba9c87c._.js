@@ -141,32 +141,32 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$lux
 function CollectionsPage() {
     const collections = [
         {
-            id: "executive",
-            name: "Executive Collection",
-            description: "Bold, sophisticated pieces for the modern power dresser. Featuring rich textures and commanding colors.",
-            image: "/thudarum-burgundy-evening-suit.jpg",
-            items: "12 items"
+            id: "travel",
+            name: "Travel Collection",
+            description: "Durable and spacious bags designed for your adventures. Perfect for weekend getaways and extended journeys.",
+            image: "/travelbag.png",
+            items: "3 items"
         },
         {
-            id: "heritage",
-            name: "Heritage Collection",
-            description: "Classic tailoring with timeless appeal. Traditional patterns reimagined for contemporary elegance.",
-            image: "/thudarum-green-check-blazer.jpg",
-            items: "8 items"
+            id: "office",
+            name: "Office Collection",
+            description: "Professional and elegant bags for the modern professional. Combining style with functionality for your workday.",
+            image: "/office bage.png",
+            items: "2 items"
         },
         {
-            id: "contemporary",
-            name: "Contemporary Collection",
-            description: "Modern cuts and innovative styling for the forward-thinking gentleman.",
-            image: "/thudarum-sky-blue-blazer.jpg",
-            items: "10 items"
+            id: "everyday",
+            name: "Everyday Collection",
+            description: "Versatile bags for daily use. From casual outings to running errands, these bags are your perfect companion.",
+            image: "/product1.png",
+            items: "4 items"
         },
         {
-            id: "evening",
-            name: "Evening Collection",
-            description: "Luxurious velvet and satin pieces designed to make a statement at formal occasions.",
-            image: "/thudarum-navy-velvet-blazer.jpg",
-            items: "6 items"
+            id: "school",
+            name: "School Collection",
+            description: "Functional and stylish bags designed for students. Spacious compartments and comfortable carrying for your academic journey.",
+            image: "/schoolbag.png",
+            items: "2 items"
         }
     ];
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -219,7 +219,7 @@ function CollectionsPage() {
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                 className: "text-base sm:text-lg md:text-xl text-muted-foreground text-balance",
-                                children: "Explore our curated collections, each telling a unique story of style, craftsmanship, and modern elegance."
+                                children: "Explore our curated collections of premium bags, each designed for a specific purpose while maintaining our commitment to quality and style."
                             }, void 0, false, {
                                 fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/app/collections/page.tsx",
                                 lineNumber: 57,
@@ -349,7 +349,7 @@ function CollectionsPage() {
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                 className: "text-muted-foreground mb-8 text-base sm:text-lg leading-relaxed",
-                                children: "Each collection is carefully curated to offer a distinct aesthetic while maintaining the exceptional quality and attention to detail that defines Thudarum. From boardroom to ballroom, we have the perfect piece for every occasion."
+                                children: "Each collection is carefully curated to offer a distinct aesthetic while maintaining the exceptional quality and attention to detail that defines SONCIS. From travel to work, we have the perfect bag for every occasion."
                             }, void 0, false, {
                                 fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/app/collections/page.tsx",
                                 lineNumber: 98,

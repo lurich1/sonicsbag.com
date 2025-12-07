@@ -23,16 +23,22 @@ export default function AdminDashboard() {
   const fetchStats = async () => {
     try {
       const [productsRes, blogRes, ordersRes] = await Promise.all([
-        fetch("/api/admin/products"),
-        fetch("/api/admin/blog"),
-        fetch("/api/admin/orders"),
+        fetch("/api/admin/products").catch(() => ({ ok: false, json: async () => [] })),
+        fetch("/api/admin/blog").catch(() => ({ ok: false, json: async () => [] })),
+        fetch("/api/admin/orders").catch(() => ({ ok: false, json: async () => [] })),
       ])
 
-      const products = await productsRes.json()
-      const blogPosts = await blogRes.json()
-      const orders = await ordersRes.json()
+      const productsData = await productsRes.json()
+      const blogPostsData = await blogRes.json()
+      const ordersData = await ordersRes.json()
+      
+      const products = Array.isArray(productsData) ? productsData : []
+      const blogPosts = Array.isArray(blogPostsData) ? blogPostsData : []
+      const orders = Array.isArray(ordersData) ? ordersData : []
 
-      const totalRevenue = orders.reduce((sum: number, order: any) => sum + (order.total || 0), 0)
+      const totalRevenue = Array.isArray(orders) 
+        ? orders.reduce((sum: number, order: any) => sum + (order.total || 0), 0)
+        : 0
 
       setStats({
         products: products.length || 0,
@@ -42,6 +48,13 @@ export default function AdminDashboard() {
       })
     } catch (error) {
       console.error("Error fetching stats:", error)
+      // Set default values on error
+      setStats({
+        products: 0,
+        blogPosts: 0,
+        orders: 0,
+        totalRevenue: 0,
+      })
     } finally {
       setIsLoading(false)
     }

@@ -1,13 +1,4 @@
-[00:00:11.424] Server  LOG      ✓ Ready in 5.3s
-[00:00:15.160] Server  LOG      ○ Compiling /product/[id] ...
-[00:00:29.725] Server  LOG      ✓ Compiled in 972ms
-[00:00:31.803] Server  LOG      ✓ Compiled in 726ms
-[00:00:42.731] Server  LOG      ✓ Compiled in 945ms
-[00:00:57.981] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:00:57.981] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/product/4","route":"/product/[id]"}
-[00:00:57.982] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/product/4 color: rgb(120, 120, 120) color: inherit {"dp":"/product/[id]","o":"http://localhost:3000/product/4","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1764880122332}
-[00:00:59.777] Browser WARN    Image with src "/product4.png" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
-Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
-[00:01:06.638] Server  LOG      ○ Compiling / ...
-[00:01:21.463] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1764880146008}
-[00:03:10.701] Server  LOG      ○ Compiling /cart ...
+[00:00:08.845] Server  LOG      ✓ Ready in 4.9s
+[00:00:20.915] Server  LOG      ○ Compiling / ...
+[00:00:59.801] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:17.316] Server  LOG      ○ Compiling /collections ...

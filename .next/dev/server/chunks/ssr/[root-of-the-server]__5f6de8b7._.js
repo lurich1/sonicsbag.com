@@ -96,58 +96,65 @@ const products = [
     {
         id: "1",
         name: "SONCIS Premium Duffel Bag",
-        price: 1335,
+        price: 1,
         image: "/product1.png",
         category: "Duffels"
     },
     {
         id: "2",
         name: "SONCIS Classic Backpack",
-        price: 1125,
+        price: 1,
         image: "/product2.png",
         category: "Backpacks"
     },
     {
         id: "3",
         name: "SONCIS Travel Duffel",
-        price: 1425,
+        price: 1,
         image: "/product3.png",
         category: "Duffels"
     },
     {
         id: "4",
         name: "SONCIS Modern Duffel",
-        price: 1650,
+        price: 1,
         image: "/product4.png",
         category: "Duffels"
     },
     {
         id: "5",
         name: "The YOBO Tote Bag",
-        price: 975,
+        price: 1,
         image: "/yobo.png",
         category: "Totes"
     },
     {
         id: "6",
         name: "SONCIS Office Bag",
-        price: 1200,
+        price: 1,
         image: "/office bage.png",
         category: "Office Bags"
     },
     {
         id: "7",
-        name: "Travel Duffel Bag",
-        price: 100,
-        image: "/placeholder.jpg",
-        category: "Duffels"
+        name: "SONCIS Travel Bag",
+        price: 1,
+        image: "/travelbag.png",
+        category: "Travel Bags"
     },
     {
         id: "8",
-        name: "Minimalist Tote",
-        price: 70,
-        image: "/placeholder.jpg",
-        category: "Totes"
+        name: "SONCIS School Bag",
+        price: 1,
+        image: "/schoolbag.png",
+        category: "Backpacks"
+    },
+    {
+        id: "9",
+        name: "SONCIS Zipper Repair Kit",
+        price: 1,
+        image: "/zip1.png",
+        category: "Repair Kits"
     }
 ];
 function ProductGrid() {
@@ -157,12 +164,12 @@ function ProductGrid() {
                 product: product
             }, product.id, false, {
                 fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/product-grid.tsx",
-                lineNumber: 66,
+                lineNumber: 73,
                 columnNumber: 9
             }, this))
     }, void 0, false, {
         fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/product-grid.tsx",
-        lineNumber: 64,
+        lineNumber: 71,
         columnNumber: 5
     }, this);
 }

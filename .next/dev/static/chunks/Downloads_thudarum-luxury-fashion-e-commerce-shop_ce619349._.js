@@ -37,9 +37,9 @@ function CartProvider({ children }) {
     ]);
     const addItem = (item)=>{
         setItems((prev)=>{
-            const existing = prev.find((i)=>i.id === item.id && i.size === item.size);
+            const existing = prev.find((i)=>i.id === item.id && i.size === item.size && i.color === item.color);
             if (existing) {
-                return prev.map((i)=>i.id === item.id && i.size === item.size ? {
+                return prev.map((i)=>i.id === item.id && i.size === item.size && i.color === item.color ? {
                         ...i,
                         quantity: i.quantity + 1
                     } : i);
@@ -53,15 +53,15 @@ function CartProvider({ children }) {
             ];
         });
     };
-    const removeItem = (id, size)=>{
-        setItems((prev)=>prev.filter((i)=>!(i.id === id && i.size === size)));
+    const removeItem = (id, size, color)=>{
+        setItems((prev)=>prev.filter((i)=>!(i.id === id && i.size === size && i.color === color)));
     };
-    const updateQuantity = (id, size, quantity)=>{
+    const updateQuantity = (id, size, quantity, color)=>{
         if (quantity <= 0) {
-            removeItem(id, size);
+            removeItem(id, size, color);
             return;
         }
-        setItems((prev)=>prev.map((i)=>i.id === id && i.size === size ? {
+        setItems((prev)=>prev.map((i)=>i.id === id && i.size === size && i.color === color ? {
                     ...i,
                     quantity
                 } : i));
@@ -84,7 +84,7 @@ function CartProvider({ children }) {
         children: children
     }, void 0, false, {
         fileName: "[project]/Downloads/thudarum-luxury-fashion-e-commerce-shop/components/cart-provider.tsx",
-        lineNumber: 74,
+        lineNumber: 85,
         columnNumber: 5
     }, this);
 }
@@ -533,7 +533,7 @@ function ShippingTicker() {
         "PREMIUM QUALITY BAGS"
     ];
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "sticky top-0 z-50 bg-foreground text-background py-1.5 overflow-hidden",
+        className: "sticky top-0 z-50 bg-primary text-primary-foreground py-1.5 overflow-hidden",
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$thudarum$2d$luxury$2d$fashion$2d$e$2d$commerce$2d$shop$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             className: "flex gap-8",
             children: [

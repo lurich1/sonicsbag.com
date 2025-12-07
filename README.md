@@ -49,14 +49,21 @@ pnpm install
 cp .env.example .env.local
 ```
 
-4. Add your Paystack keys to `.env.local`:
+4. Add your environment variables to `.env.local`:
 ```env
+# Admin Dashboard Credentials
+ADMIN_EMAIL=your-soncis@gmail.com
+ADMIN_PASSWORD=admin123soncis
+
+# Paystack Keys
 PAYSTACK_SECRET_KEY=sk_live_your_secret_key
 PAYSTACK_PUBLIC_KEY=pk_live_your_public_key
 NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY=pk_live_your_public_key
 ```
 
-**Note:** For production, use live keys (starting with `sk_live_` and `pk_live_`). For testing, use test keys (starting with `sk_test_` and `pk_test_`).
+**Note:** 
+- For production, use live keys (starting with `sk_live_` and `pk_live_`). For testing, use test keys (starting with `sk_test_` and `pk_test_`).
+- Admin credentials are used to access the admin dashboard at `/admin/login`
 
 5. Run the development server:
 ```bash
@@ -71,11 +78,16 @@ pnpm dev
 
 Create a `.env.local` file in the root directory with the following variables:
 
+### Admin Dashboard
+- `ADMIN_EMAIL`: Email address for admin login (default: `admin@soncis.com`)
+- `ADMIN_PASSWORD`: Password for admin login (default: `admin123`)
+
+### Paystack Payment
 - `PAYSTACK_SECRET_KEY`: Your Paystack secret key (server-side)
 - `PAYSTACK_PUBLIC_KEY`: Your Paystack public key (server-side)
 - `NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY`: Your Paystack public key (client-side)
 
-For production, use live keys instead of test keys.
+**Note:** For production, use live keys instead of test keys. Make sure to set these environment variables in your deployment platform (Vercel, etc.).
 
 ## Project Structure
 

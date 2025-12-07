@@ -52,8 +52,10 @@ export default function AdminOrdersPage() {
         },
       })
       const data = await response.json()
-      setOrders(data)
+      setOrders(Array.isArray(data) ? data : [])
     } catch (error) {
+      console.error("Error fetching orders:", error)
+      setOrders([])
       toast({
         title: "Error",
         description: "Failed to fetch orders",

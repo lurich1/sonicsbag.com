@@ -6,9 +6,12 @@ import { cookies } from "next/headers"
 export async function GET() {
   try {
     const products = readProducts()
-    return NextResponse.json(products)
+    // Always return an array, even if empty
+    return NextResponse.json(Array.isArray(products) ? products : [])
   } catch (error) {
-    return NextResponse.json({ error: "Failed to fetch products" }, { status: 500 })
+    console.error("Error fetching products:", error)
+    // Return empty array instead of error to prevent crashes
+    return NextResponse.json([])
   }
 }
 
