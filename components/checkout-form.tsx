@@ -181,18 +181,33 @@ export function CheckoutForm({ total }: CheckoutFormProps) {
           const verifyData = await verifyResponse.json()
 
           if (verifyData.status && verifyData.data.status === "success") {
+            // Get cart items
+            const cartItems = JSON.parse(localStorage.getItem("cart") || "[]")
+            
             // Save order to localStorage
-    const order = {
+            const order = {
               id: verifyData.data.reference,
-      date: new Date().toISOString(),
-      total,
-      status: "processing",
-      shipping: formData,
+              date: new Date().toISOString(),
+              total,
+              status: "processing",
+              shipping: formData,
               paymentReference: reference,
-    }
+              items: cartItems,
+            }
 
-    const existingOrders = JSON.parse(localStorage.getItem("orders") || "[]")
-    localStorage.setItem("orders", JSON.stringify([order, ...existingOrders]))
+            const existingOrders = JSON.parse(localStorage.getItem("orders") || "[]")
+            localStorage.setItem("orders", JSON.stringify([order, ...existingOrders]))
+
+            // Also save to server
+            try {
+              await fetch("/api/orders", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(order),
+              })
+            } catch (error) {
+              console.error("Failed to save order to server:", error)
+            }
 
     clearCart()
     toast({
