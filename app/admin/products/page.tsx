@@ -44,6 +44,7 @@ export default function AdminProductsPage() {
   const [isLoading, setIsLoading] = useState(true)
   const [isDialogOpen, setIsDialogOpen] = useState(false)
   const [editingProduct, setEditingProduct] = useState<Product | null>(null)
+  const [imageFile, setImageFile] = useState<File | null>(null)
   const [formData, setFormData] = useState({
     name: "",
     price: "",
@@ -79,6 +80,7 @@ export default function AdminProductsPage() {
 
   const handleEdit = (product: Product) => {
     setEditingProduct(product)
+    setImageFile(null)
     setFormData({
       name: product.name || "",
       price: product.price?.toString() || "",
@@ -128,11 +130,31 @@ export default function AdminProductsPage() {
 
     try {
       const token = localStorage.getItem("adminToken")
+      let imageUrl = formData.image
+
+      // If a new image file is selected, upload it first
+      if (imageFile) {
+        const uploadForm = new FormData()
+        uploadForm.append("file", imageFile)
+
+        const uploadRes = await fetch("/api/admin/upload", {
+          method: "POST",
+          body: uploadForm,
+        })
+
+        if (!uploadRes.ok) {
+          throw new Error("Failed to upload image")
+        }
+
+        const uploadData = await uploadRes.json()
+        imageUrl = uploadData.url
+      }
+
       const productData: any = {
         name: formData.name,
         price: parseFloat(formData.price),
-        image: formData.image,
-        images: formData.image ? [formData.image] : [],
+        image: imageUrl,
+        images: imageUrl ? [imageUrl] : [],
         category: formData.category,
         description: formData.description,
         details: formData.details ? formData.details.split("\n").filter((d) => d.trim()) : [],
@@ -171,6 +193,7 @@ export default function AdminProductsPage() {
         })
         setIsDialogOpen(false)
         setEditingProduct(null)
+        setImageFile(null)
         setFormData({
           name: "",
           price: "",
@@ -277,13 +300,24 @@ export default function AdminProductsPage() {
                 </div>
               </div>
               <div className="space-y-2">
-                <Label htmlFor="image">Image URL *</Label>
+                <Label htmlFor="image">Image</Label>
                 <Input
                   id="image"
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) => {
+                    const file = e.target.files?.[0] || null
+                    setImageFile(file)
+                  }}
+                />
+                <p className="text-xs text-muted-foreground">
+                  Choose a file to upload, or leave empty to keep the current image.
+                </p>
+                <Input
+                  id="image-url"
                   value={formData.image}
                   onChange={(e) => setFormData({ ...formData, image: e.target.value })}
-                  placeholder="/product1.png"
-                  required
+                  placeholder="Or paste an existing image URL"
                 />
               </div>
               <div className="space-y-2">

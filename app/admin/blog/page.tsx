@@ -42,6 +42,7 @@ export default function AdminBlogPage() {
   const [isLoading, setIsLoading] = useState(true)
   const [isDialogOpen, setIsDialogOpen] = useState(false)
   const [editingPost, setEditingPost] = useState<BlogPost | null>(null)
+  const [imageFile, setImageFile] = useState<File | null>(null)
   const [formData, setFormData] = useState({
     title: "",
     excerpt: "",
@@ -76,6 +77,7 @@ export default function AdminBlogPage() {
 
   const handleEdit = (post: BlogPost) => {
     setEditingPost(post)
+    setImageFile(null)
     setFormData({
       title: post.title || "",
       excerpt: post.excerpt || "",
@@ -124,10 +126,29 @@ export default function AdminBlogPage() {
 
     try {
       const token = localStorage.getItem("adminToken")
+      let imageUrl = formData.image
+
+      if (imageFile) {
+        const uploadForm = new FormData()
+        uploadForm.append("file", imageFile)
+
+        const uploadRes = await fetch("/api/admin/upload", {
+          method: "POST",
+          body: uploadForm,
+        })
+
+        if (!uploadRes.ok) {
+          throw new Error("Failed to upload image")
+        }
+
+        const uploadData = await uploadRes.json()
+        imageUrl = uploadData.url
+      }
+
       const postData = {
         title: formData.title,
         excerpt: formData.excerpt,
-        image: formData.image,
+        image: imageUrl,
         author: formData.author,
         date: new Date(formData.date).toLocaleDateString("en-US", {
           year: "numeric",
@@ -157,6 +178,7 @@ export default function AdminBlogPage() {
         })
         setIsDialogOpen(false)
         setEditingPost(null)
+        setImageFile(null)
         setFormData({
           title: "",
           excerpt: "",
@@ -239,13 +261,24 @@ export default function AdminBlogPage() {
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="image">Featured Image URL *</Label>
+                  <Label htmlFor="image">Featured Image</Label>
                   <Input
                     id="image"
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => {
+                      const file = e.target.files?.[0] || null
+                      setImageFile(file)
+                    }}
+                  />
+                  <p className="text-xs text-muted-foreground">
+                    Choose a file to upload, or leave empty to keep the current image.
+                  </p>
+                  <Input
+                    id="image-url"
                     value={formData.image}
                     onChange={(e) => setFormData({ ...formData, image: e.target.value })}
-                    placeholder="/blog1.png"
-                    required
+                    placeholder="Or paste an existing image URL"
                   />
                 </div>
                 <div className="space-y-2">

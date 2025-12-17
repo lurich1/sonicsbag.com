@@ -1,17 +1,15 @@
 import { NextRequest, NextResponse } from "next/server"
-import { readProducts, writeProducts } from "@/lib/data"
 import { cookies } from "next/headers"
+import { query } from "@/lib/db"
 
 // GET all products
 export async function GET() {
   try {
-    const products = readProducts()
-    // Always return an array, even if empty
-    return NextResponse.json(Array.isArray(products) ? products : [])
+    const products = await query<any>("SELECT * FROM products ORDER BY created_at DESC")
+    return NextResponse.json(products)
   } catch (error) {
     console.error("Error fetching products:", error)
-    // Return empty array instead of error to prevent crashes
-    return NextResponse.json([])
+    return NextResponse.json({ error: "Failed to fetch products" }, { status: 500 })
   }
 }
 
@@ -25,18 +23,23 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json()
-    const products = readProducts()
+    const {
+      name,
+      description,
+      price,
+      image,
+      category,
+      stock,
+    } = body
 
-    const newProduct = {
-      id: Date.now().toString(),
-      ...body,
-      createdAt: new Date().toISOString(),
-    }
+    const result = await query<any>(
+      "INSERT INTO products (name, description, price, image, category, stock, created_at) VALUES (?, ?, ?, ?, ?, ?, NOW())",
+      [name, description, price, image, category, stock]
+    )
 
-    products.push(newProduct)
-    writeProducts(products)
+    const inserted = await query<any>("SELECT * FROM products WHERE id = LAST_INSERT_ID()")
 
-    return NextResponse.json(newProduct, { status: 201 })
+    return NextResponse.json(inserted[0], { status: 201 })
   } catch (error) {
     return NextResponse.json({ error: "Failed to create product" }, { status: 500 })
   }

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
-import { readProducts, writeProducts } from "@/lib/data"
 import { cookies } from "next/headers"
+import { query } from "@/lib/db"
 
 // GET single product
 export async function GET(
@@ -9,8 +9,8 @@ export async function GET(
 ) {
   try {
     const { id } = await params
-    const products = readProducts()
-    const product = products.find((p: any) => p.id === id)
+    const products = await query<any>("SELECT * FROM products WHERE id = ?", [id])
+    const product = products[0]
 
     if (!product) {
       return NextResponse.json({ error: "Product not found" }, { status: 404 })
@@ -36,21 +36,27 @@ export async function PUT(
 
     const { id } = await params
     const body = await request.json()
-    const products = readProducts()
 
-    const index = products.findIndex((p: any) => p.id === id)
-    if (index === -1) {
+    const {
+      name,
+      description,
+      price,
+      image,
+      category,
+      stock,
+    } = body
+
+    const result = await query<any>(
+      "UPDATE products SET name = ?, description = ?, price = ?, image = ?, category = ?, stock = ?, updated_at = NOW() WHERE id = ?",
+      [name, description, price, image, category, stock, id]
+    )
+
+    if (!result || (Array.isArray(result) && result.length === 0)) {
       return NextResponse.json({ error: "Product not found" }, { status: 404 })
     }
 
-    products[index] = {
-      ...products[index],
-      ...body,
-      updatedAt: new Date().toISOString(),
-    }
-
-    writeProducts(products)
-    return NextResponse.json(products[index])
+    const updated = await query<any>("SELECT * FROM products WHERE id = ?", [id])
+    return NextResponse.json(updated[0])
   } catch (error) {
     return NextResponse.json({ error: "Failed to update product" }, { status: 500 })
   }
@@ -69,14 +75,9 @@ export async function DELETE(
     }
 
     const { id } = await params
-    const products = readProducts()
 
-    const filtered = products.filter((p: any) => p.id !== id)
-    if (filtered.length === products.length) {
-      return NextResponse.json({ error: "Product not found" }, { status: 404 })
-    }
+    const result = await query<any>("DELETE FROM products WHERE id = ?", [id])
 
-    writeProducts(filtered)
     return NextResponse.json({ message: "Product deleted successfully" })
   } catch (error) {
     return NextResponse.json({ error: "Failed to delete product" }, { status: 500 })

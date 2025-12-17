@@ -3,60 +3,39 @@ import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft, Calendar, User } from "lucide-react"
+import { query } from "@/lib/db"
 
-export default function BlogPage() {
-  const blogPosts = [
-    {
-      id: 5,
-      title: "SONCIS Launches the Bag Reward Program at Nkukuasa M/A Basic School",
-      excerpt:
-        "We are excited to share that we have officially launched the SONCIS Bag Reward Program, celebrating students who show hard work, good behavior, leadership, and steady improvement.",
-      image: "/blog1.png",
+interface DbBlogPost {
+  id: number
+  title: string
+  content: string
+  image?: string | null
+  created_at: string
+}
+
+export default async function BlogPage() {
+  const rows = await query<DbBlogPost>(
+    "SELECT id, title, content, image, created_at FROM blog_posts ORDER BY created_at DESC"
+  )
+
+  const blogPosts = rows.map((post) => {
+    const plainText = post.content.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim()
+    const excerpt = plainText.length > 160 ? `${plainText.slice(0, 160)}...` : plainText
+
+    return {
+      id: post.id,
+      title: post.title,
+      excerpt,
+      image: post.image || "/placeholder.svg",
       author: "SONCIS Team",
-      date: "February 1, 2025",
-      category: "Community",
-    },
-    {
-      id: 1,
-      title: "The Art of Choosing the Perfect Travel Bag",
-      excerpt:
-        "Discover how to select the ideal travel bag that combines functionality, durability, and style for your next adventure.",
-      image: "/travelbag.png",
-      author: "SONCIS Team",
-      date: "January 15, 2025",
-      category: "Travel",
-    },
-    {
-      id: 2,
-      title: "Office Bags: Style Meets Professionalism",
-      excerpt:
-        "Explore our guide to finding the perfect office bag that reflects your professional image while keeping you organized.",
-      image: "/office bage.png",
-      author: "SONCIS Team",
-      date: "January 10, 2025",
-      category: "Lifestyle",
-    },
-    {
-      id: 3,
-      title: "Sustainable Fashion: Caring for Your Bags",
-      excerpt:
-        "Learn essential tips for maintaining and caring for your premium bags to ensure they last for years to come.",
-      image: "/product1.png",
-      author: "SONCIS Team",
-      date: "January 5, 2025",
-      category: "Care Guide",
-    },
-    {
-      id: 4,
-      title: "Back to School: Essential Bag Features",
-      excerpt:
-        "What to look for when choosing a school bag that's both practical and stylish for students of all ages.",
-      image: "/schoolbag.png",
-      author: "SONCIS Team",
-      date: "December 28, 2024",
-      category: "Education",
-    },
-  ]
+      date: new Date(post.created_at).toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      }),
+      category: "Blog",
+    }
+  })
 
   return (
     <div className="min-h-screen">
@@ -81,46 +60,50 @@ export default function BlogPage() {
         </div>
 
         {/* Blog Posts Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-12">
-          {blogPosts.map((post) => (
-            <article key={post.id} className="group">
-              <Link href={`/blog/${post.id}`} className="block">
-                <div className="relative aspect-[4/3] overflow-hidden bg-secondary mb-4 rounded-lg">
-                  <Image
-                    src={post.image || "/placeholder.svg"}
-                    alt={post.title}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 bg-background/90 backdrop-blur text-xs font-medium rounded-full">
-                      {post.category}
-                    </span>
-                  </div>
-                </div>
-                <div className="space-y-3">
-                  <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                    <div className="flex items-center gap-2">
-                      <Calendar className="h-4 w-4" />
-                      <span>{post.date}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <User className="h-4 w-4" />
-                      <span>{post.author}</span>
+        {blogPosts.length === 0 ? (
+          <p className="text-center text-muted-foreground">No blog posts yet. Please check back soon.</p>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-12">
+            {blogPosts.map((post) => (
+              <article key={post.id} className="group">
+                <Link href={`/blog/${post.id}`} className="block">
+                  <div className="relative aspect-[4/3] overflow-hidden bg-secondary mb-4 rounded-lg">
+                    <Image
+                      src={post.image || "/placeholder.svg"}
+                      alt={post.title}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute top-4 left-4">
+                      <span className="px-3 py-1 bg-background/90 backdrop-blur text-xs font-medium rounded-full">
+                        {post.category}
+                      </span>
                     </div>
                   </div>
-                  <h2 className="font-serif text-2xl sm:text-3xl font-semibold group-hover:text-primary transition-colors">
-                    {post.title}
-                  </h2>
-                  <p className="text-muted-foreground leading-relaxed">{post.excerpt}</p>
-                  <Button variant="ghost" className="p-0 h-auto text-sm font-medium group-hover:text-primary">
-                    Read More →
-                  </Button>
-                </div>
-              </Link>
-            </article>
-          ))}
-        </div>
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                      <div className="flex items-center gap-2">
+                        <Calendar className="h-4 w-4" />
+                        <span>{post.date}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <User className="h-4 w-4" />
+                        <span>{post.author}</span>
+                      </div>
+                    </div>
+                    <h2 className="font-serif text-2xl sm:text-3xl font-semibold group-hover:text-primary transition-colors">
+                      {post.title}
+                    </h2>
+                    <p className="text-muted-foreground leading-relaxed">{post.excerpt}</p>
+                    <Button variant="ghost" className="p-0 h-auto text-sm font-medium group-hover:text-primary">
+                      Read More →
+                    </Button>
+                  </div>
+                </Link>
+              </article>
+            ))}
+          </div>
+        )}
       </section>
 
       {/* Newsletter Section */}

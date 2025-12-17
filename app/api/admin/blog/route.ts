@@ -1,17 +1,15 @@
 import { NextRequest, NextResponse } from "next/server"
-import { readBlogPosts, writeBlogPosts } from "@/lib/data"
 import { cookies } from "next/headers"
+import { query } from "@/lib/db"
 
 // GET all blog posts
 export async function GET() {
   try {
-    const posts = readBlogPosts()
-    // Always return an array, even if empty
-    return NextResponse.json(Array.isArray(posts) ? posts : [])
+    const posts = await query<any>("SELECT * FROM blog_posts ORDER BY created_at DESC")
+    return NextResponse.json(posts)
   } catch (error) {
     console.error("Error fetching blog posts:", error)
-    // Return empty array instead of error to prevent crashes
-    return NextResponse.json([])
+    return NextResponse.json({ error: "Failed to fetch blog posts" }, { status: 500 })
   }
 }
 
@@ -25,18 +23,20 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json()
-    const posts = readBlogPosts()
+    const {
+      title,
+      content,
+      image,
+    } = body
 
-    const newPost = {
-      id: Date.now(),
-      ...body,
-      createdAt: new Date().toISOString(),
-    }
+    await query<any>(
+      "INSERT INTO blog_posts (title, content, image, created_at) VALUES (?, ?, ?, NOW())",
+      [title, content, image]
+    )
 
-    posts.push(newPost)
-    writeBlogPosts(posts)
+    const inserted = await query<any>("SELECT * FROM blog_posts WHERE id = LAST_INSERT_ID()")
 
-    return NextResponse.json(newPost, { status: 201 })
+    return NextResponse.json(inserted[0], { status: 201 })
   } catch (error) {
     return NextResponse.json({ error: "Failed to create blog post" }, { status: 500 })
   }

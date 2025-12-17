@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
-import { readBlogPosts, writeBlogPosts } from "@/lib/data"
 import { cookies } from "next/headers"
+import { query } from "@/lib/db"
 
 // GET single blog post
 export async function GET(
@@ -9,8 +9,8 @@ export async function GET(
 ) {
   try {
     const { id } = await params
-    const posts = readBlogPosts()
-    const post = posts.find((p: any) => p.id === parseInt(id))
+    const posts = await query<any>("SELECT * FROM blog_posts WHERE id = ?", [id])
+    const post = posts[0]
 
     if (!post) {
       return NextResponse.json({ error: "Blog post not found" }, { status: 404 })
@@ -36,21 +36,24 @@ export async function PUT(
 
     const { id } = await params
     const body = await request.json()
-    const posts = readBlogPosts()
 
-    const index = posts.findIndex((p: any) => p.id === parseInt(id))
-    if (index === -1) {
+    const {
+      title,
+      content,
+      image,
+    } = body
+
+    await query<any>(
+      "UPDATE blog_posts SET title = ?, content = ?, image = ?, updated_at = NOW() WHERE id = ?",
+      [title, content, image, id]
+    )
+
+    const updated = await query<any>("SELECT * FROM blog_posts WHERE id = ?", [id])
+    if (!updated[0]) {
       return NextResponse.json({ error: "Blog post not found" }, { status: 404 })
     }
 
-    posts[index] = {
-      ...posts[index],
-      ...body,
-      updatedAt: new Date().toISOString(),
-    }
-
-    writeBlogPosts(posts)
-    return NextResponse.json(posts[index])
+    return NextResponse.json(updated[0])
   } catch (error) {
     return NextResponse.json({ error: "Failed to update blog post" }, { status: 500 })
   }
@@ -69,14 +72,9 @@ export async function DELETE(
     }
 
     const { id } = await params
-    const posts = readBlogPosts()
 
-    const filtered = posts.filter((p: any) => p.id !== parseInt(id))
-    if (filtered.length === posts.length) {
-      return NextResponse.json({ error: "Blog post not found" }, { status: 404 })
-    }
+    await query<any>("DELETE FROM blog_posts WHERE id = ?", [id])
 
-    writeBlogPosts(filtered)
     return NextResponse.json({ message: "Blog post deleted successfully" })
   } catch (error) {
     return NextResponse.json({ error: "Failed to delete blog post" }, { status: 500 })
