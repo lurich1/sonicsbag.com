@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
+import { readOrders } from "@/lib/data"
 import { cookies } from "next/headers"
-import { query } from "@/lib/db"
 
 // GET all orders
 export async function GET() {
@@ -11,8 +11,16 @@ export async function GET() {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
     }
 
-    const orders = await query<any>("SELECT * FROM orders ORDER BY created_at DESC")
-    return NextResponse.json(orders)
+    const orders = readOrders()
+    // Ensure orders is an array
+    const ordersArray = Array.isArray(orders) ? orders : []
+    // Sort by date, newest first
+    ordersArray.sort((a: any, b: any) => {
+      const dateA = new Date(a.date || a.createdAt || 0).getTime()
+      const dateB = new Date(b.date || b.createdAt || 0).getTime()
+      return dateB - dateA
+    })
+    return NextResponse.json(ordersArray)
   } catch (error) {
     return NextResponse.json({ error: "Failed to fetch orders" }, { status: 500 })
   }

@@ -2,3 +2,716 @@
 [00:00:20.915] Server  LOG      ○ Compiling / ...
 [00:00:59.801] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
 [00:01:17.316] Server  LOG      ○ Compiling /collections ...
+[00:12:52.944] Browser ERROR   ./components/product-grid.tsx:2:1
+Module not found: Can't resolve '@/lib/db'
+  1 | import { ProductCard } from "./product-card"
+> 2 | import { query } from "@/lib/db"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface Product {
+  5 |   id: number
+
+Import map: aliased to relative './lib/db' inside of [project]/
+
+Import trace:
+  Server Component:
+    ./components/product-grid.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:12:52.944] Browser ERROR   ./components/product-grid.tsx:2:1
+Module not found: Can't resolve '@/lib/db'
+  1 | import { ProductCard } from "./product-card"
+> 2 | import { query } from "@/lib/db"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface Product {
+  5 |   id: number
+
+Import map: aliased to relative './lib/db' inside of [project]/
+
+Import trace:
+  Server Component:
+    ./components/product-grid.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:12:52.968] Browser ERROR   ./components/product-grid.tsx:2:1
+Module not found: Can't resolve '@/lib/db'
+  1 | import { ProductCard } from "./product-card"
+> 2 | import { query } from "@/lib/db"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface Product {
+  5 |   id: number
+
+Import map: aliased to relative './lib/db' inside of [project]/
+
+Import trace:
+  Server Component:
+    ./components/product-grid.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:12:52.968] Browser ERROR   ./components/product-grid.tsx:2:1
+Module not found: Can't resolve '@/lib/db'
+  1 | import { ProductCard } from "./product-card"
+> 2 | import { query } from "@/lib/db"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface Product {
+  5 |   id: number
+
+Import map: aliased to relative './lib/db' inside of [project]/
+
+Import trace:
+  Server Component:
+    ./components/product-grid.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:12:52.968] Browser ERROR   ./components/product-grid.tsx:2:1
+Module not found: Can't resolve '@/lib/db'
+  1 | import { ProductCard } from "./product-card"
+> 2 | import { query } from "@/lib/db"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface Product {
+  5 |   id: number
+
+Import map: aliased to relative './lib/db' inside of [project]/
+
+Import trace:
+  Server Component:
+    ./components/product-grid.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:12:52.968] Browser ERROR   ./components/product-grid.tsx:2:1
+Module not found: Can't resolve '@/lib/db'
+  1 | import { ProductCard } from "./product-card"
+> 2 | import { query } from "@/lib/db"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface Product {
+  5 |   id: number
+
+Import map: aliased to relative './lib/db' inside of [project]/
+
+Import trace:
+  Server Component:
+    ./components/product-grid.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:13:09.786] Browser ERROR   ./components/product-grid.tsx:2:1
+Module not found: Can't resolve '@/lib/db'
+  1 | import { ProductCard } from "./product-card"
+> 2 | import { query } from "@/lib/db"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface Product {
+  5 |   id: number
+
+Import map: aliased to relative './lib/db' inside of [project]/
+
+Import trace:
+  Server Component:
+    ./components/product-grid.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:13:09.787] Browser ERROR   ./components/product-grid.tsx:2:1
+Module not found: Can't resolve '@/lib/db'
+  1 | import { ProductCard } from "./product-card"
+> 2 | import { query } from "@/lib/db"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface Product {
+  5 |   id: number
+
+Import map: aliased to relative './lib/db' inside of [project]/
+
+Import trace:
+  Server Component:
+    ./components/product-grid.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:13:09.794] Browser ERROR   ./components/product-grid.tsx:2:1
+Module not found: Can't resolve '@/lib/db'
+  1 | import { ProductCard } from "./product-card"
+> 2 | import { query } from "@/lib/db"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface Product {
+  5 |   id: number
+
+Import map: aliased to relative './lib/db' inside of [project]/
+
+Import trace:
+  Server Component:
+    ./components/product-grid.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:13:31.897] Browser ERROR   ./components/product-grid.tsx:2:1
+Module not found: Can't resolve '@/lib/db'
+  1 | import { ProductCard } from "./product-card"
+> 2 | import { query } from "@/lib/db"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface Product {
+  5 |   id: number
+
+Import map: aliased to relative './lib/db' inside of [project]/
+
+Import trace:
+  Server Component:
+    ./components/product-grid.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:13:31.971] Browser ERROR   ./components/product-grid.tsx:2:1
+Module not found: Can't resolve '@/lib/db'
+  1 | import { ProductCard } from "./product-card"
+> 2 | import { query } from "@/lib/db"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface Product {
+  5 |   id: number
+
+Import map: aliased to relative './lib/db' inside of [project]/
+
+Import trace:
+  Server Component:
+    ./components/product-grid.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:13:31.972] Browser ERROR   ./components/product-grid.tsx:2:1
+Module not found: Can't resolve '@/lib/db'
+  1 | import { ProductCard } from "./product-card"
+> 2 | import { query } from "@/lib/db"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface Product {
+  5 |   id: number
+
+Import map: aliased to relative './lib/db' inside of [project]/
+
+Import trace:
+  Server Component:
+    ./components/product-grid.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:13:44.800] Browser ERROR   ./components/product-grid.tsx:2:1
+Module not found: Can't resolve '@/lib/db'
+  1 | import { ProductCard } from "./product-card"
+> 2 | import { query } from "@/lib/db"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface Product {
+  5 |   id: number
+
+Import map: aliased to relative './lib/db' inside of [project]/
+
+Import trace:
+  Server Component:
+    ./components/product-grid.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:13:45.878] Browser ERROR   ./components/product-grid.tsx:2:1
+Module not found: Can't resolve '@/lib/db'
+  1 | import { ProductCard } from "./product-card"
+> 2 | import { query } from "@/lib/db"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface Product {
+  5 |   id: number
+
+Import map: aliased to relative './lib/db' inside of [project]/
+
+Import trace:
+  Server Component:
+    ./components/product-grid.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:13:45.878] Browser ERROR   ./components/product-grid.tsx:2:1
+Module not found: Can't resolve '@/lib/db'
+  1 | import { ProductCard } from "./product-card"
+> 2 | import { query } from "@/lib/db"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface Product {
+  5 |   id: number
+
+Import map: aliased to relative './lib/db' inside of [project]/
+
+Import trace:
+  Server Component:
+    ./components/product-grid.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:13:52.789] Browser ERROR   ./components/product-grid.tsx:2:1
+Module not found: Can't resolve '@/lib/db'
+  1 | import { ProductCard } from "./product-card"
+> 2 | import { query } from "@/lib/db"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface Product {
+  5 |   id: number
+
+Import map: aliased to relative './lib/db' inside of [project]/
+
+Import trace:
+  Server Component:
+    ./components/product-grid.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:13:52.790] Browser ERROR   ./components/product-grid.tsx:2:1
+Module not found: Can't resolve '@/lib/db'
+  1 | import { ProductCard } from "./product-card"
+> 2 | import { query } from "@/lib/db"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface Product {
+  5 |   id: number
+
+Import map: aliased to relative './lib/db' inside of [project]/
+
+Import trace:
+  Server Component:
+    ./components/product-grid.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:13:52.796] Browser ERROR   ./components/product-grid.tsx:2:1
+Module not found: Can't resolve '@/lib/db'
+  1 | import { ProductCard } from "./product-card"
+> 2 | import { query } from "@/lib/db"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface Product {
+  5 |   id: number
+
+Import map: aliased to relative './lib/db' inside of [project]/
+
+Import trace:
+  Server Component:
+    ./components/product-grid.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:13:56.787] Browser ERROR   ./components/product-grid.tsx:2:1
+Module not found: Can't resolve '@/lib/db'
+  1 | import { ProductCard } from "./product-card"
+> 2 | import { query } from "@/lib/db"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface Product {
+  5 |   id: number
+
+Import map: aliased to relative './lib/db' inside of [project]/
+
+Import trace:
+  Server Component:
+    ./components/product-grid.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:13:56.787] Browser ERROR   ./components/product-grid.tsx:2:1
+Module not found: Can't resolve '@/lib/db'
+  1 | import { ProductCard } from "./product-card"
+> 2 | import { query } from "@/lib/db"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface Product {
+  5 |   id: number
+
+Import map: aliased to relative './lib/db' inside of [project]/
+
+Import trace:
+  Server Component:
+    ./components/product-grid.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:13:56.788] Browser ERROR   ./components/product-grid.tsx:2:1
+Module not found: Can't resolve '@/lib/db'
+  1 | import { ProductCard } from "./product-card"
+> 2 | import { query } from "@/lib/db"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface Product {
+  5 |   id: number
+
+Import map: aliased to relative './lib/db' inside of [project]/
+
+Import trace:
+  Server Component:
+    ./components/product-grid.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:14:10.837] Browser ERROR   ./components/product-grid.tsx:2:1
+Module not found: Can't resolve '@/lib/db'
+  1 | import { ProductCard } from "./product-card"
+> 2 | import { query } from "@/lib/db"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface Product {
+  5 |   id: number
+
+Import map: aliased to relative './lib/db' inside of [project]/
+
+Import trace:
+  Server Component:
+    ./components/product-grid.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:14:10.955] Browser ERROR   ./components/product-grid.tsx:2:1
+Module not found: Can't resolve '@/lib/db'
+  1 | import { ProductCard } from "./product-card"
+> 2 | import { query } from "@/lib/db"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface Product {
+  5 |   id: number
+
+Import map: aliased to relative './lib/db' inside of [project]/
+
+Import trace:
+  Server Component:
+    ./components/product-grid.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:14:10.960] Browser ERROR   ./components/product-grid.tsx:2:1
+Module not found: Can't resolve '@/lib/db'
+  1 | import { ProductCard } from "./product-card"
+> 2 | import { query } from "@/lib/db"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface Product {
+  5 |   id: number
+
+Import map: aliased to relative './lib/db' inside of [project]/
+
+Import trace:
+  Server Component:
+    ./components/product-grid.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:14:20.785] Browser ERROR   ./components/product-grid.tsx:2:1
+Module not found: Can't resolve '@/lib/db'
+  1 | import { ProductCard } from "./product-card"
+> 2 | import { query } from "@/lib/db"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface Product {
+  5 |   id: number
+
+Import map: aliased to relative './lib/db' inside of [project]/
+
+Import trace:
+  Server Component:
+    ./components/product-grid.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:14:20.786] Browser ERROR   ./components/product-grid.tsx:2:1
+Module not found: Can't resolve '@/lib/db'
+  1 | import { ProductCard } from "./product-card"
+> 2 | import { query } from "@/lib/db"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface Product {
+  5 |   id: number
+
+Import map: aliased to relative './lib/db' inside of [project]/
+
+Import trace:
+  Server Component:
+    ./components/product-grid.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:14:20.786] Browser ERROR   ./components/product-grid.tsx:2:1
+Module not found: Can't resolve '@/lib/db'
+  1 | import { ProductCard } from "./product-card"
+> 2 | import { query } from "@/lib/db"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface Product {
+  5 |   id: number
+
+Import map: aliased to relative './lib/db' inside of [project]/
+
+Import trace:
+  Server Component:
+    ./components/product-grid.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:14:29.794] Browser ERROR   ./components/product-grid.tsx:2:1
+Module not found: Can't resolve '@/lib/db'
+  1 | import { ProductCard } from "./product-card"
+> 2 | import { query } from "@/lib/db"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface Product {
+  5 |   id: number
+
+Import map: aliased to relative './lib/db' inside of [project]/
+
+Import trace:
+  Server Component:
+    ./components/product-grid.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:14:29.794] Browser ERROR   ./components/product-grid.tsx:2:1
+Module not found: Can't resolve '@/lib/db'
+  1 | import { ProductCard } from "./product-card"
+> 2 | import { query } from "@/lib/db"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface Product {
+  5 |   id: number
+
+Import map: aliased to relative './lib/db' inside of [project]/
+
+Import trace:
+  Server Component:
+    ./components/product-grid.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:14:29.794] Browser ERROR   ./components/product-grid.tsx:2:1
+Module not found: Can't resolve '@/lib/db'
+  1 | import { ProductCard } from "./product-card"
+> 2 | import { query } from "@/lib/db"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface Product {
+  5 |   id: number
+
+Import map: aliased to relative './lib/db' inside of [project]/
+
+Import trace:
+  Server Component:
+    ./components/product-grid.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:14:45.794] Browser ERROR   ./components/product-grid.tsx:2:1
+Module not found: Can't resolve '@/lib/db'
+  1 | import { ProductCard } from "./product-card"
+> 2 | import { query } from "@/lib/db"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface Product {
+  5 |   id: number
+
+Import map: aliased to relative './lib/db' inside of [project]/
+
+Import trace:
+  Server Component:
+    ./components/product-grid.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:14:45.802] Browser ERROR   ./components/product-grid.tsx:2:1
+Module not found: Can't resolve '@/lib/db'
+  1 | import { ProductCard } from "./product-card"
+> 2 | import { query } from "@/lib/db"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface Product {
+  5 |   id: number
+
+Import map: aliased to relative './lib/db' inside of [project]/
+
+Import trace:
+  Server Component:
+    ./components/product-grid.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:14:45.804] Browser ERROR   ./components/product-grid.tsx:2:1
+Module not found: Can't resolve '@/lib/db'
+  1 | import { ProductCard } from "./product-card"
+> 2 | import { query } from "@/lib/db"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface Product {
+  5 |   id: number
+
+Import map: aliased to relative './lib/db' inside of [project]/
+
+Import trace:
+  Server Component:
+    ./components/product-grid.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:14:48.791] Browser ERROR   ./components/product-grid.tsx:2:1
+Module not found: Can't resolve '@/lib/db'
+  1 | import { ProductCard } from "./product-card"
+> 2 | import { query } from "@/lib/db"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface Product {
+  5 |   id: number
+
+Import map: aliased to relative './lib/db' inside of [project]/
+
+Import trace:
+  Server Component:
+    ./components/product-grid.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:14:48.791] Browser ERROR   ./components/product-grid.tsx:2:1
+Module not found: Can't resolve '@/lib/db'
+  1 | import { ProductCard } from "./product-card"
+> 2 | import { query } from "@/lib/db"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface Product {
+  5 |   id: number
+
+Import map: aliased to relative './lib/db' inside of [project]/
+
+Import trace:
+  Server Component:
+    ./components/product-grid.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:14:48.792] Browser ERROR   ./components/product-grid.tsx:2:1
+Module not found: Can't resolve '@/lib/db'
+  1 | import { ProductCard } from "./product-card"
+> 2 | import { query } from "@/lib/db"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface Product {
+  5 |   id: number
+
+Import map: aliased to relative './lib/db' inside of [project]/
+
+Import trace:
+  Server Component:
+    ./components/product-grid.tsx
+    ./app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:15:01.645] Server  LOG      ✓ Compiled in 1090ms
+[00:15:03.872] Server  ERROR   C:\Users\CODEWITHFIIFI\sonicsbag.com\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:15:03.963] Server  ERROR    ⨯ Error: Could not find the module "[project]/node_modules/next/dist/esm/next-devtools/userspace/app/segment-explorer-node.js#SegmentViewNode" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+[00:15:04.051] Server  ERROR   C:\Users\CODEWITHFIIFI\sonicsbag.com\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:15:04.105] Server  ERROR    ⨯ Error: Could not find the module "[project]/node_modules/next/dist/esm/client/components/layout-router.js#default" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+[00:15:04.163] Server  ERROR   C:\Users\CODEWITHFIIFI\sonicsbag.com\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:15:04.236] Server  ERROR    ⨯ Error: Could not find the module "[project]/node_modules/next/dist/esm/client/components/render-from-template-context.js#default" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+[00:15:04.278] Server  ERROR   C:\Users\CODEWITHFIIFI\sonicsbag.com\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:15:04.296] Server  ERROR    ⨯ Error: Could not find the module "[project]/components/cart-provider.tsx#CartProvider" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+[00:15:04.377] Server  ERROR   C:\Users\CODEWITHFIIFI\sonicsbag.com\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:15:04.425] Server  ERROR    ⨯ Error: Could not find the module "[project]/components/shipping-ticker.tsx#ShippingTicker" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+[00:15:04.460] Server  ERROR   C:\Users\CODEWITHFIIFI\sonicsbag.com\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:15:04.509] Server  ERROR    ⨯ Error: Could not find the module "[project]/node_modules/next/dist/esm/client/components/layout-router.js#default" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+[00:15:04.525] Server  ERROR   C:\Users\CODEWITHFIIFI\sonicsbag.com\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:15:04.555] Server  ERROR    ⨯ Error: Could not find the module "[project]/node_modules/next/dist/esm/client/components/render-from-template-context.js#default" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+[00:15:04.613] Server  ERROR   C:\Users\CODEWITHFIIFI\sonicsbag.com\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:15:04.625] Server  ERROR    ⨯ Error: Could not find the module "[project]/node_modules/next/dist/esm/next-devtools/userspace/app/segment-explorer-node.js#SegmentViewNode" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+[00:15:04.636] Server  ERROR   C:\Users\CODEWITHFIIFI\sonicsbag.com\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:15:04.730] Server  ERROR    ⨯ Error: Could not find the module "[project]/node_modules/next/dist/esm/next-devtools/userspace/app/segment-explorer-node.js#SegmentViewNode" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+[00:15:04.789] Server  ERROR   C:\Users\CODEWITHFIIFI\sonicsbag.com\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:15:04.811] Server  ERROR    ⨯ Error: Could not find the module "[project]/node_modules/next/dist/esm/next-devtools/userspace/app/segment-explorer-node.js#SegmentViewNode" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+[00:15:04.841] Server  ERROR   C:\Users\CODEWITHFIIFI\sonicsbag.com\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:15:04.857] Server  ERROR    ⨯ Error: Could not find the module "[project]/components/ui/toaster.tsx#Toaster" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+[00:15:04.884] Server  ERROR   C:\Users\CODEWITHFIIFI\sonicsbag.com\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:15:04.903] Server  ERROR    ⨯ Error: Could not find the module "[project]/node_modules/next/dist/esm/next-devtools/userspace/app/segment-explorer-node.js#SegmentViewNode" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+[00:15:04.929] Server  ERROR   C:\Users\CODEWITHFIIFI\sonicsbag.com\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:15:04.935] Server  ERROR    ⨯ Error: Could not find the module "[project]/components/header.tsx#Header" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+[00:15:05.180] Server  ERROR   C:\Users\CODEWITHFIIFI\sonicsbag.com\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:15:05.353] Server  ERROR    ⨯ Error: Could not find the module "[project]/components/hero-banner.tsx#HeroBanner" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+[00:15:05.362] Server  ERROR   C:\Users\CODEWITHFIIFI\sonicsbag.com\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:15:05.373] Server  ERROR    ⨯ Error: Could not find the module "[project]/node_modules/next/dist/client/app-dir/link.js#" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+[00:15:05.385] Server  ERROR   C:\Users\CODEWITHFIIFI\sonicsbag.com\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:15:05.391] Server  ERROR    ⨯ Error: Could not find the module "[project]/node_modules/next/dist/client/app-dir/link.js#" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+[00:15:05.408] Server  ERROR   C:\Users\CODEWITHFIIFI\sonicsbag.com\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:15:05.423] Server  ERROR    ⨯ Error: Could not find the module "[project]/node_modules/next/dist/client/app-dir/link.js#" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+[00:15:05.503] Server  ERROR   C:\Users\CODEWITHFIIFI\sonicsbag.com\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:15:05.513] Server  ERROR    ⨯ Error: Could not find the module "[project]/node_modules/next/dist/client/app-dir/link.js#" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+[00:15:05.532] Server  ERROR   C:\Users\CODEWITHFIIFI\sonicsbag.com\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:15:05.539] Server  ERROR    ⨯ Error: Could not find the module "[project]/node_modules/next/dist/client/app-dir/link.js#" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+[00:15:05.558] Server  ERROR   C:\Users\CODEWITHFIIFI\sonicsbag.com\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:15:05.571] Server  ERROR    ⨯ Error: Could not find the module "[project]/node_modules/next/dist/client/app-dir/link.js#" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+[00:15:05.588] Server  ERROR   C:\Users\CODEWITHFIIFI\sonicsbag.com\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:15:05.601] Server  ERROR    ⨯ Error: Could not find the module "[project]/node_modules/next/dist/client/app-dir/link.js#" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+[00:15:05.629] Server  ERROR   C:\Users\CODEWITHFIIFI\sonicsbag.com\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:15:05.635] Server  ERROR    ⨯ Error: Could not find the module "[project]/node_modules/next/dist/client/app-dir/link.js#" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+[00:15:05.649] Server  ERROR   C:\Users\CODEWITHFIIFI\sonicsbag.com\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:15:05.660] Server  ERROR    ⨯ Error: Could not find the module "[project]/node_modules/next/dist/client/app-dir/link.js#" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+[00:15:05.670] Server  ERROR   C:\Users\CODEWITHFIIFI\sonicsbag.com\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:15:05.680] Server  ERROR    ⨯ Error: Could not find the module "[project]/node_modules/next/dist/esm/lib/framework/boundary-components.js#OutletBoundary" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+[00:15:05.687] Server  ERROR   C:\Users\CODEWITHFIIFI\sonicsbag.com\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:15:05.694] Server  ERROR    ⨯ Error: Could not find the module "[project]/node_modules/next/dist/esm/lib/framework/boundary-components.js#ViewportBoundary" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+[00:15:05.714] Server  ERROR   C:\Users\CODEWITHFIIFI\sonicsbag.com\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:15:05.728] Server  ERROR    ⨯ Error: Could not find the module "[project]/node_modules/next/dist/esm/lib/framework/boundary-components.js#MetadataBoundary" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+[00:15:05.768] Server  ERROR   C:\Users\CODEWITHFIIFI\sonicsbag.com\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:15:05.775] Server  ERROR    ⨯ Error: Could not find the module "[project]/node_modules/next/dist/esm/lib/metadata/generate/icon-mark.js#IconMark" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+[00:15:05.795] Server  LOG      ○ Compiling /_not-found/page ...
+[00:15:11.081] Browser ERROR   uncaughtError: Error: Could not find the module "[project]/node_modules/next/dist/esm/lib/framework/boundary-components.js#ViewportBoundary" in the React Client Manifest. This is probably a bug in the React Server Components bundler.
+[00:15:11.805] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:15:17.296] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:15:20.074] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/admin/login" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html
+                          lang="en"
+-                         suppresshydrationwarning="true"
+-                         data-qb-installed="true"
+                        >
+                          <body
+                            className="geist_da832ead-module__aN_Ytq__variable playfair_display_9fcf1615-module__bQiuu..."
+-                           data-new-gr-c-s-check-loaded="14.1266.0"
+-                           data-gr-ext-installed=""
+                          >
+                  ...
+

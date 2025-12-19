@@ -4,30 +4,24 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft, Calendar, User } from "lucide-react"
 import { notFound } from "next/navigation"
-import { query } from "@/lib/db"
-
-interface DbBlogPost {
-  id: number
-  title: string
-  content: string
-  image?: string | null
-  created_at: string
-}
+import { readBlogPosts } from "@/lib/data"
 
 export default async function BlogPostPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
-  const rows = await query<DbBlogPost>("SELECT * FROM blog_posts WHERE id = ?", [id])
-  const post = rows[0]
+  const posts = readBlogPosts()
+  const post = posts.find((p: any) => p.id === parseInt(id))
 
   if (!post) {
     notFound()
   }
 
-  const date = new Date(post.created_at).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  })
+  const date = post.date
+    ? post.date
+    : new Date(post.createdAt || Date.now()).toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      })
 
   return (
     <div className="min-h-screen">
@@ -45,7 +39,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ id: s
         <article className="max-w-4xl mx-auto">
           {/* Header */}
           <div className="mb-8">
-            <div className="mb-4" />
+            <div className="mb-4">
+              <span className="px-3 py-1 bg-secondary text-sm font-medium rounded-full">
+                {post.category || "Blog"}
+              </span>
+            </div>
             <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-semibold mb-6 tracking-tight">
               {post.title}
             </h1>
@@ -56,7 +54,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ id: s
               </div>
               <div className="flex items-center gap-2">
                 <User className="h-4 w-4" />
-                <span>SONCIS Team</span>
+                <span>{post.author || "SONCIS Team"}</span>
               </div>
             </div>
           </div>
@@ -101,7 +99,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ id: s
               prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6
               prose-p:text-muted-foreground prose-p:leading-relaxed prose-p:mb-6
               prose-a:text-primary prose-a:no-underline hover:prose-a:underline"
-            dangerouslySetInnerHTML={{ __html: post.content }}
+            dangerouslySetInnerHTML={{ __html: post.content || "" }}
           />
 
           {/* CTA Section */}

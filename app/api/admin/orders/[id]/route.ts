@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
+import { readOrders, writeOrders } from "@/lib/data"
 import { cookies } from "next/headers"
-import { query } from "@/lib/db"
 
 // GET single order
 export async function GET(
@@ -15,8 +15,8 @@ export async function GET(
     }
 
     const { id } = await params
-    const orders = await query<any>("SELECT * FROM orders WHERE id = ?", [id])
-    const order = orders[0]
+    const orders = readOrders()
+    const order = orders.find((o: any) => o.id === id)
 
     if (!order) {
       return NextResponse.json({ error: "Order not found" }, { status: 404 })
@@ -42,22 +42,21 @@ export async function PUT(
 
     const { id } = await params
     const body = await request.json()
+    const orders = readOrders()
 
-    const {
-      status,
-    } = body
-
-    await query<any>(
-      "UPDATE orders SET status = ?, updated_at = NOW() WHERE id = ?",
-      [status, id]
-    )
-
-    const updated = await query<any>("SELECT * FROM orders WHERE id = ?", [id])
-    if (!updated[0]) {
+    const index = orders.findIndex((o: any) => o.id === id)
+    if (index === -1) {
       return NextResponse.json({ error: "Order not found" }, { status: 404 })
     }
 
-    return NextResponse.json(updated[0])
+    orders[index] = {
+      ...orders[index],
+      ...body,
+      updatedAt: new Date().toISOString(),
+    }
+
+    writeOrders(orders)
+    return NextResponse.json(orders[index])
   } catch (error) {
     return NextResponse.json({ error: "Failed to update order" }, { status: 500 })
   }

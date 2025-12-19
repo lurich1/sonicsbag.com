@@ -3,23 +3,13 @@ import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft, Calendar, User } from "lucide-react"
-import { query } from "@/lib/db"
-
-interface DbBlogPost {
-  id: number
-  title: string
-  content: string
-  image?: string | null
-  created_at: string
-}
+import { readBlogPosts } from "@/lib/data"
 
 export default async function BlogPage() {
-  const rows = await query<DbBlogPost>(
-    "SELECT id, title, content, image, created_at FROM blog_posts ORDER BY created_at DESC"
-  )
+  const posts = readBlogPosts()
 
-  const blogPosts = rows.map((post) => {
-    const plainText = post.content.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim()
+  const blogPosts = (Array.isArray(posts) ? posts : []).map((post: any) => {
+    const plainText = (post.content || "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim()
     const excerpt = plainText.length > 160 ? `${plainText.slice(0, 160)}...` : plainText
 
     return {
@@ -27,13 +17,13 @@ export default async function BlogPage() {
       title: post.title,
       excerpt,
       image: post.image || "/placeholder.svg",
-      author: "SONCIS Team",
-      date: new Date(post.created_at).toLocaleDateString("en-US", {
+      author: post.author || "SONCIS Team",
+      date: post.date || new Date(post.createdAt || Date.now()).toLocaleDateString("en-US", {
         year: "numeric",
         month: "long",
         day: "numeric",
       }),
-      category: "Blog",
+      category: post.category || "Blog",
     }
   })
 

@@ -4,29 +4,20 @@ import { notFound } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
-import { query } from "@/lib/db"
-
-interface DbProduct {
-  id: number
-  name: string
-  price: number
-  image?: string | null
-  category?: string | null
-  description?: string | null
-}
+import { readProducts } from "@/lib/data"
 
 export async function generateStaticParams() {
-  const products = await query<Pick<DbProduct, "id">>("SELECT id FROM products")
+  const products = readProducts()
 
-  return products.map((product) => ({
+  return products.map((product: any) => ({
     id: String(product.id),
   }))
 }
 
 export default async function ProductPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
-  const rows = await query<DbProduct>("SELECT * FROM products WHERE id = ?", [id])
-  const product = rows[0]
+  const products = readProducts()
+  const product = products.find((p: any) => p.id === id)
 
   if (!product) {
     notFound()
@@ -36,13 +27,13 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
     id: String(product.id),
     name: product.name,
     price: product.price,
-    images: [product.image || "/placeholder.svg"],
+    images: product.images && product.images.length > 0 ? product.images : [product.image || "/placeholder.svg"],
     category: product.category || "",
     description: product.description || "",
-    details: [] as string[],
-    sizes: ["One Size"],
-    colors: undefined,
-    hasCustomOptions: false,
+    details: product.details || [],
+    sizes: product.sizes || ["One Size"],
+    colors: product.colors,
+    hasCustomOptions: product.hasCustomOptions,
   }
 
   return (

@@ -1,20 +1,10 @@
 import { ProductCard } from "./product-card"
-import { query } from "@/lib/db"
-
-interface Product {
-  id: number
-  name: string
-  price: number
-  image?: string | null
-  category?: string | null
-}
+import { readProducts } from "@/lib/data"
 
 export async function ProductGrid() {
-  const products = await query<Product>(
-    "SELECT id, name, price, image, category FROM products ORDER BY created_at DESC"
-  )
+  const products = readProducts()
 
-  if (!products.length) {
+  if (!Array.isArray(products) || products.length === 0) {
     return (
       <div className="text-sm text-muted-foreground">
         No products available yet. Please check back soon.
@@ -24,14 +14,14 @@ export async function ProductGrid() {
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-      {products.map((product) => (
+      {products.map((product: any) => (
         <ProductCard
           key={product.id}
           product={{
             id: String(product.id),
             name: product.name,
             price: product.price,
-            image: product.image || "/placeholder.svg",
+            image: product.image || product.images?.[0] || "/placeholder.svg",
             category: product.category || "",
           }}
         />
