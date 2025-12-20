@@ -1,8 +1,32 @@
 import { ProductCard } from "./product-card"
-import { readProducts } from "@/lib/data"
+import { apiConfig } from "@/lib/api"
 
 export async function ProductGrid() {
-  const products = readProducts()
+  let products: any[] = []
+
+  try {
+    // Add timeout to prevent hanging if backend is not running
+    const controller = new AbortController()
+    const timeoutId = setTimeout(() => controller.abort(), 5000) // 5 second timeout
+
+    const response = await fetch(apiConfig.endpoints.products, {
+      cache: "no-store", // Always fetch fresh data
+      signal: controller.signal,
+    })
+    
+    clearTimeout(timeoutId)
+    
+    if (response.ok) {
+      products = await response.json()
+    }
+  } catch (error: any) {
+    // Silently handle connection errors (backend not running is expected during development)
+    if (error.name === 'AbortError' || error.code === 'ECONNREFUSED' || error.cause?.code === 'ECONNREFUSED') {
+      // Backend is not running, this is expected - just show empty state
+    } else {
+      console.error("Error fetching products:", error)
+    }
+  }
 
   if (!Array.isArray(products) || products.length === 0) {
     return (
@@ -21,7 +45,7 @@ export async function ProductGrid() {
             id: String(product.id),
             name: product.name,
             price: product.price,
-            image: product.image || product.images?.[0] || "/placeholder.svg",
+            image: product.imageUrl || "/placeholder.svg",
             category: product.category || "",
           }}
         />

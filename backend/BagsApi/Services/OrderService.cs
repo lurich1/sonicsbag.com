@@ -1,32 +1,45 @@
 using BagsApi.Models;
+using BagsApi.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace BagsApi.Services;
 
 public class OrderService : IOrderService
 {
-    private readonly List<Order> _orders = new();
-    private int _nextId = 1;
+    private readonly BagsDbContext _context;
 
-    public Task<List<Order>> GetAllAsync() =>
-        Task.FromResult(_orders.OrderByDescending(o => o.CreatedAt).ToList());
-
-    public Task<Order?> GetByIdAsync(int id) =>
-        Task.FromResult(_orders.FirstOrDefault(o => o.Id == id));
-
-    public Task<Order> CreateAsync(Order order)
+    public OrderService(BagsDbContext context)
     {
-        order.Id = _nextId++;
-        order.CreatedAt = DateTime.UtcNow;
-        _orders.Add(order);
-        return Task.FromResult(order);
+        _context = context;
     }
 
-    public Task<Order?> UpdateStatusAsync(int id, string status)
+    public async Task<List<Order>> GetAllAsync()
     {
-        var existing = _orders.FirstOrDefault(o => o.Id == id);
-        if (existing is null) return Task.FromResult<Order?>(null);
+        return await _context.Orders
+            .OrderByDescending(o => o.CreatedAt)
+            .ToListAsync();
+    }
+
+    public async Task<Order?> GetByIdAsync(int id)
+    {
+        return await _context.Orders.FindAsync(id);
+    }
+
+    public async Task<Order> CreateAsync(Order order)
+    {
+        order.CreatedAt = DateTime.UtcNow;
+        _context.Orders.Add(order);
+        await _context.SaveChangesAsync();
+        return order;
+    }
+
+    public async Task<Order?> UpdateStatusAsync(int id, string status)
+    {
+        var existing = await _context.Orders.FindAsync(id);
+        if (existing is null) return null;
 
         existing.Status = status;
-        return Task.FromResult<Order?>(existing);
+        await _context.SaveChangesAsync();
+        return existing;
     }
 }

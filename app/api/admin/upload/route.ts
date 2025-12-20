@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
-import fs from "fs"
-import path from "path"
 import { cookies } from "next/headers"
+import { apiConfig } from "@/lib/api"
 
 export async function POST(request: NextRequest) {
   try {
@@ -18,23 +17,22 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "No file uploaded" }, { status: 400 })
     }
 
-    const bytes = await file.arrayBuffer()
-    const buffer = Buffer.from(bytes)
+    // Forward the file to the backend API
+    const backendFormData = new FormData()
+    backendFormData.append("file", file)
 
-    const uploadsDir = path.join(process.cwd(), "public", "uploads")
-    if (!fs.existsSync(uploadsDir)) {
-      fs.mkdirSync(uploadsDir, { recursive: true })
+    const response = await fetch(apiConfig.endpoints.upload, {
+      method: "POST",
+      body: backendFormData,
+    })
+
+    if (!response.ok) {
+      const error = await response.json().catch(() => ({ error: "Failed to upload file" }))
+      return NextResponse.json(error, { status: response.status })
     }
 
-    const ext = path.extname(file.name) || ".jpg"
-    const fileName = `${Date.now()}-${Math.random().toString(36).slice(2)}${ext}`
-    const filePath = path.join(uploadsDir, fileName)
-
-    await fs.promises.writeFile(filePath, buffer)
-
-    const publicUrl = `/uploads/${fileName}`
-
-    return NextResponse.json({ url: publicUrl })
+    const result = await response.json()
+    return NextResponse.json(result)
   } catch (error) {
     console.error("Upload error:", error)
     return NextResponse.json({ error: "Failed to upload file" }, { status: 500 })

@@ -1,29 +1,39 @@
 using BagsApi.Models;
+using BagsApi.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace BagsApi.Services;
 
 public class ProductService : IProductService
 {
-    private readonly List<Product> _products = new();
-    private int _nextId = 1;
+    private readonly BagsDbContext _context;
 
-    public Task<List<Product>> GetAllAsync() =>
-        Task.FromResult(_products.ToList());
-
-    public Task<Product?> GetByIdAsync(int id) =>
-        Task.FromResult(_products.FirstOrDefault(p => p.Id == id));
-
-    public Task<Product> CreateAsync(Product product)
+    public ProductService(BagsDbContext context)
     {
-        product.Id = _nextId++;
-        _products.Add(product);
-        return Task.FromResult(product);
+        _context = context;
     }
 
-    public Task<Product?> UpdateAsync(int id, Product updated)
+    public async Task<List<Product>> GetAllAsync()
     {
-        var existing = _products.FirstOrDefault(p => p.Id == id);
-        if (existing is null) return Task.FromResult<Product?>(null);
+        return await _context.Products.ToListAsync();
+    }
+
+    public async Task<Product?> GetByIdAsync(int id)
+    {
+        return await _context.Products.FindAsync(id);
+    }
+
+    public async Task<Product> CreateAsync(Product product)
+    {
+        _context.Products.Add(product);
+        await _context.SaveChangesAsync();
+        return product;
+    }
+
+    public async Task<Product?> UpdateAsync(int id, Product updated)
+    {
+        var existing = await _context.Products.FindAsync(id);
+        if (existing is null) return null;
 
         existing.Name = updated.Name;
         existing.Price = updated.Price;
@@ -31,14 +41,17 @@ public class ProductService : IProductService
         existing.Category = updated.Category;
         existing.Description = updated.Description;
 
-        return Task.FromResult<Product?>(existing);
+        await _context.SaveChangesAsync();
+        return existing;
     }
 
-    public Task<bool> DeleteAsync(int id)
+    public async Task<bool> DeleteAsync(int id)
     {
-        var existing = _products.FirstOrDefault(p => p.Id == id);
-        if (existing is null) return Task.FromResult(false);
-        _products.Remove(existing);
-        return Task.FromResult(true);
+        var existing = await _context.Products.FindAsync(id);
+        if (existing is null) return false;
+
+        _context.Products.Remove(existing);
+        await _context.SaveChangesAsync();
+        return true;
     }
 }

@@ -1,44 +1,59 @@
 using BagsApi.Models;
+using BagsApi.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace BagsApi.Services;
 
 public class BlogService : IBlogService
 {
-    private readonly List<BlogPost> _posts = new();
-    private int _nextId = 1;
+    private readonly BagsDbContext _context;
 
-    public Task<List<BlogPost>> GetAllAsync() =>
-        Task.FromResult(_posts.OrderByDescending(p => p.CreatedAt).ToList());
-
-    public Task<BlogPost?> GetByIdAsync(int id) =>
-        Task.FromResult(_posts.FirstOrDefault(p => p.Id == id));
-
-    public Task<BlogPost> CreateAsync(BlogPost post)
+    public BlogService(BagsDbContext context)
     {
-        post.Id = _nextId++;
-        post.CreatedAt = DateTime.UtcNow;
-        _posts.Add(post);
-        return Task.FromResult(post);
+        _context = context;
     }
 
-    public Task<BlogPost?> UpdateAsync(int id, BlogPost updated)
+    public async Task<List<BlogPost>> GetAllAsync()
     {
-        var existing = _posts.FirstOrDefault(p => p.Id == id);
-        if (existing is null) return Task.FromResult<BlogPost?>(null);
+        return await _context.BlogPosts
+            .OrderByDescending(p => p.CreatedAt)
+            .ToListAsync();
+    }
+
+    public async Task<BlogPost?> GetByIdAsync(int id)
+    {
+        return await _context.BlogPosts.FindAsync(id);
+    }
+
+    public async Task<BlogPost> CreateAsync(BlogPost post)
+    {
+        post.CreatedAt = DateTime.UtcNow;
+        _context.BlogPosts.Add(post);
+        await _context.SaveChangesAsync();
+        return post;
+    }
+
+    public async Task<BlogPost?> UpdateAsync(int id, BlogPost updated)
+    {
+        var existing = await _context.BlogPosts.FindAsync(id);
+        if (existing is null) return null;
 
         existing.Title = updated.Title;
         existing.Content = updated.Content;
         existing.ImageUrl = updated.ImageUrl;
         existing.Category = updated.Category;
 
-        return Task.FromResult<BlogPost?>(existing);
+        await _context.SaveChangesAsync();
+        return existing;
     }
 
-    public Task<bool> DeleteAsync(int id)
+    public async Task<bool> DeleteAsync(int id)
     {
-        var existing = _posts.FirstOrDefault(p => p.Id == id);
-        if (existing is null) return Task.FromResult(false);
-        _posts.Remove(existing);
-        return Task.FromResult(true);
+        var existing = await _context.BlogPosts.FindAsync(id);
+        if (existing is null) return false;
+
+        _context.BlogPosts.Remove(existing);
+        await _context.SaveChangesAsync();
+        return true;
     }
 }

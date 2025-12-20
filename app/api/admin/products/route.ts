@@ -1,21 +1,23 @@
 import { NextRequest, NextResponse } from "next/server"
-import { readProducts, writeProducts } from "@/lib/data"
 import { cookies } from "next/headers"
+import { apiConfig } from "@/lib/api"
 
-// GET all products
+// GET all products - proxy to backend
 export async function GET() {
   try {
-    const products = readProducts()
-    // Always return an array, even if empty
+    const response = await fetch(apiConfig.endpoints.products)
+    if (!response.ok) {
+      return NextResponse.json([], { status: response.status })
+    }
+    const products = await response.json()
     return NextResponse.json(Array.isArray(products) ? products : [])
   } catch (error) {
-    console.error("Error fetching products:", error)
-    // Return empty array instead of error to prevent crashes
+    console.error("Error fetching products from backend:", error)
     return NextResponse.json([])
   }
 }
 
-// POST create new product
+// POST create new product - proxy to backend with auth
 export async function POST(request: NextRequest) {
   try {
     const cookieStore = await cookies()
@@ -25,20 +27,48 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json()
-    const products = readProducts()
-
-    const newProduct = {
-      id: Date.now().toString(),
-      ...body,
-      createdAt: new Date().toISOString(),
+    
+    // Map frontend product format to backend format
+    const backendProduct = {
+      name: body.name,
+      price: body.price,
+      imageUrl: body.image || body.images?.[0] || null,
+      category: body.category || null,
+      description: body.description || null,
     }
 
-    products.push(newProduct)
-    writeProducts(products)
+    const response = await fetch(apiConfig.endpoints.products, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(backendProduct),
+    })
 
-    return NextResponse.json(newProduct, { status: 201 })
+    if (!response.ok) {
+      const error = await response.json().catch(() => ({ error: "Failed to create product" }))
+      return NextResponse.json(error, { status: response.status })
+    }
+
+    const createdProduct = await response.json()
+    
+    // Map backend format to frontend format
+    const frontendProduct = {
+      id: String(createdProduct.id),
+      name: createdProduct.name,
+      price: createdProduct.price,
+      image: createdProduct.imageUrl,
+      images: createdProduct.imageUrl ? [createdProduct.imageUrl] : [],
+      category: createdProduct.category || "",
+      description: createdProduct.description || "",
+      details: [],
+      sizes: [],
+    }
+
+    return NextResponse.json(frontendProduct, { status: 201 })
   } catch (error) {
+    console.error("Error creating product:", error)
     return NextResponse.json({ error: "Failed to create product" }, { status: 500 })
   }
 }
-
