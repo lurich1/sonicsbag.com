@@ -59,11 +59,22 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
     notFound()
   }
 
+  // Helper function to fix localhost URLs to production URL
+  const fixImageUrl = (url: string | null | undefined): string => {
+    if (!url) return "/placeholder.svg"
+    // Replace localhost URLs with production URL
+    const productionUrl = apiConfig.baseUrl
+    if (url.includes("localhost")) {
+      return url.replace(/https?:\/\/localhost:\d+/, productionUrl)
+    }
+    return url
+  }
+
   const mappedProduct = {
     id: String(product.id),
     name: product.name,
     price: product.price,
-    images: product.imageUrl ? [product.imageUrl] : ["/placeholder.svg"],
+    images: product.imageUrl ? [fixImageUrl(product.imageUrl)] : ["/placeholder.svg"],
     category: product.category || "",
     description: product.description || "",
     details: [],

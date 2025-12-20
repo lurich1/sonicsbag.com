@@ -23,6 +23,7 @@ export function ProductCard({ product }: { product: Product }) {
   const { toast } = useToast()
   const [isAdding, setIsAdding] = useState(false)
   const [showCartAnimation, setShowCartAnimation] = useState(false)
+  const [imageError, setImageError] = useState(false)
 
   const handleQuickAdd = (e: React.MouseEvent) => {
     e.preventDefault()
@@ -54,12 +55,20 @@ export function ProductCard({ product }: { product: Product }) {
     <div className="group relative">
       <Link href={`/product/${product.id}`}>
         <div className="relative aspect-[3/4] overflow-hidden bg-secondary mb-4">
-          <Image
-            src={product.image || "/placeholder.svg"}
-            alt={product.name}
-            fill
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
-          />
+          {!imageError && product.image && product.image !== "/placeholder.svg" ? (
+            <Image
+              src={product.image}
+              alt={product.name}
+              fill
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              onError={() => setImageError(true)}
+              unoptimized
+            />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center bg-muted">
+              <span className="text-muted-foreground text-sm px-2 text-center">{product.name}</span>
+            </div>
+          )}
           <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors duration-300" />
 
           {showCartAnimation && (

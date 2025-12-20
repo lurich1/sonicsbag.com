@@ -36,6 +36,17 @@ export async function ProductGrid() {
     )
   }
 
+  // Helper function to fix localhost URLs to production URL
+  const fixImageUrl = (url: string | null | undefined): string => {
+    if (!url) return "/placeholder.svg"
+    // Replace localhost URLs with production URL
+    const productionUrl = apiConfig.baseUrl
+    if (url.includes("localhost")) {
+      return url.replace(/https?:\/\/localhost:\d+/, productionUrl)
+    }
+    return url
+  }
+
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
       {products.map((product: any) => (
@@ -45,7 +56,7 @@ export async function ProductGrid() {
             id: String(product.id),
             name: product.name,
             price: product.price,
-            image: product.imageUrl || "/placeholder.svg",
+            image: fixImageUrl(product.imageUrl),
             category: product.category || "",
           }}
         />
