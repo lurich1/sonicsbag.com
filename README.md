@@ -51,6 +51,10 @@ cp .env.example .env.local
 
 4. Add your environment variables to `.env.local`:
 ```env
+# Backend API URL (REQUIRED for production)
+NEXT_PUBLIC_API_BASE_URL=https://sonicsbag.poultrycore.com
+# For local development, use: http://localhost:5000
+
 # Admin Dashboard Credentials
 ADMIN_EMAIL=your-soncis@gmail.com
 ADMIN_PASSWORD=admin123soncis
@@ -78,6 +82,11 @@ pnpm dev
 
 Create a `.env.local` file in the root directory with the following variables:
 
+### Backend API (REQUIRED)
+- `NEXT_PUBLIC_API_BASE_URL`: Backend API URL
+  - Production: `https://sonicsbag.poultrycore.com`
+  - Local: `http://localhost:5000`
+
 ### Admin Dashboard
 - `ADMIN_EMAIL`: Email address for admin login (default: `admin@soncis.com`)
 - `ADMIN_PASSWORD`: Password for admin login (default: `admin123`)
@@ -87,7 +96,10 @@ Create a `.env.local` file in the root directory with the following variables:
 - `PAYSTACK_PUBLIC_KEY`: Your Paystack public key (server-side)
 - `NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY`: Your Paystack public key (client-side)
 
-**Note:** For production, use live keys instead of test keys. Make sure to set these environment variables in your deployment platform (Vercel, etc.).
+**Note:** 
+- For production, use live keys instead of test keys
+- **IMPORTANT:** Set `NEXT_PUBLIC_API_BASE_URL` in Vercel environment variables for production deployment
+- Make sure to set all environment variables in your deployment platform (Vercel, etc.)
 
 ## Project Structure
 

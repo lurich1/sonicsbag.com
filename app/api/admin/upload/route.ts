@@ -10,31 +10,52 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
     }
 
-    const formData = await request.formData()
-    const file = formData.get("file") as File | null
-
-    if (!file) {
-      return NextResponse.json({ error: "No file uploaded" }, { status: 400 })
+    // Get the content type from the original request (includes boundary)
+    const contentType = request.headers.get("content-type")
+    if (!contentType || !contentType.includes("multipart/form-data")) {
+      return NextResponse.json({ error: "Invalid content type" }, { status: 400 })
     }
 
-    // Forward the file to the backend API
-    const backendFormData = new FormData()
-    backendFormData.append("file", file)
+    // Check if backend URL is configured
+    const backendUrl = apiConfig.endpoints.upload
+    if (!backendUrl || backendUrl.includes("localhost")) {
+      console.error("Backend API URL not configured. NEXT_PUBLIC_API_BASE_URL:", process.env.NEXT_PUBLIC_API_BASE_URL)
+      return NextResponse.json({ 
+        error: "Backend API not configured. Please set NEXT_PUBLIC_API_BASE_URL environment variable.",
+        details: "Expected: https://sonicsbag.poultrycore.com"
+      }, { status: 500 })
+    }
 
-    const response = await fetch(apiConfig.endpoints.upload, {
+    // Forward the request body directly to the backend
+    const body = await request.arrayBuffer()
+
+    const response = await fetch(backendUrl, {
       method: "POST",
-      body: backendFormData,
+      headers: {
+        "Content-Type": contentType,
+      },
+      body: body,
     })
 
     if (!response.ok) {
-      const error = await response.json().catch(() => ({ error: "Failed to upload file" }))
+      const errorText = await response.text()
+      let error
+      try {
+        error = JSON.parse(errorText)
+      } catch {
+        error = { error: errorText || "Failed to upload file" }
+      }
+      console.error("Backend upload error:", error)
       return NextResponse.json(error, { status: response.status })
     }
 
     const result = await response.json()
     return NextResponse.json(result)
-  } catch (error) {
+  } catch (error: any) {
     console.error("Upload error:", error)
-    return NextResponse.json({ error: "Failed to upload file" }, { status: 500 })
+    return NextResponse.json({ 
+      error: "Failed to upload file", 
+      message: error.message 
+    }, { status: 500 })
   }
 }
