@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from "react"
-import Image from "next/image"
 import { Button } from "./ui/button"
 import { useCart } from "./cart-provider"
 import { useToast } from "@/hooks/use-toast"
@@ -109,13 +108,17 @@ export function ProductDetail({ product }: { product: Product }) {
         {/* Product Images */}
         <div className="space-y-3 sm:space-y-4">
           <div className="relative aspect-[3/4] bg-secondary overflow-hidden">
-            <Image
-              src={product.images[selectedImage] || "/placeholder.svg"}
-              alt={product.name}
-              fill
-              className="object-cover"
-              priority
-            />
+            {product.images[selectedImage] && product.images[selectedImage] !== "/placeholder.svg" ? (
+              <img
+                src={product.images[selectedImage]}
+                alt={product.name}
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <div className="w-full h-full flex items-center justify-center bg-muted">
+                <span className="text-muted-foreground">{product.name}</span>
+              </div>
+            )}
             {showSuccess && (
               <div className="absolute inset-0 bg-foreground/90 flex items-center justify-center animate-in fade-in zoom-in-50 duration-300">
                 <div className="bg-background text-foreground rounded-full p-4 sm:p-6 animate-in zoom-in-50 duration-500 delay-150">
@@ -133,12 +136,17 @@ export function ProductDetail({ product }: { product: Product }) {
                   selectedImage === index ? "border-foreground" : "border-transparent"
                 }`}
               >
-                <Image
-                  src={image || "/placeholder.svg"}
-                  alt={`${product.name} ${index + 1}`}
-                  fill
-                  className="object-cover"
-                />
+                {image && image !== "/placeholder.svg" ? (
+                  <img
+                    src={image}
+                    alt={`${product.name} ${index + 1}`}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center bg-muted">
+                    <span className="text-xs text-muted-foreground">No image</span>
+                  </div>
+                )}
               </button>
             ))}
           </div>

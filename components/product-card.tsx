@@ -3,7 +3,6 @@
 import type React from "react"
 
 import Link from "next/link"
-import Image from "next/image"
 import { ShoppingBag } from "lucide-react"
 import { Button } from "./ui/button"
 import { useCart } from "./cart-provider"
@@ -54,18 +53,19 @@ export function ProductCard({ product }: { product: Product }) {
   return (
     <div className="group relative">
       <Link href={`/product/${product.id}`}>
-        <div className="relative aspect-[3/4] overflow-hidden bg-secondary mb-4">
+        <div className="relative aspect-[3/4] overflow-hidden bg-secondary mb-4 w-full">
           {!imageError && product.image && product.image !== "/placeholder.svg" ? (
-            <Image
+            <img
               src={product.image}
               alt={product.name}
-              fill
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
-              onError={() => setImageError(true)}
-              unoptimized
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              onError={(e) => {
+                console.error("Image failed to load:", product.image)
+                setImageError(true)
+              }}
             />
           ) : (
-            <div className="w-full h-full flex items-center justify-center bg-muted">
+            <div className="absolute inset-0 w-full h-full flex items-center justify-center bg-muted">
               <span className="text-muted-foreground text-sm px-2 text-center">{product.name}</span>
             </div>
           )}
