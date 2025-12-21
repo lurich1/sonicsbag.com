@@ -93,7 +93,20 @@ app.UseSwaggerUI();
 app.UseHttpsRedirection();
 
 // Enable static files for uploaded images (serves files from wwwroot/uploads)
-app.UseStaticFiles();
+// Configure static files with explicit options to ensure proper serving
+var staticFilesOptions = new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(
+        Path.Combine(app.Environment.ContentRootPath, "wwwroot")),
+    RequestPath = "", // Serve files from root (e.g., /uploads/file.jpg)
+    OnPrepareResponse = ctx =>
+    {
+        // Add CORS headers to static files
+        ctx.Context.Response.Headers.Append("Access-Control-Allow-Origin", "*");
+        ctx.Context.Response.Headers.Append("Cache-Control", "public,max-age=31536000");
+    }
+};
+app.UseStaticFiles(staticFilesOptions);
 
 app.UseCors("AllowFrontend");
 
@@ -101,6 +114,9 @@ app.UseAuthorization();
 
 // Simple root endpoint so / returns 200 instead of 404
 app.MapGet("/", () => Results.Ok("BagsApi is running"));
+
+// Health check endpoint
+app.MapGet("/health", () => Results.Ok(new { status = "healthy", timestamp = DateTime.UtcNow }));
 
 app.MapControllers();
 
