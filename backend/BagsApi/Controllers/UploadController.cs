@@ -55,10 +55,22 @@ public class UploadController : ControllerBase
             var fileName = $"{DateTime.UtcNow:yyyyMMddHHmmss}-{Guid.NewGuid():N}{fileExtension}";
             var filePath = Path.Combine(uploadsFolder, fileName);
 
+            // Log the actual path for debugging
+            Console.WriteLine($"[Upload] WebRootPath: {_environment.WebRootPath}");
+            Console.WriteLine($"[Upload] ContentRootPath: {_environment.ContentRootPath}");
+            Console.WriteLine($"[Upload] Saving to: {filePath}");
+            Console.WriteLine($"[Upload] File exists after save: {File.Exists(filePath)}");
+
             // Save file
             using (var stream = new FileStream(filePath, FileMode.Create))
             {
                 await file.CopyToAsync(stream);
+            }
+            
+            // Verify file was saved
+            if (!File.Exists(filePath))
+            {
+                return StatusCode(500, new { error = "File was not saved successfully", path = filePath });
             }
 
             // Return public URL
