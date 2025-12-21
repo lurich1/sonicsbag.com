@@ -20,6 +20,12 @@ New-Item -ItemType Directory -Path $deploymentPath -Force | Out-Null
 Write-Host "Copying published files..." -ForegroundColor Yellow
 Copy-Item "$publishPath\*" -Destination $deploymentPath -Recurse -Force
 
+# Ensure wwwroot folder exists (it should be included, but double-check)
+if (-not (Test-Path "$deploymentPath\wwwroot\uploads")) {
+    Write-Host "Creating wwwroot/uploads folder..." -ForegroundColor Yellow
+    New-Item -ItemType Directory -Path "$deploymentPath\wwwroot\uploads" -Force | Out-Null
+}
+
 # Copy appsettings.Production.json as appsettings.json
 Write-Host "Copying production configuration..." -ForegroundColor Yellow
 Copy-Item ".\appsettings.Production.json" -Destination "$deploymentPath\appsettings.json" -Force
