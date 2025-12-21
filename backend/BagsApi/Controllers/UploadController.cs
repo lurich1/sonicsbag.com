@@ -59,7 +59,6 @@ public class UploadController : ControllerBase
             Console.WriteLine($"[Upload] WebRootPath: {_environment.WebRootPath}");
             Console.WriteLine($"[Upload] ContentRootPath: {_environment.ContentRootPath}");
             Console.WriteLine($"[Upload] Saving to: {filePath}");
-            Console.WriteLine($"[Upload] File exists after save: {File.Exists(filePath)}");
 
             // Save file
             using (var stream = new FileStream(filePath, FileMode.Create))
@@ -67,11 +66,14 @@ public class UploadController : ControllerBase
                 await file.CopyToAsync(stream);
             }
             
-            // Verify file was saved
-            if (!File.Exists(filePath))
+            // Verify file was saved (use System.IO.File to avoid conflict with ControllerBase.File)
+            if (!System.IO.File.Exists(filePath))
             {
                 return StatusCode(500, new { error = "File was not saved successfully", path = filePath });
             }
+            
+            Console.WriteLine($"[Upload] File saved successfully: {filePath}");
+            Console.WriteLine($"[Upload] File exists: {System.IO.File.Exists(filePath)}");
 
             // Return public URL
             var baseUrl = _configuration["BaseUrl"];
