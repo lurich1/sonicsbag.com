@@ -94,10 +94,11 @@ app.UseHttpsRedirection();
 
 // Enable static files for uploaded images (serves files from wwwroot/uploads)
 // Configure static files with explicit options to ensure proper serving
+// Use WebRootPath if available, otherwise fall back to ContentRootPath/wwwroot
+var wwwrootPath = app.Environment.WebRootPath ?? Path.Combine(app.Environment.ContentRootPath, "wwwroot");
 var staticFilesOptions = new StaticFileOptions
 {
-    FileProvider = new PhysicalFileProvider(
-        Path.Combine(app.Environment.ContentRootPath, "wwwroot")),
+    FileProvider = new PhysicalFileProvider(wwwrootPath),
     RequestPath = "", // Serve files from root (e.g., /uploads/file.jpg)
     OnPrepareResponse = ctx =>
     {
