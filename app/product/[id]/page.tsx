@@ -30,11 +30,12 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
   const { id } = await params
   
   let product: any = null
+  let errorMessage: string | null = null
   
   try {
     // Add timeout to prevent hanging if backend is not running
     const controller = new AbortController()
-    const timeoutId = setTimeout(() => controller.abort(), 5000) // 5 second timeout
+    const timeoutId = setTimeout(() => controller.abort(), 10000) // 10 second timeout
 
     const response = await fetch(apiConfig.endpoints.product(id), {
       cache: "no-store", // Always fetch fresh data
@@ -44,18 +45,40 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
     clearTimeout(timeoutId)
     
     if (response.ok) {
-      product = await response.json()
+      try {
+        product = await response.json()
+      } catch (parseError) {
+        console.error("Error parsing product JSON:", parseError)
+        errorMessage = "Invalid response from server"
+      }
+    } else {
+      // Handle non-OK responses
+      if (response.status === 404) {
+        // Product not found - will show 404 page
+        notFound()
+      } else {
+        const errorText = await response.text().catch(() => "Unknown error")
+        console.error(`Error fetching product ${id}:`, response.status, errorText)
+        errorMessage = `Server error: ${response.status}`
+      }
     }
   } catch (error: any) {
     // Handle connection errors gracefully
-    if (error.name === 'AbortError' || error.code === 'ECONNREFUSED' || error.cause?.code === 'ECONNREFUSED') {
-      // Backend is not running
+    if (error.name === 'AbortError') {
+      errorMessage = "Request timed out"
+      console.error("Product fetch timed out for ID:", id)
+    } else if (error.code === 'ECONNREFUSED' || error.cause?.code === 'ECONNREFUSED') {
+      errorMessage = "Cannot connect to server"
+      console.error("Cannot connect to backend API for product:", id)
     } else {
+      errorMessage = "Failed to fetch product"
       console.error("Error fetching product:", error)
     }
   }
 
   if (!product) {
+    // If we have an error message and it's not a 404, we could show an error page
+    // But for now, just show 404 for any missing product
     notFound()
   }
 
