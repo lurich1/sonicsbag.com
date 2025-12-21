@@ -1,18 +1,51 @@
 import { Header } from "@/components/header"
-import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft, Calendar, User } from "lucide-react"
 import { notFound } from "next/navigation"
-import { readBlogPosts } from "@/lib/data"
+import { apiConfig } from "@/lib/api"
 
 export default async function BlogPostPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
-  const posts = readBlogPosts()
-  const post = posts.find((p: any) => p.id === parseInt(id))
+  let post: any = null
+  
+  try {
+    // Fetch blog post from backend API
+    const controller = new AbortController()
+    const timeoutId = setTimeout(() => controller.abort(), 5000) // 5 second timeout
+
+    const response = await fetch(apiConfig.endpoints.blogPost(id), {
+      cache: "no-store", // Always fetch fresh data
+      signal: controller.signal,
+    })
+    
+    clearTimeout(timeoutId)
+    
+    if (response.ok) {
+      post = await response.json()
+    }
+  } catch (error: any) {
+    // Handle connection errors gracefully
+    if (error.name === 'AbortError' || error.code === 'ECONNREFUSED' || error.cause?.code === 'ECONNREFUSED') {
+      // Backend is not running
+    } else {
+      console.error("Error fetching blog post:", error)
+    }
+  }
 
   if (!post) {
     notFound()
+  }
+
+  // Helper function to fix localhost URLs to production URL
+  const fixImageUrl = (url: string | null | undefined): string => {
+    if (!url) return "/placeholder.svg"
+    // Replace localhost URLs with production URL
+    const productionUrl = apiConfig.baseUrl
+    if (url.includes("localhost")) {
+      return url.replace(/https?:\/\/localhost:\d+/, productionUrl)
+    }
+    return url
   }
 
   const date = post.date
@@ -22,6 +55,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ id: s
         month: "long",
         day: "numeric",
       })
+  
+  const imageUrl = fixImageUrl(post.imageUrl || post.image)
 
   return (
     <div className="min-h-screen">
@@ -61,13 +96,17 @@ export default async function BlogPostPage({ params }: { params: Promise<{ id: s
 
           {/* Featured Image */}
           <div className="relative aspect-[16/9] overflow-hidden bg-secondary mb-12 rounded-lg">
-            <Image
-              src={post.image || "/placeholder.svg"}
-              alt={post.title}
-              fill
-              className="object-cover"
-              priority
-            />
+            {imageUrl && imageUrl !== "/placeholder.svg" ? (
+              <img
+                src={imageUrl}
+                alt={post.title}
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <div className="w-full h-full flex items-center justify-center bg-muted">
+                <span className="text-muted-foreground">{post.title}</span>
+              </div>
+            )}
           </div>
 
           {/* Additional Images for Blog Post 5 */}
@@ -99,7 +138,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ id: s
               prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6
               prose-p:text-muted-foreground prose-p:leading-relaxed prose-p:mb-6
               prose-a:text-primary prose-a:no-underline hover:prose-a:underline"
-            dangerouslySetInnerHTML={{ __html: post.content || "" }}
+            dangerouslySetInnerHTML={{ __html: post.content || post.Content || "" }}
           />
 
           {/* CTA Section */}

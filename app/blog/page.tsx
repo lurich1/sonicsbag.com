@@ -3,26 +3,68 @@ import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft, Calendar, User } from "lucide-react"
-import { readBlogPosts } from "@/lib/data"
+import { apiConfig } from "@/lib/api"
 
 export default async function BlogPage() {
-  const posts = readBlogPosts()
+  let posts: any[] = []
+  
+  try {
+    // Fetch blog posts from backend API
+    const controller = new AbortController()
+    const timeoutId = setTimeout(() => controller.abort(), 5000) // 5 second timeout
+
+    const response = await fetch(apiConfig.endpoints.blog, {
+      cache: "no-store", // Always fetch fresh data
+      signal: controller.signal,
+    })
+    
+    clearTimeout(timeoutId)
+    
+    if (response.ok) {
+      posts = await response.json()
+    }
+  } catch (error: any) {
+    // Silently handle connection errors (backend not running is expected during development)
+    if (error.name === 'AbortError' || error.code === 'ECONNREFUSED' || error.cause?.code === 'ECONNREFUSED') {
+      // Backend is not running, this is expected - just show empty state
+    } else {
+      console.error("Error fetching blog posts:", error)
+    }
+  }
+
+  // Helper function to fix localhost URLs to production URL
+  const fixImageUrl = (url: string | null | undefined): string => {
+    if (!url) return "/placeholder.svg"
+    // Replace localhost URLs with production URL
+    const productionUrl = apiConfig.baseUrl
+    if (url.includes("localhost")) {
+      return url.replace(/https?:\/\/localhost:\d+/, productionUrl)
+    }
+    return url
+  }
 
   const blogPosts = (Array.isArray(posts) ? posts : []).map((post: any) => {
     const plainText = (post.content || "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim()
     const excerpt = plainText.length > 160 ? `${plainText.slice(0, 160)}...` : plainText
 
+    // Format date from CreatedAt (backend uses CreatedAt, frontend might use date)
+    const postDate = post.date || (post.createdAt ? new Date(post.createdAt).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    }) : new Date().toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    }))
+
     return {
-      id: post.id,
+      id: String(post.id),
       title: post.title,
       excerpt,
-      image: post.image || "/placeholder.svg",
+      image: fixImageUrl(post.imageUrl || post.image),
       author: post.author || "SONCIS Team",
-      date: post.date || new Date(post.createdAt || Date.now()).toLocaleDateString("en-US", {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-      }),
+      date: postDate,
       category: post.category || "Blog",
     }
   })
@@ -58,12 +100,17 @@ export default async function BlogPage() {
               <article key={post.id} className="group">
                 <Link href={`/blog/${post.id}`} className="block">
                   <div className="relative aspect-[4/3] overflow-hidden bg-secondary mb-4 rounded-lg">
-                    <Image
-                      src={post.image || "/placeholder.svg"}
-                      alt={post.title}
-                      fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
+                    {post.image && post.image !== "/placeholder.svg" ? (
+                      <img
+                        src={post.image}
+                        alt={post.title}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center bg-muted">
+                        <span className="text-muted-foreground text-sm">{post.title}</span>
+                      </div>
+                    )}
                     <div className="absolute top-4 left-4">
                       <span className="px-3 py-1 bg-background/90 backdrop-blur text-xs font-medium rounded-full">
                         {post.category}
