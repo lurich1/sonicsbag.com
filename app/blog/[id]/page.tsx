@@ -110,22 +110,20 @@ export default async function BlogPostPage({ params }: { params: Promise<{ id: s
           </div>
 
           {/* Additional Images for Blog Post 5 */}
-          {post.id === 5 && (
+          {post.id === "5" && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
               <div className="relative aspect-[4/3] overflow-hidden bg-secondary rounded-lg">
-                <Image
+                <img
                   src="/blog2.png"
                   alt="SONCIS Bag Reward Program"
-                  fill
-                  className="object-cover"
+                  className="w-full h-full object-cover"
                 />
               </div>
               <div className="relative aspect-[4/3] overflow-hidden bg-secondary rounded-lg">
-                <Image
+                <img
                   src="/blog1.png"
                   alt="SONCIS Bag Reward Program"
-                  fill
-                  className="object-cover"
+                  className="w-full h-full object-cover"
                 />
               </div>
             </div>
