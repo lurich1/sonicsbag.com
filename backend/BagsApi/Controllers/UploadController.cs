@@ -41,7 +41,11 @@ public class UploadController : ControllerBase
         try
         {
             // Create uploads directory if it doesn't exist
-            var uploadsFolder = Path.Combine(_environment.WebRootPath ?? _environment.ContentRootPath, "wwwroot", "uploads");
+            // WebRootPath already points to wwwroot folder, so just add "uploads"
+            var uploadsFolder = _environment.WebRootPath != null 
+                ? Path.Combine(_environment.WebRootPath, "uploads")
+                : Path.Combine(_environment.ContentRootPath, "wwwroot", "uploads");
+                
             if (!Directory.Exists(uploadsFolder))
             {
                 Directory.CreateDirectory(uploadsFolder);
