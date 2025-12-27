@@ -33,7 +33,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geist.variable} ${playfair.variable} font-sans antialiased`}>
+      <body className={`${geist.variable} ${playfair.variable} font-sans antialiased`} suppressHydrationWarning>
         <CartProvider>
           <ShippingTicker />
           {children}
