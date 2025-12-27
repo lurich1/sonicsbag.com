@@ -22,21 +22,39 @@ export default function ContactPage() {
     })
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // In a real app, this would send the data to your backend
-    console.log("Contact form submission:", formData)
-    setSubmitted(true)
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setSubmitted(false)
-      setFormData({
-        name: "",
-        email: "",
-        subject: "",
-        message: "",
+    
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
       })
-    }, 3000)
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to send message")
+      }
+
+      setSubmitted(true)
+      // Reset form after 5 seconds
+      setTimeout(() => {
+        setSubmitted(false)
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+        })
+      }, 5000)
+    } catch (error) {
+      console.error("Error sending message:", error)
+      alert("Failed to send message. Please try again or contact us directly at jquayson827@gmail.com")
+    }
   }
 
   return (
@@ -84,10 +102,10 @@ export default function ContactPage() {
                     <div>
                       <h3 className="font-medium mb-1">Phone</h3>
                       <a
-                        href="tel:+233533431086"
+                        href="tel:+233552702318"
                         className="text-sm text-muted-foreground hover:text-primary transition-colors"
                       >
-                        0533431086
+                        0552702318
                       </a>
                     </div>
                   </div>
@@ -99,12 +117,12 @@ export default function ContactPage() {
                     <div>
                       <h3 className="font-medium mb-1">WhatsApp</h3>
                       <a
-                        href="https://wa.me/233533431086"
+                        href="https://wa.me/233552702318"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-sm text-muted-foreground hover:text-primary transition-colors"
                       >
-                        Chat with us
+                        0552702318 - Chat with us
                       </a>
                     </div>
                   </div>
@@ -116,10 +134,10 @@ export default function ContactPage() {
                     <div>
                       <h3 className="font-medium mb-1">Email</h3>
                       <a
-                        href="mailto:contact@soncis.com"
+                        href="mailto:jquayson827@gmail.com"
                         className="text-sm text-muted-foreground hover:text-primary transition-colors"
                       >
-                        contact@soncis.com
+                        jquayson827@gmail.com
                       </a>
                     </div>
                   </div>
