@@ -5,6 +5,7 @@ import "./globals.css"
 import { CartProvider } from "@/components/cart-provider"
 import { Toaster } from "@/components/ui/toaster"
 import { ShippingTicker } from "@/components/shipping-ticker"
+import { WhatsAppFloat } from "@/components/whatsapp-float"
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" })
 const playfair = Playfair_Display({
@@ -37,6 +38,7 @@ export default function RootLayout({
         <CartProvider>
           <ShippingTicker />
           {children}
+          <WhatsAppFloat />
           <Toaster />
         </CartProvider>
       </body>
