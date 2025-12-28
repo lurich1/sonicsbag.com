@@ -1,13 +1,14 @@
 "use client"
 
-import { Truck, Package, Shield, Star } from "lucide-react"
+import { ShoppingBag, Hammer, Heart, Users, Sparkles } from "lucide-react"
 
 export function ShippingTicker() {
   const messages = [
-    { text: "FREE SHIPPING ON ORDERS OVER ₵3,000", icon: Truck },
-    { text: "30-DAY RETURNS ON SONICS BAGS", icon: Package },
-    { text: "PREMIUM SONICS BAG COLLECTION", icon: Star },
-    { text: "QUALITY GUARANTEED", icon: Shield },
+    { text: "CUSTOM MADE BAGS", icon: ShoppingBag },
+    { text: "IF IT NEEDS A BAG, WE MAKE IT", icon: Hammer },
+    { text: "EVERY PURCHASE SUPPORTS A CHILD'S EDUCATION", icon: Heart },
+    { text: "IMPACTING LIVES THROUGH BAG MAKING", icon: Users },
+    { text: "SONCIS IS MORE THAN A BAG BRAND", icon: Sparkles },
   ]
 
   return (
