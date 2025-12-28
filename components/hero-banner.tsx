@@ -7,9 +7,14 @@ import { Button } from "@/components/ui/button"
 
 const bannerImages = [
   "/banner-large-image2.jpg",
-  "/banner-large-image.jpg",
-  "/banner-large-image1.jpg",
-  "/banner-large-image3.jpg",
+  "/photo_2025-12-27_19-22-22.jpg",
+  "/photo_2025-12-27_19-22-28.jpg",
+  "/photo_2025-12-27_19-22-32.jpg",
+  "/photo_2025-12-27_19-22-42.jpg",
+  "/photo_2025-12-27_19-22-47.jpg",
+  "/photo_2025-12-27_19-22-54.jpg",
+  "/photo_2025-12-27_19-23-00.jpg",
+  "/photo_2025-12-27_19-23-09.jpg",
 ]
 
 export function HeroBanner() {

@@ -64,7 +64,7 @@ export default function ContactPage() {
       {/* Hero Section */}
       <section className="relative h-64 overflow-hidden">
         <Image
-          src="/banner-large-image1.jpg"
+          src="/banner-large-image2.jpg"
           alt="Contact SONCIS"
           fill
           className="object-cover"
