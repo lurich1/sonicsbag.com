@@ -22,7 +22,7 @@ export default function ReturnsPage() {
             <div>
               <h2 className="font-semibold text-xl mb-3">How to Return</h2>
               <ol className="list-decimal list-inside space-y-2 text-muted-foreground">
-                <li>Contact us at support@sonicsbag.com or through our contact page</li>
+                <li>Contact us at soncisworld@gmail.com or through our contact page</li>
                 <li>We'll provide you with a return authorization and shipping instructions</li>
                 <li>Package the item securely in its original packaging</li>
                 <li>Ship the item back to us</li>

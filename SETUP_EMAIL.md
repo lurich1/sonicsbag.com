@@ -1,6 +1,6 @@
 # How to Set Up Email Receiving for Contact Form
 
-Currently, the contact form is set up to send emails to **jquayson827@gmail.com** using Resend email service.
+Currently, the contact form is set up to send emails to **soncisworld@gmail.com** using Resend email service.
 
 ## Quick Setup (5 minutes)
 
@@ -45,7 +45,7 @@ If you prefer not to use Resend, you can use Gmail SMTP with Nodemailer:
 After setting up:
 1. Go to your contact page: `/contact`
 2. Fill out and submit the form
-3. Check your email inbox: **jquayson827@gmail.com**
+3. Check your email inbox: **soncisworld@gmail.com**
 4. You should receive the contact form submission
 
 ## Current Status

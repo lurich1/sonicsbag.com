@@ -53,7 +53,7 @@ export default function ContactPage() {
       }, 5000)
     } catch (error) {
       console.error("Error sending message:", error)
-      alert("Failed to send message. Please try again or contact us directly at jquayson827@gmail.com")
+      alert("Failed to send message. Please try again or contact us directly at soncisworld@gmail.com")
     }
   }
 
@@ -91,7 +91,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h3 className="font-medium mb-1">Address</h3>
-                      <p className="text-sm text-muted-foreground">Takoradi, Ghana</p>
+                      <p className="text-sm text-muted-foreground">Tech Junction-Ayigya market</p>
                     </div>
                   </div>
 
@@ -134,10 +134,10 @@ export default function ContactPage() {
                     <div>
                       <h3 className="font-medium mb-1">Email</h3>
                       <a
-                        href="mailto:jquayson827@gmail.com"
+                        href="mailto:soncisworld@gmail.com"
                         className="text-sm text-muted-foreground hover:text-primary transition-colors"
                       >
-                        jquayson827@gmail.com
+                        soncisworld@gmail.com
                       </a>
                     </div>
                   </div>

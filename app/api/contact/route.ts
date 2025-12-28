@@ -15,7 +15,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Email configuration
-    const recipientEmail = "jquayson827@gmail.com"
+    const recipientEmail = "soncisworld@gmail.com"
     
     // Try to send email using Resend (if API key is configured)
     const resendApiKey = process.env.RESEND_API_KEY
