@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
 import { apiConfig } from "@/lib/api"
+import { Resend } from "resend"
 
 // POST create new order - proxy to backend
 export async function POST(request: NextRequest) {

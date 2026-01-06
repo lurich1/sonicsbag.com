@@ -29,27 +29,45 @@ export default function RepairPage() {
     })
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // In a real app, this would send the data to your backend
-    console.log("Repair request:", formData)
-    setSubmitted(true)
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setSubmitted(false)
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        bagBrand: "",
-        bagType: "",
-        issueDescription: "",
-        damageLocation: "",
-        urgency: "",
-        photos: "",
-        additionalNotes: "",
+    
+    try {
+      const response = await fetch("/api/repair", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
       })
-    }, 3000)
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to submit repair request")
+      }
+
+      setSubmitted(true)
+      // Reset form after 5 seconds
+      setTimeout(() => {
+        setSubmitted(false)
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          bagBrand: "",
+          bagType: "",
+          issueDescription: "",
+          damageLocation: "",
+          urgency: "",
+          photos: "",
+          additionalNotes: "",
+        })
+      }, 5000)
+    } catch (error) {
+      console.error("Error submitting repair request:", error)
+      alert("Failed to submit repair request. Please try again or contact us directly at soncisworld@gmail.com")
+    }
   }
 
   return (

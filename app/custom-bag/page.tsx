@@ -31,29 +31,47 @@ export default function CustomBagPage() {
     })
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // In a real app, this would send the data to your backend
-    console.log("Custom bag request:", formData)
-    setSubmitted(true)
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setSubmitted(false)
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        bagType: "",
-        dimensions: "",
-        color: "",
-        material: "",
-        specialFeatures: "",
-        quantity: "",
-        budget: "",
-        timeline: "",
-        additionalNotes: "",
+    
+    try {
+      const response = await fetch("/api/custom-bag", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
       })
-    }, 3000)
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to submit custom bag request")
+      }
+
+      setSubmitted(true)
+      // Reset form after 5 seconds
+      setTimeout(() => {
+        setSubmitted(false)
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          bagType: "",
+          dimensions: "",
+          color: "",
+          material: "",
+          specialFeatures: "",
+          quantity: "",
+          budget: "",
+          timeline: "",
+          additionalNotes: "",
+        })
+      }, 5000)
+    } catch (error) {
+      console.error("Error submitting custom bag request:", error)
+      alert("Failed to submit custom bag request. Please try again or contact us directly at soncisworld@gmail.com")
+    }
   }
 
   return (
