@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Package, FileText, ShoppingCart, TrendingUp, Database } from "lucide-react"
+import { Package, FileText, ShoppingCart, TrendingUp, Database, Wrench, ShoppingBag } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { toast } from "@/hooks/use-toast"
@@ -13,6 +13,8 @@ export default function AdminDashboard() {
     blogPosts: 0,
     orders: 0,
     totalRevenue: 0,
+    repairRequests: 0,
+    customBagRequests: 0,
   })
   const [isLoading, setIsLoading] = useState(true)
 
@@ -22,19 +24,30 @@ export default function AdminDashboard() {
 
   const fetchStats = async () => {
     try {
-      const [productsRes, blogRes, ordersRes] = await Promise.all([
+      const token = localStorage.getItem("adminToken")
+      const [productsRes, blogRes, ordersRes, repairRes, customBagRes] = await Promise.all([
         fetch("/api/admin/products").catch(() => ({ ok: false, json: async () => [] })),
         fetch("/api/admin/blog").catch(() => ({ ok: false, json: async () => [] })),
         fetch("/api/admin/orders").catch(() => ({ ok: false, json: async () => [] })),
+        fetch("/api/admin/repair-requests", {
+          headers: { Authorization: `Bearer ${token}` },
+        }).catch(() => ({ ok: false, json: async () => [] })),
+        fetch("/api/admin/custom-bag-requests", {
+          headers: { Authorization: `Bearer ${token}` },
+        }).catch(() => ({ ok: false, json: async () => [] })),
       ])
 
       const productsData = await productsRes.json()
       const blogPostsData = await blogRes.json()
       const ordersData = await ordersRes.json()
+      const repairData = await repairRes.json()
+      const customBagData = await customBagRes.json()
       
       const products = Array.isArray(productsData) ? productsData : []
       const blogPosts = Array.isArray(blogPostsData) ? blogPostsData : []
       const orders = Array.isArray(ordersData) ? ordersData : []
+      const repairRequests = Array.isArray(repairData) ? repairData : []
+      const customBagRequests = Array.isArray(customBagData) ? customBagData : []
 
       const totalRevenue = Array.isArray(orders) 
         ? orders.reduce((sum: number, order: any) => sum + (order.total || 0), 0)
@@ -45,6 +58,8 @@ export default function AdminDashboard() {
         blogPosts: blogPosts.length || 0,
         orders: orders.length || 0,
         totalRevenue,
+        repairRequests: repairRequests.length || 0,
+        customBagRequests: customBagRequests.length || 0,
       })
     } catch (error) {
       console.error("Error fetching stats:", error)
@@ -54,6 +69,8 @@ export default function AdminDashboard() {
         blogPosts: 0,
         orders: 0,
         totalRevenue: 0,
+        repairRequests: 0,
+        customBagRequests: 0,
       })
     } finally {
       setIsLoading(false)
@@ -159,6 +176,38 @@ export default function AdminDashboard() {
           <CardContent>
             <div className="text-2xl font-bold">₵{stats.totalRevenue.toLocaleString()}</div>
             <p className="text-xs text-muted-foreground">All time</p>
+          </CardContent>
+        </Card>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Repair Requests</CardTitle>
+            <Wrench className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{stats.repairRequests}</div>
+            <Link href="/admin/repair-requests">
+              <Button variant="link" className="p-0 h-auto">
+                View requests →
+              </Button>
+            </Link>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Custom Bag Requests</CardTitle>
+            <ShoppingBag className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{stats.customBagRequests}</div>
+            <Link href="/admin/custom-bag-requests">
+              <Button variant="link" className="p-0 h-auto">
+                View requests →
+              </Button>
+            </Link>
           </CardContent>
         </Card>
       </div>

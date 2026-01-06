@@ -11,7 +11,9 @@ import {
   ShoppingCart, 
   LogOut,
   Menu,
-  X
+  X,
+  Wrench,
+  ShoppingBag
 } from "lucide-react"
 import { toast } from "@/hooks/use-toast"
 
@@ -20,6 +22,8 @@ const navItems = [
   { href: "/admin/products", label: "Products", icon: Package },
   { href: "/admin/blog", label: "Blog Posts", icon: FileText },
   { href: "/admin/orders", label: "Orders", icon: ShoppingCart },
+  { href: "/admin/repair-requests", label: "Repair Requests", icon: Wrench },
+  { href: "/admin/custom-bag-requests", label: "Custom Bag Requests", icon: ShoppingBag },
 ]
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {

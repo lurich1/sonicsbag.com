@@ -12,6 +12,10 @@ export const apiConfig = {
     blog: `${API_BASE_URL}/api/blog`,
     blogPost: (id: number | string) => `${API_BASE_URL}/api/blog/${id}`,
     upload: `${API_BASE_URL}/api/upload`,
+    repairRequests: `${API_BASE_URL}/api/repairrequest`,
+    repairRequest: (id: number | string) => `${API_BASE_URL}/api/repairrequest/${id}`,
+    customBagRequests: `${API_BASE_URL}/api/custombagrequest`,
+    customBagRequest: (id: number | string) => `${API_BASE_URL}/api/custombagrequest/${id}`,
   },
 };
 
