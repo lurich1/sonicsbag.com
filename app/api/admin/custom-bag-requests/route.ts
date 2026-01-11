@@ -11,11 +11,8 @@ export async function GET() {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
     }
 
-    const response = await fetch(apiConfig.endpoints.customBagRequests, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
+    // Backend doesn't require auth for GET, but we check admin token for frontend security
+    const response = await fetch(apiConfig.endpoints.customBagRequests)
 
     if (!response.ok) {
       return NextResponse.json([], { status: response.status })

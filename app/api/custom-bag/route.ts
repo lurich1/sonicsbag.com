@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
 import { Resend } from "resend"
+import { apiConfig } from "@/lib/api"
 
 export async function POST(request: NextRequest) {
   try {
@@ -13,6 +14,59 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       )
     }
+
+    // Save to backend database (optional - continue even if it fails)
+    // Use Promise.race to prevent backend timeout from blocking email
+    const backendSavePromise = (async () => {
+      try {
+        const backendRequest = {
+          name,
+          email,
+          phone: phone || "",
+          bagType,
+          dimensions: dimensions || "",
+          color: color || "",
+          material: material || "",
+          specialFeatures: specialFeatures || "",
+          quantity: quantity || "",
+          budget: budget || "",
+          timeline: timeline || "",
+          additionalNotes: additionalNotes || "",
+          status: "pending",
+        }
+
+        const controller = new AbortController()
+        const timeoutId = setTimeout(() => controller.abort(), 5000) // 5 second timeout
+
+        const backendResponse = await fetch(apiConfig.endpoints.customBagRequests, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(backendRequest),
+          signal: controller.signal,
+        })
+
+        clearTimeout(timeoutId)
+
+        if (backendResponse.ok) {
+          const savedRequest = await backendResponse.json()
+          console.log("Custom bag request saved to backend:", savedRequest)
+          return savedRequest
+        } else {
+          const errorText = await backendResponse.text().catch(() => "Unknown error")
+          console.error("Failed to save custom bag request to backend:", backendResponse.status, errorText)
+        }
+      } catch (backendError: any) {
+        if (backendError.name !== 'AbortError') {
+          console.error("Error saving custom bag request to backend (continuing with email):", backendError?.message || backendError)
+        }
+      }
+      return null
+    })()
+
+    // Don't wait for backend save - proceed with email immediately
+    backendSavePromise.catch(() => {}) // Silently catch any unhandled errors
 
     const adminEmail = "soncisworld@gmail.com"
     const resendApiKey = process.env.RESEND_API_KEY

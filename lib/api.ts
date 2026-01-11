@@ -1,6 +1,6 @@
 // API Configuration and helper functions for backend integration
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:5000";
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "https://sonicsbag.poultrycore.com";
 
 export const apiConfig = {
   baseUrl: API_BASE_URL,
@@ -12,10 +12,10 @@ export const apiConfig = {
     blog: `${API_BASE_URL}/api/blog`,
     blogPost: (id: number | string) => `${API_BASE_URL}/api/blog/${id}`,
     upload: `${API_BASE_URL}/api/upload`,
-    repairRequests: `${API_BASE_URL}/api/repairrequest`,
-    repairRequest: (id: number | string) => `${API_BASE_URL}/api/repairrequest/${id}`,
-    customBagRequests: `${API_BASE_URL}/api/custombagrequest`,
-    customBagRequest: (id: number | string) => `${API_BASE_URL}/api/custombagrequest/${id}`,
+    repairRequests: `${API_BASE_URL}/api/RepairRequest`,
+    repairRequest: (id: number | string) => `${API_BASE_URL}/api/RepairRequest/${id}`,
+    customBagRequests: `${API_BASE_URL}/api/CustomBagRequest`,
+    customBagRequest: (id: number | string) => `${API_BASE_URL}/api/CustomBagRequest/${id}`,
   },
 };
 
