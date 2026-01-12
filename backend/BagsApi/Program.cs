@@ -16,10 +16,12 @@ var connectionString = builder.Configuration.GetConnectionString("BagsConn")
 builder.Services.AddDbContext<BagsDbContext>(options =>
     options.UseSqlServer(connectionString));
 
-// Database services for products, orders, blog
+// Database services for products, orders, blog, repair requests, custom bag requests
 builder.Services.AddScoped<BagsApi.Services.IProductService, BagsApi.Services.ProductService>();
 builder.Services.AddScoped<BagsApi.Services.IOrderService, BagsApi.Services.OrderService>();
 builder.Services.AddScoped<BagsApi.Services.IBlogService, BagsApi.Services.BlogService>();
+builder.Services.AddScoped<BagsApi.Services.IRepairRequestService, BagsApi.Services.RepairRequestService>();
+builder.Services.AddScoped<BagsApi.Services.ICustomBagRequestService, BagsApi.Services.CustomBagRequestService>();
 
 // CORS Configuration: Allow configured origins from appsettings
 builder.Services.AddCors(options =>

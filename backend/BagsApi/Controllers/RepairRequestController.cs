@@ -8,16 +8,16 @@ namespace BagsApi.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class OrdersController : ControllerBase
+public class RepairRequestController : ControllerBase
 {
-    private readonly IOrderService _service;
+    private readonly IRepairRequestService _service;
     private readonly IConfiguration _configuration;
-    private readonly ILogger<OrdersController> _logger;
+    private readonly ILogger<RepairRequestController> _logger;
 
-    public OrdersController(
-        IOrderService service,
+    public RepairRequestController(
+        IRepairRequestService service,
         IConfiguration configuration,
-        ILogger<OrdersController> logger)
+        ILogger<RepairRequestController> logger)
     {
         _service = service;
         _configuration = configuration;
@@ -25,38 +25,42 @@ public class OrdersController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Order>>> GetAll()
+    public async Task<ActionResult<IEnumerable<RepairRequest>>> GetAll()
     {
-        var orders = await _service.GetAllAsync();
-        return Ok(orders);
+        var requests = await _service.GetAllAsync();
+        return Ok(requests);
     }
 
     [HttpGet("{id:int}")]
-    public async Task<ActionResult<Order>> Get(int id)
+    public async Task<ActionResult<RepairRequest>> Get(int id)
     {
-        var order = await _service.GetByIdAsync(id);
-        if (order is null) return NotFound();
-        return Ok(order);
+        var request = await _service.GetByIdAsync(id);
+        if (request is null) return NotFound();
+        return Ok(request);
     }
 
     [HttpPost]
-    public async Task<ActionResult<Order>> Create(Order order)
+    public async Task<ActionResult<RepairRequest>> Create(RepairRequest request)
     {
-        var created = await _service.CreateAsync(order);
+        var created = await _service.CreateAsync(request);
+        
+        // Send email notifications
+        await SendRepairRequestEmails(created);
+        
         return CreatedAtAction(nameof(Get), new { id = created.Id }, created);
     }
 
     public record UpdateStatusRequest(string Status);
 
     [HttpPut("{id:int}/status")]
-    public async Task<ActionResult<Order>> UpdateStatus(int id, [FromBody] UpdateStatusRequest request)
+    public async Task<ActionResult<RepairRequest>> UpdateStatus(int id, [FromBody] UpdateStatusRequest request)
     {
         var updated = await _service.UpdateStatusAsync(id, request.Status);
         if (updated is null) return NotFound();
         return Ok(updated);
     }
 
-    private async Task SendOrderEmails(Order order)
+    private async Task SendRepairRequestEmails(RepairRequest request)
     {
         try
         {
@@ -79,58 +83,52 @@ public class OrdersController : ControllerBase
                 Credentials = new NetworkCredential(smtpUser, smtpPassword)
             };
 
-            // Parse items for email
-            var items = System.Text.Json.JsonSerializer.Deserialize<List<Dictionary<string, object>>>(order.ItemsJson) ?? new List<Dictionary<string, object>>();
-            var itemsText = string.Join("\n", items.Select(item => 
-                $"- {item.GetValueOrDefault("name", "Item")} x{item.GetValueOrDefault("quantity", 1)} - ₵{item.GetValueOrDefault("price", 0)}"));
-
             // Email to admin
             var adminMail = new MailMessage
             {
                 From = new MailAddress(smtpFrom, "SONCIS Website"),
-                Subject = $"New Order #{order.Id} from {order.CustomerName}",
+                Subject = $"Repair Request from {request.Name}",
                 Body = $@"
-New Order #{order.Id} - SONCIS Website
+New Repair Request from SONCIS Website
 
-Customer Name: {order.CustomerName}
-Customer Email: {order.CustomerEmail}
-Order Date: {order.CreatedAt:yyyy-MM-dd HH:mm:ss}
-Status: {order.Status}
+Name: {request.Name}
+Email: {request.Email}
+Phone: {request.Phone}
+Bag Brand: {request.BagBrand}
+Bag Type: {request.BagType}
+Damage Location: {request.DamageLocation}
+Urgency: {request.Urgency}
 
-Order Items:
-{itemsText}
+Issue Description:
+{request.IssueDescription}
 
-Total Amount: ₵{order.TotalAmount:N2}
+{(string.IsNullOrEmpty(request.Photos) ? "" : $"Photo Links: {request.Photos}\n")}
+{(string.IsNullOrEmpty(request.AdditionalNotes) ? "" : $"Additional Notes: {request.AdditionalNotes}\n")}
 
-Reply to: {order.CustomerEmail}
+Reply to: {request.Email}
 ",
                 IsBodyHtml = false
             };
             adminMail.To.Add(adminEmail);
-            adminMail.ReplyToList.Add(new MailAddress(order.CustomerEmail, order.CustomerName));
+            adminMail.ReplyToList.Add(new MailAddress(request.Email, request.Name));
 
             // Email to customer
             var customerMail = new MailMessage
             {
                 From = new MailAddress(smtpFrom, "SONCIS"),
-                Subject = $"Order Confirmation #{order.Id} - SONCIS",
+                Subject = "Repair Request Received - SONCIS",
                 Body = $@"
-Dear {order.CustomerName},
+Dear {request.Name},
 
-Thank you for your order! Your order has been received and is being processed.
+Thank you for your repair request! We have received the following details:
 
-Order ID: #{order.Id}
-Order Date: {order.CreatedAt:yyyy-MM-dd HH:mm:ss}
-Status: {order.Status}
+Bag Type: {request.BagType}
+Issue: {request.IssueDescription}
+Damage Location: {request.DamageLocation}
 
-Order Items:
-{itemsText}
+Our team will review your request and contact you within 1-2 business days at {request.Email} or {request.Phone} to discuss the repair process and provide a quote.
 
-Total Amount: ₵{order.TotalAmount:N2}
-
-We will send you another email once your order has been shipped.
-
-If you have any questions about your order, please contact us at:
+If you have any questions, please contact us at:
 - Email: soncisworld@gmail.com
 - Phone: 0552702318
 - WhatsApp: https://wa.me/233552702318
@@ -140,17 +138,17 @@ The SONCIS Team
 ",
                 IsBodyHtml = false
             };
-            customerMail.To.Add(order.CustomerEmail);
+            customerMail.To.Add(request.Email);
 
             await client.SendMailAsync(adminMail);
             await client.SendMailAsync(customerMail);
             
-            _logger.LogInformation("Order emails sent successfully for order ID: {OrderId}", order.Id);
+            _logger.LogInformation("Repair request emails sent successfully for request ID: {RequestId}", request.Id);
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error sending order emails for order ID: {OrderId}", order.Id);
-            // Don't throw - email failure shouldn't prevent order creation
+            _logger.LogError(ex, "Error sending repair request emails for request ID: {RequestId}", request.Id);
+            // Don't throw - email failure shouldn't prevent request creation
         }
     }
 }

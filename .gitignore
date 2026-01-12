@@ -35,3 +35,11 @@ next-env.d.ts
 
 # Admin data files (optional - remove this line if you want to track data in git)
 # /data/*.json
+
+# .NET build artifacts
+**/bin/
+**/obj/
+**/publish/
+*.dll
+*.exe
+*.pdb
