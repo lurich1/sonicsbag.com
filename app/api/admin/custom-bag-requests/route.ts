@@ -12,16 +12,33 @@ export async function GET() {
     }
 
     // Backend doesn't require auth for GET, but we check admin token for frontend security
-    const response = await fetch(apiConfig.endpoints.customBagRequests)
+    const backendUrl = apiConfig.endpoints.customBagRequests
+    console.log("Fetching custom bag requests from:", backendUrl)
+    
+    const response = await fetch(backendUrl, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
 
     if (!response.ok) {
-      return NextResponse.json([], { status: response.status })
+      const errorText = await response.text().catch(() => "Unknown error")
+      console.error(`Backend returned ${response.status} for custom bag requests:`, errorText)
+      return NextResponse.json([], { status: 200 }) // Return empty array instead of error
     }
 
     const requests = await response.json()
-    return NextResponse.json(Array.isArray(requests) ? requests : [])
-  } catch (error) {
-    console.error("Error fetching custom bag requests from backend:", error)
+    const requestsArray = Array.isArray(requests) ? requests : []
+    console.log(`Fetched ${requestsArray.length} custom bag requests from backend`)
+    return NextResponse.json(requestsArray)
+  } catch (error: any) {
+    console.error("Error fetching custom bag requests from backend:", {
+      message: error?.message,
+      name: error?.name,
+      stack: error?.stack,
+    })
+    // Return empty array so admin panel doesn't break
     return NextResponse.json([])
   }
 }

@@ -52,19 +52,50 @@ export default function AdminRepairRequestsPage() {
   const fetchRequests = async () => {
     try {
       const token = localStorage.getItem("adminToken")
+      if (!token) {
+        toast({
+          title: "Authentication Required",
+          description: "Please log in to view repair requests",
+          variant: "destructive",
+        })
+        setIsLoading(false)
+        return
+      }
+
       const response = await fetch("/api/admin/repair-requests", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
+
+      if (!response.ok) {
+        if (response.status === 401) {
+          toast({
+            title: "Unauthorized",
+            description: "Please log in again",
+            variant: "destructive",
+          })
+          return
+        }
+        throw new Error(`HTTP ${response.status}`)
+      }
+
       const data = await response.json()
-      setRequests(Array.isArray(data) ? data : [])
-    } catch (error) {
+      const requestsArray = Array.isArray(data) ? data : []
+      setRequests(requestsArray)
+      
+      if (requestsArray.length === 0) {
+        console.log("No repair requests found. This could mean:")
+        console.log("1. No requests have been submitted yet")
+        console.log("2. Backend API is not responding")
+        console.log("3. Requests are not being saved to the backend")
+      }
+    } catch (error: any) {
       console.error("Error fetching repair requests:", error)
       setRequests([])
       toast({
         title: "Error",
-        description: "Failed to fetch repair requests",
+        description: `Failed to fetch repair requests: ${error?.message || "Unknown error"}`,
         variant: "destructive",
       })
     } finally {
