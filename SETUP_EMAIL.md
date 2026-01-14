@@ -1,6 +1,6 @@
-# How to Set Up Email Receiving for Contact Form
+# How to Set Up Email Receiving for Contact, Custom Bag, and Repair Forms
 
-Currently, the contact form is set up to send emails to **soncisworld@gmail.com** using Resend email service.
+Currently, all forms (Contact, Custom Bag, and Repair) are set up to send emails to **soncisworld@gmail.com** using Resend email service.
 
 ## Quick Setup (5 minutes)
 
@@ -43,15 +43,36 @@ If you prefer not to use Resend, you can use Gmail SMTP with Nodemailer:
 ## Testing
 
 After setting up:
-1. Go to your contact page: `/contact`
-2. Fill out and submit the form
-3. Check your email inbox: **soncisworld@gmail.com**
-4. You should receive the contact form submission
+1. Test the contact form: Go to `/contact`, fill out and submit
+2. Test the custom bag form: Go to `/custom-bag`, fill out and submit
+3. Test the repair form: Go to `/repair`, fill out and submit
+4. Check your email inbox: **soncisworld@gmail.com**
+5. You should receive emails for all form submissions
+
+## Troubleshooting
+
+If emails are not being sent:
+
+1. **Check Environment Variables**: Make sure `RESEND_API_KEY` is set in your Vercel project settings
+2. **Check Logs**: Look at your Vercel deployment logs for error messages
+3. **Verify API Key**: Make sure your Resend API key is valid and active
+4. **Check Resend Dashboard**: Verify your Resend account is active and not suspended
+5. **Domain Verification**: If using a custom domain, make sure it's verified in Resend
 
 ## Current Status
 
 ✅ Contact form API route created
+✅ Custom Bag form API route created
+✅ Repair form API route created
 ✅ Resend package installed
+✅ Improved error handling and logging
 ⏳ **Waiting for RESEND_API_KEY to be added to environment variables**
 
-Once you add the API key and redeploy, emails will start working!
+Once you add the API key and redeploy, emails will start working for all forms!
+
+## What Was Fixed
+
+- ✅ Improved error handling in custom-bag and repair routes
+- ✅ Better logging to identify email sending issues
+- ✅ Clear error messages when RESEND_API_KEY is missing
+- ✅ Individual email result checking (admin vs customer emails)

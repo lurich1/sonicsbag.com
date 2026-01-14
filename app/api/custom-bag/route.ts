@@ -174,7 +174,7 @@ export async function POST(request: NextRequest) {
       
       try {
         // Send email to admin
-        await resend.emails.send({
+        const adminEmailResult = await resend.emails.send({
           from: process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev",
           to: adminEmail,
           replyTo: email,
@@ -182,23 +182,45 @@ export async function POST(request: NextRequest) {
           html: adminEmailHtml,
         })
         
+        if (adminEmailResult.error) {
+          console.error("Failed to send admin email:", adminEmailResult.error)
+        } else {
+          console.log("Admin email sent successfully:", adminEmailResult.data?.id)
+        }
+        
         // Send confirmation email to customer
-        await resend.emails.send({
+        const customerEmailResult = await resend.emails.send({
           from: process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev",
           to: email,
           subject: "Custom Bag Request Received - SONCIS",
           html: customerEmailHtml,
         })
         
-        console.log("Custom bag request emails sent successfully")
-      } catch (resendError) {
-        console.error("Resend error:", resendError)
+        if (customerEmailResult.error) {
+          console.error("Failed to send customer email:", customerEmailResult.error)
+        } else {
+          console.log("Customer email sent successfully:", customerEmailResult.data?.id)
+        }
+        
+        if (!adminEmailResult.error && !customerEmailResult.error) {
+          console.log("Custom bag request emails sent successfully")
+        } else {
+          console.error("Some emails failed to send. Check logs above for details.")
+        }
+      } catch (resendError: any) {
+        console.error("Resend API error:", {
+          message: resendError?.message,
+          name: resendError?.name,
+          stack: resendError?.stack,
+        })
       }
     } else {
+      console.error("⚠️ RESEND_API_KEY not configured! Emails will not be sent.")
       console.log("Custom Bag Request (Resend not configured):")
       console.log("To Admin:", adminEmail)
       console.log("To Customer:", email)
-      console.log("Data:", body)
+      console.log("Data:", JSON.stringify(body, null, 2))
+      console.log("Please add RESEND_API_KEY to your environment variables to enable email sending.")
     }
 
     return NextResponse.json(
