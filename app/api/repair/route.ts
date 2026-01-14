@@ -34,9 +34,12 @@ export async function POST(request: NextRequest) {
         }
 
         const controller = new AbortController()
-        const timeoutId = setTimeout(() => controller.abort(), 5000) // 5 second timeout
+        const timeoutId = setTimeout(() => controller.abort(), 30000) // 30 second timeout (increased from 5)
 
-        const backendResponse = await fetch(apiConfig.endpoints.repairRequests, {
+        const backendUrl = apiConfig.endpoints.repairRequests
+        console.log("Attempting to save repair request to backend:", backendUrl)
+        
+        const backendResponse = await fetch(backendUrl, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -49,15 +52,24 @@ export async function POST(request: NextRequest) {
 
         if (backendResponse.ok) {
           const savedRequest = await backendResponse.json()
-          console.log("Repair request saved to backend:", savedRequest)
+          console.log("✅ Repair request saved to backend successfully:", savedRequest)
           return savedRequest
         } else {
           const errorText = await backendResponse.text().catch(() => "Unknown error")
-          console.error("Failed to save repair request to backend:", backendResponse.status, errorText)
+          console.error(`❌ Failed to save repair request to backend. Status: ${backendResponse.status}, Error:`, errorText)
+          console.error("Backend URL:", backendUrl)
+          console.error("Request payload:", JSON.stringify(backendRequest, null, 2))
         }
       } catch (backendError: any) {
         if (backendError.name !== 'AbortError') {
-          console.error("Error saving repair request to backend (continuing with email):", backendError?.message || backendError)
+          console.error("❌ Error saving repair request to backend (continuing with email):", {
+            name: backendError?.name,
+            message: backendError?.message,
+            stack: backendError?.stack,
+          })
+          console.error("Backend URL:", apiConfig.endpoints.repairRequests)
+        } else {
+          console.warn("⏱️ Backend save timed out after 5 seconds (continuing with email)")
         }
       }
       return null
