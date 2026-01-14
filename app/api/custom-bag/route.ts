@@ -71,7 +71,7 @@ export async function POST(request: NextRequest) {
           })
           console.error("Backend URL:", apiConfig.endpoints.customBagRequests)
         } else {
-          console.warn("⏱️ Backend save timed out after 5 seconds (continuing with email)")
+          console.warn("⏱️ Backend save timed out after 30 seconds (continuing with email)")
         }
       }
       return null
