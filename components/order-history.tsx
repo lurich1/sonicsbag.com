@@ -46,7 +46,7 @@ export function OrderHistory() {
     const events = [
       {
         status: "confirmed",
-        location: "SONCIS Headquarters",
+        location: "Soncis Bags Headquarters",
         date: orderDate,
         description: "Order confirmed and payment received",
       },

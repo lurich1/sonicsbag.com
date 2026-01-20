@@ -40,7 +40,7 @@ export async function POST(request: NextRequest) {
           </head>
           <body>
             <div class="container">
-              <h2>New Contact Form Submission from SONCIS Website</h2>
+              <h2>New Contact Form Submission from Soncis Bags Website</h2>
               <div class="field">
                 <span class="label">Name:</span> ${name}
               </div>

@@ -27,7 +27,7 @@ export default function Home() {
         <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
             <div>
-              <h3 className="font-serif text-xl font-semibold mb-4">SONCIS</h3>
+              <h3 className="font-serif text-xl font-semibold mb-4">Soncis Bags</h3>
               <p className="text-sm text-muted-foreground">Premium bags for every adventure and occasion.</p>
             </div>
             <div>
@@ -71,7 +71,7 @@ export default function Home() {
             </div>
           </div>
           <div className="border-t border-border mt-6 sm:mt-8 pt-6 sm:pt-8 text-center text-xs sm:text-sm text-muted-foreground">
-            <p>&copy; 2025 SONCIS. All rights reserved.</p>
+            <p>&copy; 2025 Soncis Bags. All rights reserved.</p>
           </div>
         </div>
       </footer>

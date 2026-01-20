@@ -20,14 +20,14 @@ export default function TermsPage() {
             <div>
               <h2 className="font-semibold text-xl mb-3">Acceptance of Terms</h2>
               <p className="text-muted-foreground">
-                By accessing and using SONCIS website, you accept and agree to be bound by the terms and provision of this agreement.
+                By accessing and using the Soncis Bags website, you accept and agree to be bound by the terms and provision of this agreement.
               </p>
             </div>
             
             <div>
               <h2 className="font-semibold text-xl mb-3">Use License</h2>
               <p className="text-muted-foreground">
-                Permission is granted to temporarily access the materials on SONCIS website for personal, non-commercial transitory viewing only.
+                Permission is granted to temporarily access the materials on the Soncis Bags website for personal, non-commercial transitory viewing only.
               </p>
             </div>
             
@@ -55,7 +55,7 @@ export default function TermsPage() {
             <div>
               <h2 className="font-semibold text-xl mb-3">Limitation of Liability</h2>
               <p className="text-muted-foreground">
-                In no event shall SONCIS or its suppliers be liable for any damages arising out of the use or inability to use the materials on our website.
+                In no event shall Soncis Bags or its suppliers be liable for any damages arising out of the use or inability to use the materials on our website.
               </p>
             </div>
             

@@ -63,7 +63,7 @@ export default async function BlogPage() {
       title: post.title,
       excerpt,
       image: fixImageUrl(post.imageUrl || post.image),
-      author: post.author || "SONCIS Team",
+      author: post.author || "Soncis Bags Team",
       date: postDate,
       category: post.category || "Blog",
     }

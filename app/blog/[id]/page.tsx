@@ -89,7 +89,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ id: s
               </div>
               <div className="flex items-center gap-2">
                 <User className="h-4 w-4" />
-                <span>{post.author || "SONCIS Team"}</span>
+                <span>{post.author || "Soncis Bags Team"}</span>
               </div>
             </div>
           </div>
@@ -115,14 +115,14 @@ export default async function BlogPostPage({ params }: { params: Promise<{ id: s
               <div className="relative aspect-[4/3] overflow-hidden bg-secondary rounded-lg">
                 <img
                   src="/blog2.png"
-                  alt="SONCIS Bag Reward Program"
+                  alt="Soncis Bags Reward Program"
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="relative aspect-[4/3] overflow-hidden bg-secondary rounded-lg">
                 <img
                   src="/blog1.png"
-                  alt="SONCIS Bag Reward Program"
+                  alt="Soncis Bags Reward Program"
                   className="w-full h-full object-cover"
                 />
               </div>

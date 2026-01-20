@@ -8,7 +8,7 @@ export function ShippingTicker() {
     { text: "IF IT NEEDS A BAG, WE MAKE IT", icon: Hammer },
     { text: "EVERY PURCHASE SUPPORTS A CHILD'S EDUCATION", icon: Heart },
     { text: "IMPACTING LIVES THROUGH BAG MAKING", icon: Users },
-    { text: "SONCIS IS MORE THAN A BAG BRAND", icon: Sparkles },
+    { text: "Soncis Bags is more than a bag brand", icon: Sparkles },
   ]
 
   return (
