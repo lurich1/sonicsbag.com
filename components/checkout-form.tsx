@@ -171,13 +171,11 @@ export function CheckoutForm({ total }: CheckoutFormProps) {
         throw new Error(`Invalid payment amount: ${paymentAmount}. Total: ${total}`)
       }
 
-      const publicKey = process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY
-
-      if (!publicKey) {
-        throw new Error(
-          "Paystack public key is not configured. Please set NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY in your environment."
-        )
-      }
+      // TEMP: hardcode key to verify integration is working.
+      // After confirming, switch back to using ONLY the env variable.
+      const publicKey =
+        process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY ||
+        "pk_live_1093628fa26f964378f759060c4021c6196b4035"
       
       // Define async payment handler
       const processPayment = async (reference: string) => {
