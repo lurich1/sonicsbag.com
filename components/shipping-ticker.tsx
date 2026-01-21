@@ -5,7 +5,7 @@ import { ShoppingBag, Hammer, Heart, Users, Sparkles } from "lucide-react"
 export function ShippingTicker() {
   const messages = [
     { text: "CUSTOM MADE BAGS", icon: ShoppingBag },
-    { text: "IF IT NEEDS A BAG, WE MAKE IT", icon: Hammer },
+    { text: "IF YOU NEED A BAG, WE MAKE IT", icon: Hammer },
     { text: "EVERY PURCHASE SUPPORTS A CHILD'S EDUCATION", icon: Heart },
     { text: "IMPACTING LIVES THROUGH BAG MAKING", icon: Users },
     { text: "Soncis Bags is more than a bag brand", icon: Sparkles },
