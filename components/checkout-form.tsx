@@ -171,7 +171,13 @@ export function CheckoutForm({ total }: CheckoutFormProps) {
         throw new Error(`Invalid payment amount: ${paymentAmount}. Total: ${total}`)
       }
 
-      const publicKey = process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY || "pk_live_780b6d956efdaf96f8766f043b5bbd0ec8696ebb"
+      const publicKey = process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY
+
+      if (!publicKey) {
+        throw new Error(
+          "Paystack public key is not configured. Please set NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY in your environment."
+        )
+      }
       
       // Define async payment handler
       const processPayment = async (reference: string) => {
@@ -450,7 +456,7 @@ export function CheckoutForm({ total }: CheckoutFormProps) {
         <div className="space-y-3 sm:space-y-4">
           <div className="p-4 bg-secondary rounded border border-border">
             <p className="text-sm text-muted-foreground">
-              You will be redirected to Paystack to complete your payment securely. We accept all major cards and mobile money.
+              You will be redirected to Paystack to complete your payment securely to Soncis Bags. We accept all major cards and mobile money.
             </p>
           </div>
         </div>

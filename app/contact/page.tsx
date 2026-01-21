@@ -65,7 +65,7 @@ export default function ContactPage() {
       <section className="relative h-64 overflow-hidden">
         <Image
           src="/banner-large-image2.jpg"
-          alt="Contact SONCIS"
+          alt="Contact Soncis Bags"
           fill
           className="object-cover"
           priority

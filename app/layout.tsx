@@ -15,7 +15,7 @@ const playfair = Playfair_Display({
 })
 
 export const metadata: Metadata = {
-  title: "SONCIS - Premium Bags",
+  title: "Soncis Bags - Premium Bags",
   description: "Discover our collection of stylish and functional bags for every occasion",
   icons: {
     icon: [

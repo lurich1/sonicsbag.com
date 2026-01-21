@@ -81,7 +81,7 @@ export async function POST(request: NextRequest) {
           </head>
           <body>
             <div class="container">
-              <h2>New Order #${frontendOrder.id} - SONCIS Website</h2>
+              <h2>New Order #${frontendOrder.id} - Soncis Bags Website</h2>
               <div class="field">
                 <span class="label">Order ID:</span> ${frontendOrder.id}
               </div>
@@ -152,7 +152,7 @@ export async function POST(request: NextRequest) {
           </head>
           <body>
             <div class="container">
-              <h2>Order Confirmation - SONCIS</h2>
+              <h2>Order Confirmation - Soncis Bags</h2>
               <p>Dear ${frontendOrder.customerName},</p>
               <p>Thank you for your order! Your order has been received and is being processed.</p>
               <div style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 20px 0;">
@@ -184,7 +184,7 @@ export async function POST(request: NextRequest) {
                 <li>Phone: 0552702318</li>
                 <li>WhatsApp: <a href="https://wa.me/233552702318">0552702318</a></li>
               </ul>
-              <p>Best regards,<br>The SONCIS Team</p>
+              <p>Best regards,<br>The Soncis Bags Team</p>
             </div>
           </body>
         </html>
@@ -204,7 +204,7 @@ export async function POST(request: NextRequest) {
         await resend.emails.send({
           from: process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev",
           to: customerEmail,
-          subject: `Order Confirmation #${frontendOrder.id} - SONCIS`,
+          subject: `Order Confirmation #${frontendOrder.id} - Soncis Bags`,
           html: customerEmailHtml,
         })
         

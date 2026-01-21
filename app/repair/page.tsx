@@ -237,7 +237,7 @@ export default function RepairPage() {
                       type="text"
                       id="bagBrand"
                       name="bagBrand"
-                      placeholder="e.g., SONCIS, Other brand"
+                      placeholder="e.g., Soncis Bags, Other brand"
                       value={formData.bagBrand}
                       onChange={handleChange}
                       className="w-full px-4 py-2 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary"

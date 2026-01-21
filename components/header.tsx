@@ -24,7 +24,7 @@ export function Header() {
         <Link href="/" className="flex items-center">
           <Image
             src="/photo_2025-11-02_05-35-41-removebg-preview.png"
-            alt="SONCIS Logo"
+            alt="Soncis Bags Logo"
             width={120}
             height={40}
             className="h-8 w-auto object-contain"
@@ -93,7 +93,7 @@ export function Header() {
                   <Link href="/" onClick={() => setOpen(false)} className="flex-shrink-0">
                     <Image
                       src="/photo_2025-11-02_05-35-41-removebg-preview.png"
-                      alt="SONCIS Logo"
+                      alt="Soncis Bags Logo"
                       width={120}
                       height={40}
                       className="h-8 w-auto object-contain"

@@ -101,7 +101,7 @@ export async function POST(request: NextRequest) {
           </head>
           <body>
             <div class="container">
-              <h2>New Repair Request from SONCIS Website</h2>
+              <h2>New Repair Request from Soncis Bags Website</h2>
               <div class="field">
                 <span class="label">Name:</span> ${name}
               </div>
@@ -153,7 +153,7 @@ export async function POST(request: NextRequest) {
           </head>
           <body>
             <div class="container">
-              <h2>Repair Request Received - SONCIS</h2>
+              <h2>Repair Request Received - Soncis Bags</h2>
               <p>Dear ${name},</p>
               <p>Thank you for your repair request! We have received the following details:</p>
               <div class="message">
@@ -168,7 +168,7 @@ export async function POST(request: NextRequest) {
                 <li>Phone: 0552702318</li>
                 <li>WhatsApp: <a href="https://wa.me/233552702318">0552702318</a></li>
               </ul>
-              <p>Best regards,<br>The SONCIS Team</p>
+              <p>Best regards,<br>The Soncis Bags Team</p>
             </div>
           </body>
         </html>
@@ -194,7 +194,7 @@ export async function POST(request: NextRequest) {
         const customerEmailResult = await resend.emails.send({
           from: process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev",
           to: email,
-          subject: "Repair Request Received - SONCIS",
+          subject: "Repair Request Received - Soncis Bags",
           html: customerEmailHtml,
         })
         

@@ -108,7 +108,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         }`}
       >
         <div className="p-6 border-b border-border">
-          <h1 className="text-2xl font-bold">SONCIS Admin</h1>
+          <h1 className="text-2xl font-bold">Soncis Bags Admin</h1>
           <p className="text-sm text-muted-foreground">Dashboard</p>
         </div>
         <nav className="p-4 space-y-2">
